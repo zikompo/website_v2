@@ -1,7 +1,6 @@
-// app/page.tsx
 "use client";
 import Hero from "@/app/components/Hero";
-import Layout from "./components/Layout";
+import Layout from "../components/Layout";
 import WealthSeedLogo from '@/app/components/icons/WealthseedLogo.jpg'
 
 import React from "react";
@@ -112,10 +111,6 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 text-zinc-800 font-mono">
       <Layout>
-        <Hero />
-        <div className="my-12 font-mono">
-          I'm looking for Software Engineering roles, internships, and freelance opportunities. If you have a project in mind or want to collaborate, feel free to reach out!
-        </div>
         <div className = "flex flex-col items-center justify-center">
           <ProjectsDisplay />
         </div>
