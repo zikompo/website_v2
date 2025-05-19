@@ -1,11 +1,12 @@
 "use client";
 import Hero from "@/app/components/Hero";
 import Layout from "../components/Layout";
-import WealthSeedLogo from '@/app/components/icons/WealthseedLogo.jpg'
+import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
+import Heritrace from "@/app/components/icons/Heritrace.png";
 
 import React from "react";
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -34,27 +35,48 @@ import { Github, ExternalLink as LinkIcon } from "lucide-react";
 const sampleProjectsData: Project[] = [
   {
     id: "proj1",
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce platform with Next.js, Stripe integration, and admin dashboard.",
-    imageUrl: WealthSeedLogo, // Replace with your image URL or static import
+    title: "Heritrace",
+    description:
+      "A web application to figure out where you're from based on your name.",
+    imageUrl: Heritrace, // Replace with your image URL or static import
     // imageUrl: myProjectImage1, // Example with static import
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Stripe", "Prisma"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Stripe",
+      "Prisma",
+    ],
     links: [
-      { href: "https://github.com/yourusername/project1", label: "GitHub", icon: <Github className="h-4 w-4" /> },
-      { href: "https://project1.example.com", label: "Live Demo", icon: <LinkIcon className="h-4 w-4" /> },
+      {
+        href: "https://github.com/yourusername/project1",
+        label: "GitHub",
+        icon: <Github className="h-4 w-4" />,
+      },
+      {
+        href: "https://project1.example.com",
+        label: "Live Demo",
+        icon: <LinkIcon className="h-4 w-4" />,
+      },
     ],
   },
   {
     id: "proj2",
     title: "Portfolio Website V2",
-    description: "The very website you are looking at, built with Astro and showcasing various projects.",
+    description:
+      "The very website you are looking at, built with Astro and showcasing various projects.",
     imageUrl: WealthSeedLogo, // Replace
     technologies: ["Astro", "React", "Tailwind CSS", "MDX"],
     links: [
-      { href: "https://github.com/yourusername/portfolio-v2", label: "Source Code", icon: <Github className="h-4 w-4" /> },
+      {
+        href: "https://github.com/yourusername/portfolio-v2",
+        label: "Source Code",
+        icon: <Github className="h-4 w-4" />,
+      },
     ],
   },
-  
+
   // Add more projects...
 ];
 
@@ -67,7 +89,8 @@ export interface Project {
   links: ProjectLinkItem[];
 }
 
-export function ProjectsDisplay() { // Renamed from CarouselDemo
+export function ProjectsDisplay() {
+  // Renamed from CarouselDemo
   return (
     <section className="w-full py-16">
       <div className="container mx-auto px-4">
@@ -83,14 +106,25 @@ export function ProjectsDisplay() { // Renamed from CarouselDemo
         >
           <CarouselContent className="-ml-4">
             {sampleProjectsData.map((project) => (
-              <CarouselItem key={project.id} className="pl-4 basis-full"> {/* Added group for hover effects */}
-                <div className="p-1 h-full"> {/* Ensure padding doesn't break card layout */}
+              <CarouselItem key={project.id} className="pl-4 basis-full">
+                {" "}
+                {/* Added group for hover effects */}
+                <div className="p-1 h-full">
+                  {" "}
+                  {/* Ensure padding doesn't break card layout */}
                   <ProjectCardRoot>
-                    <ProjectCardImage src={project.imageUrl} alt={project.title} />
+                    <ProjectCardImage
+                      src={project.imageUrl}
+                      alt={project.title}
+                    />
                     <ProjectCardContent>
                       <ProjectCardTitle>{project.title}</ProjectCardTitle>
-                      <ProjectCardDescription>{project.description}</ProjectCardDescription>
-                      <ProjectCardTechnologies technologies={project.technologies} />
+                      <ProjectCardDescription>
+                        {project.description}
+                      </ProjectCardDescription>
+                      <ProjectCardTechnologies
+                        technologies={project.technologies}
+                      />
                     </ProjectCardContent>
                     {/* Links are part of the main card flow, pushed down by content or mt-auto */}
                     <ProjectCardLinks links={project.links} />
@@ -99,7 +133,8 @@ export function ProjectsDisplay() { // Renamed from CarouselDemo
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" /> {/* Hide on small screens if crowded */}
+          <CarouselPrevious className="hidden sm:flex" />{" "}
+          {/* Hide on small screens if crowded */}
           <CarouselNext className="hidden sm:flex" />
         </Carousel>
       </div>
@@ -111,7 +146,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 text-zinc-800 font-mono">
       <Layout>
-        <div className = "flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <ProjectsDisplay />
         </div>
       </Layout>
