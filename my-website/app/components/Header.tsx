@@ -16,7 +16,7 @@ const Header = () => {
                     <Link href="/projects">projects</Link>
                     <Link href="/writing">writing</Link>
                     <Link href="/Zikora_Chinedu_resume.pdf">resume</Link>
-                    <Link href="/writing">reading</Link>
+                    <Link href="/reading">reading</Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -55,7 +55,7 @@ const Header = () => {
                             resume
                         </Link>
                         <Link 
-                            href="/writing"
+                            href="/reading"
                             className="hover:text-gray-600"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
