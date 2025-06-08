@@ -196,8 +196,10 @@ export function ProjectsDisplay() {
 
 export default function Home() {
     return (
-        <Layout wide={true}>
-            <ProjectsDisplay/>
-        </Layout>
+        <div className="font-crimson-pro">
+            <Layout wide={true}>
+                <ProjectsDisplay/>
+            </Layout>
+        </div>
     );
 }
