@@ -19,16 +19,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <div className="flex flex-col min-h-screen bg-white text-black">
       <Layout>
-        <div className="max-w-4xl mx-auto py-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-light text-black mb-3 font-crimson-pro">
-              {metadata.title}
-            </h1>
-            <p className="text-gray-600 text-base">
-              {metadata.date}
-            </p>
-          </div>
-          
+        <div className="max-w-4xl mx-auto pt-4 pb-8">
           <div className="max-w-none">
             <MDXContent />
           </div>
