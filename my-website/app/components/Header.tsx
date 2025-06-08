@@ -7,9 +7,9 @@ const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
     return (
-        <nav className="w-full text-sm relative">
+        <nav className="w-full text-base relative font-['--font-crimson-pro']">
             <div className="max-w-3xl mx-auto px-4 flex justify-between items-center py-4">
-                <div className="font-medium"><Link href="/">Home</Link></div>
+                <div className="font-medium"><Link href="/">Zikora Chinedu</Link></div>
             
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-4">
