@@ -37,39 +37,39 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden z-50">
+                <div className="absolute top-full left-0 right-0 bg-background shadow-lg md:hidden z-50 border border-border">
                     <div className="flex flex-col p-4 space-y-4">
                         <Link 
                             href="/projects"
-                            className="hover:text-gray-600"
+                            className="hover:text-muted-foreground transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             projects
                         </Link>
                         <Link 
                             href="/writing"
-                            className="hover:text-gray-600"
+                            className="hover:text-muted-foreground transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             writing
                         </Link>
                         <Link 
                             href="/experiences"
-                            className="hover:text-gray-600"
+                            className="hover:text-muted-foreground transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             experience
                         </Link>
                         <Link 
                             href="/Zikora_Chinedu_resume.pdf"
-                            className="hover:text-gray-600"
+                            className="hover:text-muted-foreground transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             resume
                         </Link>
                         <Link 
                             href="/reading"
-                            className="hover:text-gray-600"
+                            className="hover:text-muted-foreground transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             reading
