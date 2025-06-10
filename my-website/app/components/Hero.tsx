@@ -145,7 +145,7 @@ const Hero = () => {
         >
           <motion.li variants={listItemVariants} whileHover="hover">
             Working on bringing financial literacy to high schoolers through{" "}
-            <span className="font-semibold text-[#44b600]">
+            <span className="font-semibold text-foreground">
               <Link href="https://wealthseed.ca">Wealthseed</Link>
             </span>
           </motion.li>

@@ -27,9 +27,9 @@ export default async function Writing() {
   return (
     <div className="flex flex-col min-h-screen bg-white text-black font-crimson-pro">
       <Layout>
-        <div className="max-w-4xl mx-auto py-8">
+        <div className="max-w-4xl mx-auto py-16">
           <div className="mb-8">
-            <h1 className="text-3xl font-light text-black mb-3">Writing</h1>
+            <h1 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Writing</h1>
             <p className="text-gray-600 text-base">
               Thoughts, stories, and reflections on technology, entrepreneurship, and life.
             </p>
