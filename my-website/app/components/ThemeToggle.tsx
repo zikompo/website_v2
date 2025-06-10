@@ -1,21 +1,19 @@
 "use client";
 
 import React from "react";
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark";
 
 const iconMap: Record<Theme, React.ReactNode> = {
     light: <Sun size={20} />,
     dark: <Moon size={20} />,
-    system: <Monitor size={20} />,
 };
 
 const nextTheme: Record<Theme, Theme> = {
     light: "dark",
-    dark: "system",
-    system: "light",
+    dark: "light",
 };
 
 export const ThemeToggle = () => {

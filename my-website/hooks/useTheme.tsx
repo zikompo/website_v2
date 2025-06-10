@@ -1,43 +1,31 @@
 import { useState, useEffect, useCallback } from "react";
 
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark";
 
 export function useTheme() {
-    const [theme, setThemeState] = useState<Theme>("system");
+    const [theme, setThemeState] = useState<Theme>("light");
 
     useEffect(() => {
         const storedTheme = localStorage.getItem("theme") as Theme | null;
-        if (storedTheme) {
+        if (storedTheme && (storedTheme === "light" || storedTheme === "dark")) {
             setThemeState(storedTheme);
+        } else {
+            // If no stored theme, detect system preference
+            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            setThemeState(systemTheme);
         }
     }, []);
 
     const applyTheme = useCallback((themeToApply: Theme) => {
-        if (themeToApply === "system") {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            document.documentElement.classList.toggle("dark", systemTheme === "dark");
-        } else {
-            document.documentElement.classList.toggle("dark", themeToApply === "dark");
-        }
+        document.documentElement.classList.toggle("dark", themeToApply === "dark");
     }, []);
     
     useEffect(() => {
         applyTheme(theme);
-
-        if (theme === "system") {
-            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-            const handleChange = () => applyTheme("system");
-            mediaQuery.addEventListener("change", handleChange);
-            return () => mediaQuery.removeEventListener("change", handleChange);
-        }
     }, [theme, applyTheme]);
 
     const setTheme = (newTheme: Theme) => {
-        if (newTheme === "system") {
-            localStorage.removeItem("theme");
-        } else {
-            localStorage.setItem("theme", newTheme);
-        }
+        localStorage.setItem("theme", newTheme);
         setThemeState(newTheme);
     };
 
