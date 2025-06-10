@@ -23,7 +23,7 @@ const BookReviewModal: React.FC<BookReviewModalProps> = ({ isOpen, onClose, titl
         <Star
           key={i}
           size={20}
-          className={`${i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+          className={`${i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground/50'}`}
         />
       );
     }
@@ -32,10 +32,10 @@ const BookReviewModal: React.FC<BookReviewModalProps> = ({ isOpen, onClose, titl
 
   return (
     <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex justify-center items-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-lg shadow-2xl p-6 w-full max-w-2xl relative max-h-full overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-card rounded-lg shadow-2xl p-6 w-full max-w-2xl relative max-h-full overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 transition-colors"
+          className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
           aria-label="Close review"
         >
           <X size={24} />
@@ -52,9 +52,9 @@ const BookReviewModal: React.FC<BookReviewModalProps> = ({ isOpen, onClose, titl
           </div>
           <div className="flex-grow">
             <h2 className="text-3xl font-bold mb-1">{title}</h2>
-            <p className="text-lg text-gray-600 mb-2 italic">{author}</p>
+            <p className="text-lg text-muted-foreground mb-2 italic">{author}</p>
             <div className="flex items-center mb-4">{renderStars()}</div>
-            <p className="text-base text-gray-700">{review}</p>
+            <p className="text-base text-foreground/80">{review}</p>
           </div>
         </div>
       </div>

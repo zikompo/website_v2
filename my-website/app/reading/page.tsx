@@ -30,7 +30,7 @@ const readingList = [
 const ReadingPage = () => {
     return (
         <div
-            className="flex flex-col min-h-screen bg-neutral-100 text-zinc-800 font-crimson-pro text-[23px]">
+            className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
             <Layout>
                 <div className="space-y-8 py-16">
                     <h1 className="text-4xl font-bold font-grotesk">Reading List</h1>

@@ -22,7 +22,7 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
         <Star
           key={i}
           size={20}
-          className={`${i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'} transition-colors`}
+          className={`${i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground/50'} transition-colors`}
         />
       );
     }
@@ -32,7 +32,7 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
   return (
     <>
       <div
-        className="bg-white rounded-lg shadow-md p-4 cursor-pointer transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+        className="bg-card rounded-lg shadow-md p-4 cursor-pointer transition-all duration-300 ease-in-out transform hover:-translate-y-1"
         onClick={() => setIsModalOpen(true)}
       >
         <div className="flex items-start space-x-4">
@@ -47,7 +47,7 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
           </div>
           <div className="flex-grow">
             <h3 className="text-xl font-bold">{title}</h3>
-            <p className="text-sm text-gray-600 mb-2 italic">{author}</p>
+            <p className="text-sm text-muted-foreground mb-2 italic">{author}</p>
             <div className="flex items-center">{renderStars()}</div>
           </div>
         </div>

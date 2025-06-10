@@ -17,10 +17,10 @@ export default async function ArticlePage({ params }: Props) {
   const { metadata, default: MDXContent } = article
   
   return (
-    <div className="flex flex-col min-h-screen bg-white text-black">
+    <div className="flex flex-col min-h-screen">
       <Layout>
         <div className="max-w-4xl mx-auto pt-4 pb-8">
-          <div className="max-w-none">
+          <div className="prose dark:prose-invert max-w-none">
             <MDXContent />
           </div>
         </div>

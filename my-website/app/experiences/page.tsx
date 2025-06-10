@@ -17,8 +17,15 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    company: "RiskLab",
+    title: "Research Assistant",
+    logo: RiskLab,
+    date: "May 2025 - Present",
+    description: [],
+  },
+  {
     company: "Wealthseed",
-    title: "Full Stack Developer",
+    title: "Founding Engineer",
     logo: WealthSeedLogo,
     date: "Jan 2025 - Present",
     description: [
@@ -30,8 +37,8 @@ const experiences: Experience[] = [
   {
     company: "Sharpe Financial Research Group",
     title: "Quantitative Finance Analyst",
-    logo: SharpeLogo, // Placeholder
-    date: "July 2024 - Present",
+    logo: SharpeLogo,
+    date: "July 2024 - April 2025",
     description: [
       "Developing and backtesting algorithmic trading strategies using statistical and machine learning techniques.",
       "Construct advanced financial models and conduct quantitative research.",
@@ -40,19 +47,12 @@ const experiences: Experience[] = [
   {
     company: "Ecobank Transnational Incorporated",
     title: "Machine Learning Intern",
-    logo: EcobankLogo, // Placeholder
+    logo: EcobankLogo,
     date: "May 2024 - July 2024",
     description: [
       "Leveraged machine learning models and conducted extensive EDA to develop predictive analytics solutions, including salary prediction and loan default forecasting, enhancing data-driven decision-making.",
       "Utilized Python and NLP techniques to develop a framework for the company's chatbot, using data preprocessing, intent recognition, and response generation to enhance user interactions.",
     ],
-  },
-  {
-    company: "RiskLab",
-    title: "Research Assistant",
-    logo: RiskLab,
-    date: "Date Range Placeholder",
-    description: [],
   },
 ];
 
