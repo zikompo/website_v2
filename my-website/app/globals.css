@@ -158,7 +158,6 @@
         @apply bg-background text-foreground;
     }
 }
-
 @layer components {
     .prose {
         --tw-prose-body: var(--foreground);
@@ -198,3 +197,4 @@
         --tw-prose-td-borders: var(--border);
     }
 }
+
