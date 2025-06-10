@@ -111,7 +111,7 @@ const Hero = () => {
         </motion.p>
         <motion.p variants={itemVariants}>
           ◆ cs @
-          <span className="font-semibold text-[#002b65] inline-flex items-baseline">
+          <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
             <Image
               src={UofTLogo}
               alt="UofT Logo"

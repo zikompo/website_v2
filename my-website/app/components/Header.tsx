@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -18,16 +19,20 @@ const Header = () => {
                     <Link href="/experiences">experience</Link>
                     <Link href="/Zikora_Chinedu_resume.pdf">resume</Link>
                     <Link href="/reading">reading</Link>
+                    <ThemeToggle />
                 </div>
 
                 {/* Mobile Menu Button */}
-                <button 
-                    className="md:hidden p-2"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="flex items-center md:hidden">
+                    <ThemeToggle />
+                    <button 
+                        className="p-2"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}

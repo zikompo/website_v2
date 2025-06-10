@@ -104,11 +104,11 @@ const ExperiencePage = () => {
                     </div>
                     <div className="flex-1">
                       <h2 className="text-2xl font-semibold">{exp.company}</h2>
-                      <h3 className="text-xl font-medium text-gray-700">{exp.title}</h3>
-                      <p className="text-sm text-gray-500 mb-4">{exp.date}</p>
+                      <h3 className="text-xl font-medium text-muted-foreground">{exp.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">{exp.date}</p>
                       <ul className="list-disc list-inside space-y-2">
                         {exp.description.map((point, i) => (
-                          <li key={i} className="text-gray-800">
+                          <li key={i} className="text-foreground/80">
                             {point}
                           </li>
                         ))}
