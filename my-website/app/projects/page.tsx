@@ -186,98 +186,92 @@ export interface Project {
     links: ProjectLinkItem[];
 }
 
-export function ProjectsDisplay() {
+export default function ProjectsPage() {
     const [, setView] = useState("carousel");
-    // Renamed from CarouselDemo
-    return (
-        <section className="w-full py-16">
-            <div className="container mx-auto px-4">
-                <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                    My Projects
-                </h2>
-                <Tabs defaultValue="carousel" className="w-full" onValueChange={(value) => setView(value)}>
-                    <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto mb-8">
-                        <TabsTrigger value="carousel" className="hover:cursor-pointer">Carousel</TabsTrigger>
-                        <TabsTrigger value="grid" className="hover:cursor-pointer">Grid</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="carousel">
-                        <Carousel
-                            opts={{
-                                align: "start",
-                                loop: sampleProjectsData.length > 2, // Loop if enough items
-                            }}
-                            className="w-full lg:w-[50%] sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto" // Responsive max width
-                        >
-                            <CarouselContent className="-ml-4">
-                                {sampleProjectsData.map((project) => (
-                                    <CarouselItem key={project.id}
-                                        className="pl-4 basis-full">
-                                        {" "}
-                                        {/* Added group for hover effects */}
-                                        <div className="h-full">
-                                            {" "}
-                                            {/* Ensure padding doesn't break card layout */}
-                                            <ProjectCardRoot href={project.links[0]?.href}>
-                                                <ProjectCardImage
-                                                    src={project.imageUrl}
-                                                    alt={project.title}
-                                                />
-                                                <ProjectCardContent>
-                                                    <ProjectCardTitle>{project.title}</ProjectCardTitle>
-                                                    <ProjectCardDescription>
-                                                        {project.description}
-                                                    </ProjectCardDescription>
-                                                    <ProjectCardTechnologies
-                                                        technologies={project.technologies}
-                                                    />
-                                                </ProjectCardContent>
-                                                {/* Links are part of the main card flow, pushed down by content or mt-auto */}
-                                                <ProjectCardLinks
-                                                    links={project.links} />
-                                            </ProjectCardRoot>
-                                        </div>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                            <CarouselPrevious className="hidden sm:flex hover:cursor-pointer" />{" "}
-                            {/* Hide on small screens if crowded */}
-                            <CarouselNext className="hidden sm:flex hover:cursor-pointer" />
-                        </Carousel>
-                    </TabsContent>
-                    <TabsContent value="grid">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {sampleProjectsData.map((project) => (
-                                <ProjectCardRoot key={project.id} href={project.links[0]?.href}>
-                                    <ProjectCardImage
-                                        src={project.imageUrl}
-                                        alt={project.title}
-                                    />
-                                    <ProjectCardContent>
-                                        <ProjectCardTitle>{project.title}</ProjectCardTitle>
-                                        <ProjectCardDescription>
-                                            {project.description}
-                                        </ProjectCardDescription>
-                                        <ProjectCardTechnologies
-                                            technologies={project.technologies}
-                                        />
-                                    </ProjectCardContent>
-                                    <ProjectCardLinks
-                                        links={project.links} />
-                                </ProjectCardRoot>
-                            ))}
-                        </div>
-                    </TabsContent>
-                </Tabs>
-            </div>
-        </section>
-    );
-}
-
-export default function Home() {
+    
     return (
         <div className="font-crimson-pro">
             <Layout wide={true}>
-                <ProjectsDisplay/>
+                <section className="w-full py-16">
+                    <div className="container mx-auto px-4">
+                        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                            My Projects
+                        </h2>
+                        <Tabs defaultValue="carousel" className="w-full" onValueChange={(value) => setView(value)}>
+                            <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto mb-8">
+                                <TabsTrigger value="carousel" className="hover:cursor-pointer">Carousel</TabsTrigger>
+                                <TabsTrigger value="grid" className="hover:cursor-pointer">Grid</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="carousel">
+                                <Carousel
+                                    opts={{
+                                        align: "start",
+                                        loop: sampleProjectsData.length > 2, // Loop if enough items
+                                    }}
+                                    className="w-full lg:w-[50%] sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto" // Responsive max width
+                                >
+                                    <CarouselContent className="-ml-4">
+                                        {sampleProjectsData.map((project) => (
+                                            <CarouselItem key={project.id}
+                                                className="pl-4 basis-full">
+                                                {" "}
+                                                {/* Added group for hover effects */}
+                                                <div className="h-full">
+                                                    {" "}
+                                                    {/* Ensure padding doesn't break card layout */}
+                                                    <ProjectCardRoot href={project.links[0]?.href}>
+                                                        <ProjectCardImage
+                                                            src={project.imageUrl}
+                                                            alt={project.title}
+                                                        />
+                                                        <ProjectCardContent>
+                                                            <ProjectCardTitle>{project.title}</ProjectCardTitle>
+                                                            <ProjectCardDescription>
+                                                                {project.description}
+                                                            </ProjectCardDescription>
+                                                            <ProjectCardTechnologies
+                                                                technologies={project.technologies}
+                                                            />
+                                                        </ProjectCardContent>
+                                                        {/* Links are part of the main card flow, pushed down by content or mt-auto */}
+                                                        <ProjectCardLinks
+                                                            links={project.links} />
+                                                    </ProjectCardRoot>
+                                                </div>
+                                            </CarouselItem>
+                                        ))}
+                                    </CarouselContent>
+                                    <CarouselPrevious className="hidden sm:flex hover:cursor-pointer" />{" "}
+                                    {/* Hide on small screens if crowded */}
+                                    <CarouselNext className="hidden sm:flex hover:cursor-pointer" />
+                                </Carousel>
+                            </TabsContent>
+                            <TabsContent value="grid">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {sampleProjectsData.map((project) => (
+                                        <ProjectCardRoot key={project.id} href={project.links[0]?.href}>
+                                            <ProjectCardImage
+                                                src={project.imageUrl}
+                                                alt={project.title}
+                                            />
+                                            <ProjectCardContent>
+                                                <ProjectCardTitle>{project.title}</ProjectCardTitle>
+                                                <ProjectCardDescription>
+                                                    {project.description}
+                                                </ProjectCardDescription>
+                                                <ProjectCardTechnologies
+                                                    technologies={project.technologies}
+                                                />
+                                            </ProjectCardContent>
+                                            <ProjectCardLinks
+                                                links={project.links} />
+                                        </ProjectCardRoot>
+                                    ))}
+                                </div>
+                            </TabsContent>
+                        </Tabs>
+                    </div>
+                </section>
             </Layout>
         </div>
     );
