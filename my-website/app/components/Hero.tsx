@@ -160,7 +160,7 @@ const Hero = () => {
             Finished 2nd year of CS at UofT.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            Writing blogs on various topics i'm interested in. Check it out <Link href="/writing" className="underline">here</Link>.
+            Writing blogs on various topics i&apos;m interested in. Check it out <Link href="/writing" className="underline">here</Link>.
           </motion.li>
         </motion.ul>
 
@@ -172,7 +172,7 @@ const Hero = () => {
           variants={listVariants}
         >
           <motion.li variants={listItemVariants} whileHover="hover">
-            I'm interested in machine learning and software engineering, and in
+            I&apos;m interested in machine learning and software engineering, and in
             particular its intersection with the financial space.{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
@@ -194,7 +194,7 @@ const Hero = () => {
         </motion.ul>
 
         <motion.p variants={itemVariants} className="pt-2 text-[18px]">
-          I'm looking for Software Engineering roles, internships, and freelance
+          I&apos;m looking for Software Engineering roles, internships, and freelance
           opportunities. If you have a project in mind or want to collaborate,
           feel free to reach out!
         </motion.p>

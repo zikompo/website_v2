@@ -1,7 +1,5 @@
 "use client";
-import Hero from "@/app/components/Hero";
 import Layout from "../components/Layout";
-import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import Heritrace from "@/app/components/icons/Heritrace.png";
 import Salary from "@/app/components/icons/salary.png";
 import Sokoban from "@/app/components/icons/sokoban.png";
@@ -12,7 +10,6 @@ import Pothole from "@/app/components/icons/pothole.jpg";
 
 import React, { useState } from "react";
 
-import {Card, CardContent} from "@/components/ui/card";
 import {
     Carousel,
     CarouselContent,
@@ -38,7 +35,6 @@ import {
 } from "@/components/ui/project-card"; // Adjust path if needed
 
 import { FaGithub, FaYoutube } from "react-icons/fa";
-import { ExternalLink as LinkIcon } from "lucide-react";
 import DevpostIcon from "@/app/components/DevpostIcon";
 
 // Sample Project Data (using the Project interface)
@@ -191,7 +187,7 @@ export interface Project {
 }
 
 export function ProjectsDisplay() {
-    const [view, setView] = useState("carousel");
+    const [, setView] = useState("carousel");
     // Renamed from CarouselDemo
     return (
         <section className="w-full py-16">

@@ -14,7 +14,7 @@ export default async function ArticlePage({ params }: Props) {
     notFound()
   }
   
-  const { metadata, default: MDXContent } = article
+  const { default: MDXContent } = article
   
   return (
     <div className="flex flex-col min-h-screen">

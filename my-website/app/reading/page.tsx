@@ -2,8 +2,6 @@
 import React from "react";
 import Layout from "../components/Layout";
 
-const readingList = [];
-
 const ReadingPage = () => {
     return (
         <div
@@ -12,7 +10,7 @@ const ReadingPage = () => {
                 <div className="space-y-8 py-16">
                     <h1 className="text-4xl font-bold font-grotesk text-center">Reading List</h1>
                     <p className="text-xl">
-                        Reviews are a work in progress, but I'm currently reading the following books:
+                        Reviews are a work in progress, but I&apos;m currently reading the following books:
                     </p>
                     <div className="pt-4 text-xl">
                         <ul className="list-disc list-inside space-y-4">

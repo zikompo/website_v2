@@ -4,7 +4,7 @@
 import * as React from "react";
 import Image, { StaticImageData } from "next/image"; // Using next/image for optimized images
 import { cn } from "@/lib/utils";
-import { Github, ExternalLink as LinkIcon } from "lucide-react"; // Example icons for links
+import { ExternalLink as LinkIcon } from "lucide-react"; // Example icons for links
 
 // --- Main Project Card Container ---
 // This is the main wrapper for your project card
@@ -18,8 +18,6 @@ function ProjectCardRoot({
   children,
   ...props
 }: ProjectCardRootProps) {
-  const CardWrapper = href ? "a" : "div";
-
   return (
     <div
       data-slot="project-card"
