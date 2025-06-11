@@ -24,7 +24,7 @@ const crimsonPro = Crimson_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Zikora's Personal Site",
+  title: "Zikora Chinedu",
   description: "Check out my projects, writing, and more.",
   icons: {
     icon: "/zikora.jpg",
