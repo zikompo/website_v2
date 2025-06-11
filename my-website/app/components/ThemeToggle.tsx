@@ -27,7 +27,7 @@ export const ThemeToggle = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+            className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors hover:cursor-pointer"
             aria-label={`Switch to ${nextTheme[theme]} mode`}
         >
             {iconMap[theme]}

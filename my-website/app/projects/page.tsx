@@ -3,6 +3,12 @@ import Hero from "@/app/components/Hero";
 import Layout from "../components/Layout";
 import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import Heritrace from "@/app/components/icons/Heritrace.png";
+import Salary from "@/app/components/icons/salary.png";
+import Sokoban from "@/app/components/icons/sokoban.png";
+import Paint from "@/app/components/icons/paint.png";
+import Loan from "@/app/components/icons/loan.png";
+import LocateAble from "@/app/components/icons/locateable.jpg";
+import Pothole from "@/app/components/icons/pothole.jpg";
 
 import React, { useState } from "react";
 
@@ -31,7 +37,9 @@ import {
     ProjectCardLinks,
 } from "@/components/ui/project-card"; // Adjust path if needed
 
-import {Github, ExternalLink as LinkIcon} from "lucide-react";
+import { FaGithub, FaYoutube } from "react-icons/fa";
+import { ExternalLink as LinkIcon } from "lucide-react";
+import DevpostIcon from "@/app/components/DevpostIcon";
 
 // Sample Project Data (using the Project interface)
 const sampleProjectsData: Project[] = [
@@ -52,45 +60,120 @@ const sampleProjectsData: Project[] = [
         ],
         links: [
             {
-                href: "https://github.com/yourusername/project1",
+                href: "https://github.com/arsencameron/deerhacks25",
                 label: "GitHub",
-                icon: <Github className="h-4 w-4"/>,
+                icon: <FaGithub size="1rem"/>,
             },
             {
-                href: "https://project1.example.com",
-                label: "Live Demo",
-                icon: <LinkIcon className="h-4 w-4"/>,
+                href: "https://youtu.be/OO03esVLhNg",
+                label: "Demo",
+                icon: <FaYoutube className="h-4 w-4"/>,
             },
+            {
+                href: "https://devpost.com/software/heritrace",
+                label: "Devpost",
+                icon: <DevpostIcon className="h-4 w-4"/>,
+            }
         ],
     },
     {
         id: "proj2",
-        title: "Portfolio Website V2",
+        title: "Salary Prediction Model",
         description:
-            "The very website you are looking at, built with Astro and showcasing various projects.",
-        imageUrl: WealthSeedLogo, // Replace
-        technologies: ["Astro", "React", "Tailwind CSS", "MDX"],
+            "A model for predicting salaries. It takes the highest level of educational attainment, \
+            the person's gender, their current job and their years of experience and predicts their salary given their information.",
+        imageUrl: Salary, // Replace
+        technologies: ["Python", "Pandas", "Matplotlib", "Scikit-learn", "NumPy", "Seaborn"],
         links: [
             {
-                href: "https://github.com/yourusername/portfolio-v2",
+                href: "https://github.com/zikompo/Salary-ML-Model",
                 label: "Source Code",
-                icon: <Github className="h-4 w-4"/>,
+                icon: <FaGithub size="1rem"/>,
             },
         ],
     },
     {
         id: "proj3",
-        title: "Portfolio Website V2",
+        title: "Loan Prediction Model",
         description:
-            "The very website you are looking at, built with Astro and showcasing various projects.",
-        imageUrl: WealthSeedLogo, // Replace
-        technologies: ["Astro", "React", "Tailwind CSS", "MDX"],
+            "A model created to predict the likelihood that an individual would default\
+             on their loans using various numerical and categorical factors. ",
+        imageUrl: Loan, // Replace
+        technologies: ["Python", "Pandas", "Matplotlib", "Scikit-learn", "NumPy", "Seaborn"],
         links: [
             {
-                href: "https://github.com/yourusername/portfolio-v2",
+                href: "https://github.com/zikompo/Loan_ML_Model",
                 label: "Source Code",
-                icon: <Github className="h-4 w-4"/>,
+                icon: <FaGithub size="1rem"/>,
             },
+        ],
+    },
+    {
+        id: "proj4",
+        title: "LocateAble",
+        description:
+            "LocateAble is a website that fosters inclusivity by allowing users to post reviews, rate, \
+            and search for locations on Google Maps based on accessibility, covering a wide range of perspectives.",
+        imageUrl: LocateAble, // Replace
+        technologies: ["React", "PostgreSQL", "Gemini API", "Google Maps API", "Python", "Supabase", "Flask"],
+        links: [
+            {
+                href: "https://github.com/arsencameron/uofthacks12",
+                label: "Source Code",
+                icon: <FaGithub size="1rem"/>,
+            },
+        ],
+    },
+    {
+        id: "proj5",
+        title: "Sokoban",
+        description:
+            "Sokoban, built in Assembly.",
+        imageUrl: Sokoban, // Replace
+        technologies: ["Assembly", "RISC-V 32"],
+        links: [
+            {
+                href: "https://youtu.be/mxxnWkp0m3U",
+                label: "Demo",
+                icon: <FaYoutube className="h-4 w-4"/>,
+            },
+        ],
+    },
+    {
+        id: "proj6",
+        title: "Paint Application",
+        description:
+            "A paint application, built using Java and JavaFX.",
+        imageUrl: Paint, // Replace
+        technologies: ["Java", "JavaFX"],
+        links: [
+            {
+                href: "https://youtu.be/l3glq9MeplM",
+                label: "Demo",
+                icon: <FaYoutube className="h-4 w-4"/>,
+            },
+        ],
+    },
+    {
+        id: "proj7",
+        title: "Pot-Hole Risk Assessor (Hackathon Winnner)",
+        description:
+            "Hardware creation that is meant to be placed underground beneath important roads, and assesses the \
+            likelihood of a pothole forming by using sensors to gather data.",
+        imageUrl: Pothole, // Replace
+        technologies: ["Arduino"],
+        links: [
+            {
+                href: "https://youtu.be/Lw7XOLuH0Jc",
+                label: "Demo",
+                icon: <FaYoutube className="h-4 w-4"/>,
+            },
+            {
+                href: "https://devpost.com/software/pot-hole-risk-assessor",
+                label: "Devpost",
+                icon: <DevpostIcon className="h-4 w-4"/>,
+            },
+
         ],
     },
 
@@ -118,8 +201,8 @@ export function ProjectsDisplay() {
                 </h2>
                 <Tabs defaultValue="carousel" className="w-full" onValueChange={(value) => setView(value)}>
                     <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto mb-8">
-                        <TabsTrigger value="carousel">Carousel</TabsTrigger>
-                        <TabsTrigger value="grid">Grid</TabsTrigger>
+                        <TabsTrigger value="carousel" className="hover:cursor-pointer">Carousel</TabsTrigger>
+                        <TabsTrigger value="grid" className="hover:cursor-pointer">Grid</TabsTrigger>
                     </TabsList>
                     <TabsContent value="carousel">
                         <Carousel
@@ -135,10 +218,10 @@ export function ProjectsDisplay() {
                                         className="pl-4 basis-full">
                                         {" "}
                                         {/* Added group for hover effects */}
-                                        <div className="p-1 h-full">
+                                        <div className="h-full">
                                             {" "}
                                             {/* Ensure padding doesn't break card layout */}
-                                            <ProjectCardRoot>
+                                            <ProjectCardRoot href={project.links[0]?.href}>
                                                 <ProjectCardImage
                                                     src={project.imageUrl}
                                                     alt={project.title}
@@ -160,15 +243,15 @@ export function ProjectsDisplay() {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="hidden sm:flex" />{" "}
+                            <CarouselPrevious className="hidden sm:flex hover:cursor-pointer" />{" "}
                             {/* Hide on small screens if crowded */}
-                            <CarouselNext className="hidden sm:flex" />
+                            <CarouselNext className="hidden sm:flex hover:cursor-pointer" />
                         </Carousel>
                     </TabsContent>
                     <TabsContent value="grid">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             {sampleProjectsData.map((project) => (
-                                <ProjectCardRoot key={project.id}>
+                                <ProjectCardRoot key={project.id} href={project.links[0]?.href}>
                                     <ProjectCardImage
                                         src={project.imageUrl}
                                         alt={project.title}

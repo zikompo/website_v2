@@ -8,16 +8,37 @@ import { Github, ExternalLink as LinkIcon } from "lucide-react"; // Example icon
 
 // --- Main Project Card Container ---
 // This is the main wrapper for your project card
-function ProjectCardRoot({ className, ...props }: React.ComponentProps<"div">) {
+interface ProjectCardRootProps extends React.HTMLAttributes<HTMLDivElement> {
+  href?: string;
+}
+
+function ProjectCardRoot({
+  className,
+  href,
+  children,
+  ...props
+}: ProjectCardRootProps) {
+  const CardWrapper = href ? "a" : "div";
+
   return (
     <div
       data-slot="project-card"
       className={cn(
-        "bg-card text-card-foreground flex h-full flex-col overflow-hidden rounded-xl border shadow-sm", // Added h-full
+        "group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm", // Added h-full
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      {href && (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-0"
+        />
+      )}
+    </div>
   );
 }
 
@@ -31,7 +52,7 @@ interface ProjectCardImageProps {
 function ProjectCardImage({ src, alt, className }: ProjectCardImageProps) {
   return (
     <div className={cn("relative aspect-video w-full overflow-hidden", className)}>
-      <Image src={src} alt={alt} fill className="object-cover transition-transform duration-300 group-hover:scale-105" /> {/* Added group-hover for a subtle effect, assumes parent has 'group' class if desired */}
+      <Image src={src} alt={alt} fill className="object-fill transition-transform duration-300" /> {/* Changed to object-fill to stretch the image */}
     </div>
   );
 }
@@ -106,8 +127,8 @@ interface ProjectCardLinksProps {
 function ProjectCardLinks({ links, className }: ProjectCardLinksProps) {
   if (!links?.length) return null;
   return (
-    <div data-slot="project-card-links" className={cn("mt-auto border-t px-6 py-4", className)}> {/* mt-auto pushes this to the bottom of ProjectCardContent if it's a flex child */}
-      <div className="flex items-center gap-x-4 gap-y-2 flex-wrap">
+    <div data-slot="project-card-links" className={cn("relative z-10 mt-auto border-t px-6 py-4", className)}> {/* mt-auto pushes this to the bottom of ProjectCardContent if it's a flex child */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         {links.map((link) => (
           <a
             key={link.href}

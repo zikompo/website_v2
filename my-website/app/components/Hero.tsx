@@ -144,12 +144,6 @@ const Hero = () => {
           variants={listVariants}
         >
           <motion.li variants={listItemVariants} whileHover="hover">
-            Working on bringing financial literacy to high schoolers through{" "}
-            <span className="font-semibold text-foreground">
-              <Link href="https://wealthseed.ca">Wealthseed</Link>
-            </span>
-          </motion.li>
-          <motion.li variants={listItemVariants} whileHover="hover">
             VP Computer Science @ {""}
             <span className="inline-flex items-baseline gap-1">
               <Image
@@ -159,14 +153,14 @@ const Hero = () => {
                 height={20}
                 className="object-contain relative top-[3px] rounded-xs ml-0"
               />
-              BlackInStem.
+              <Link href="https://www.linkedin.com/company/black-in-stem-utm/">BlackInStem.</Link>
             </span>
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             Finished 2nd year of CS at UofT.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            Writing blogs on various topics i'm interested in. Check it out here
+            Writing blogs on various topics i'm interested in. Check it out <Link href="/writing" className="underline">here</Link>.
           </motion.li>
         </motion.ul>
 
@@ -182,14 +176,14 @@ const Hero = () => {
             particular its intersection with the financial space.{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            I am an avid reader. You can check out my reading list/reviews here.{" "}
+            I am an avid reader. You can check out my reading list/reviews <Link href="/reading" className="underline">here</Link>.{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             I love getting active. I play soccer (Arsenal fan), basketball, and
             I hit the gym.{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            I enjoy playing the piano, playing chess, doing typing tests and
+            I enjoy playing the piano, playing chess, doing <Link href="https://monkeytype.com/profile/zikompo" className="underline">typing tests</Link> and
             watching YouTube mini-documentaries.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
