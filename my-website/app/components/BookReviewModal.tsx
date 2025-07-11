@@ -10,7 +10,7 @@ interface BookReviewModalProps {
   author: string;
   imageUrl: StaticImageData | string;
   rating: number;
-  review: string;
+  review: string | string[];
 }
 
 const BookReviewModal: React.FC<BookReviewModalProps> = ({ isOpen, onClose, title, author, imageUrl, rating, review }) => {
@@ -54,7 +54,16 @@ const BookReviewModal: React.FC<BookReviewModalProps> = ({ isOpen, onClose, titl
             <h2 className="text-3xl font-bold mb-1">{title}</h2>
             <p className="text-lg text-muted-foreground mb-2 italic">{author}</p>
             <div className="flex items-center mb-4">{renderStars()}</div>
-            <p className="text-base text-foreground/80">{review}</p>
+            <div className="text-base text-foreground/80 space-y-4">
+              {Array.isArray(review) 
+                ? review.map((paragraph: string, index: number) => (
+                    <p key={index}>{paragraph}</p>
+                  ))
+                : (review as string).split('\n\n').map((paragraph: string, index: number) => (
+                    <p key={index}>{paragraph}</p>
+                  ))
+              }
+            </div>
           </div>
         </div>
       </div>

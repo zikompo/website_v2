@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Layout from "../components/Layout";
+import BookReviewCard from "../components/BookReviewCard";
 
 const ReadingPage = () => {
     const bookReviews = [
@@ -29,10 +30,9 @@ const ReadingPage = () => {
     ];
 
     return (
-        <div
-            className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
+        <div className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
             <Layout>
-                <div className="space-y-8 py-16">
+                <div className="space-y-12 py-16">
                     <h1 className="text-4xl font-bold font-grotesk text-center">Reading List</h1>
 
                     {/* Currently Reading Section */}
@@ -65,6 +65,9 @@ const ReadingPage = () => {
                             ))}
                         </div>
                     </div>
+
+                    
+                    
                 </div>
             </Layout>
         </div>

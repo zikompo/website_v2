@@ -6,6 +6,8 @@ import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import SharpeLogo from "@/app/components/icons/SharpeLogo.png";
 import EcobankLogo from "@/app/components/icons/EcobankLogo.png";
 import RiskLab from "@/app/components/icons/RiskLab.png";
+import Ontario from "@/app/components/icons/ontario.png";
+import OntarioDark from "@/app/components/icons/ontario-dark.png";
 
 interface Experience {
   company: string;
@@ -16,6 +18,13 @@ interface Experience {
 }
 
 const experiences: Experience[] = [
+  {
+    company: "Ontario Public Service",
+    title: "Software Engineer Intern",
+    logo: Ontario,
+    date: "May 2025 - Present",
+    description: [],
+  },
   {
     company: "RiskLab",
     title: "Research Assistant",
@@ -94,13 +103,32 @@ const ExperiencePage = () => {
                 <motion.div key={index} variants={itemVariants}>
                   <div className="flex items-start space-x-6">
                     <div className="w-16 h-16 relative">
-                      <Image
-                        src={exp.logo}
-                        alt={`${exp.company} logo`}
-                        layout="fill"
-                        objectFit="contain"
-                        className="rounded-lg"
-                      />
+                      {exp.company === "Ontario Public Service" ? (
+                        <>
+                          <Image
+                            src={Ontario}
+                            alt={`${exp.company} logo`}
+                            layout="fill"
+                            object-fit="contain"
+                            className="rounded-lg dark:hidden"
+                          />
+                          <Image
+                            src={OntarioDark}
+                            alt={`${exp.company} logo`}
+                            layout="fill"
+                            object-fit="contain"
+                            className="rounded-lg hidden dark:block"
+                          />
+                        </>
+                      ) : (
+                        <Image
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          layout="fill"
+                          object-fit="contain"
+                          className="rounded-lg"
+                        />
+                      )}
                     </div>
                     <div className="flex-1">
                       <h2 className="text-2xl font-semibold">{exp.company}</h2>

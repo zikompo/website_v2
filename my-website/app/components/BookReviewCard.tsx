@@ -9,7 +9,7 @@ interface BookReviewCardProps {
   author: string;
   imageUrl: StaticImageData | string;
   rating: number; // 1-5
-  review: string;
+  review: string | string[];
 }
 
 const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl, rating, review }) => {

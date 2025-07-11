@@ -14,6 +14,18 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'books.google.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'books.google.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'encrypted-tbn3.gstatic.com',
         port: '',
         pathname: '/**',
@@ -21,6 +33,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'm.media-amazon.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.renaud-bray.com',
         port: '',
         pathname: '/**',
       }

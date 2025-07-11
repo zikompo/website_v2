@@ -5,10 +5,12 @@ import UofTLogo from "@/app/components/icons/UofTLogo.jpg";
 import BlackInStemLogo from "@/app/components/icons/blackinstem.jpg";
 import Zikora from "@/app/components/icons/zikora.jpg";
 import RiskLab from "@/app/components/icons/RiskLab.png";
+import Ontario from "@/app/components/icons/ontario.png";
+import OntarioDark from "@/app/components/icons/ontario-dark.png";
 import Link from "next/link";
 import * as motion from "motion/react-client";
-
 const Hero = () => {
+  
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -96,6 +98,26 @@ const Hero = () => {
         animate="visible"
         variants={sectionVariants}
       >
+        <motion.p variants={itemVariants}>
+          ◆ Software Engineer Intern @{" "}
+          <span className="font-semibold text-foreground inline-flex items-baseline gap-1">
+            <Image
+              src={Ontario}
+              alt="Ontario Logo"
+              width={20}
+              height={20}
+              className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
+            />
+            <Image
+              src={OntarioDark}
+              alt="Ontario Logo"
+              width={20}
+              height={20}
+              className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
+            />
+            <Link href="https://www.ontario.ca/page/government-ontario">Ontario Public Service</Link>
+          </span>
+        </motion.p>
         <motion.p variants={itemVariants}>
           ◆ Founding Engineer @{" "}
           <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
