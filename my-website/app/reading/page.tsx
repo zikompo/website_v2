@@ -12,7 +12,7 @@ const ReadingPage = () => {
             review: [
                 "It is a good book for someone who wants to learn about decision making and how to make better decisions.",
                 "I got into it because I recently started playing poker and wanted to understand the psychology behind making decisions when you have incomplete information.",
-                "It's more of a theoretical book, but it's still a good read in my opinion.",
+                "It&apos;s more of a theoretical book, but it&apos;s still a good read in my opinion.",
             ]
         },
         {
@@ -22,8 +22,8 @@ const ReadingPage = () => {
             rating: 4,
             review: [
                 "Great book for someone wanting to understand the emotional and psychological factors that drive our financial decisions. Talks a lot about how our upbringing and experiences shape the way we think about money.",
-                "Has a lot of good anecdotes that make the book engaging, and it's an easy read.",
-                "In a practical sense, Morgan Housel talks about how he approaches saving/investing, but it's not a how-to-book. I saw it more as an insightful book."
+                "Has a lot of good anecdotes that make the book engaging, and it&apos;s an easy read.",
+                "In a practical sense, Morgan Housel talks about how he approaches saving/investing, but it&apos;s not a how-to-book. I saw it more as an insightful book."
             ]
         }
     ];
