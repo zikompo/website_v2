@@ -31,7 +31,7 @@ export default async function Writing() {
           <div className="mb-8">
             <h1 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Writing</h1>
             <p className="text-muted-foreground text-base">
-              Thoughts, stories, and reflections on technology, entrepreneurship, and life.
+              Thoughts, stories, and reflections on various topics.
             </p>
           </div>
           
