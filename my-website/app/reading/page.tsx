@@ -53,7 +53,6 @@ const ReadingPage = () => {
                         </p>
                         <div className="pt-4 text-xl">
                             <ul className="list-disc list-inside space-y-4">
-                                <li><i>Man&apos;s Search for Meaning</i><span className="ml-1"> by Viktor Frankl</span></li>
                                 <li><i>The 4-Hour Workweek</i><span className="ml-1"> by Tim Ferriss</span></li>
                             </ul>
                         </div>
