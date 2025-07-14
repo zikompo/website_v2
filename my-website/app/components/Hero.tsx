@@ -182,7 +182,7 @@ const Hero = () => {
             Finished 2nd year of CS at UofT.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            Writing blogs on various topics i&apos;m interested in. Check it out <Link href="/writing" className="underline">here</Link>.
+            Writing blogs on various topics i&apos;m interested in. Check it out <Link href="/writing" className="underline">here</Link> (work in progress).
           </motion.li>
         </motion.ul>
 
@@ -206,11 +206,11 @@ const Hero = () => {
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             I enjoy playing the piano, playing chess, doing <Link href="https://monkeytype.com/profile/zikompo" className="underline">typing tests</Link> and
-            watching YouTube mini-documentaries.
+            watching YouTube mini-documentaries. I recently got into poker as well. 
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             I love talking about economics, current affairs, and philosophical
-            questions. You can get in contact with me if you want to have a
+            questions. You can get in <Link href="mailto:zikora.chinedu@yahoo.com" className="underline">contact</Link> with me if you want to have a
             discussion!
           </motion.li>
         </motion.ul>

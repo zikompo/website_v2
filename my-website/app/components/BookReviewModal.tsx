@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { Star, X } from 'lucide-react';
+import { Star, StarHalf, X } from 'lucide-react';
 
 interface BookReviewModalProps {
   isOpen: boolean;
@@ -9,7 +9,7 @@ interface BookReviewModalProps {
   title: string;
   author: string;
   imageUrl: StaticImageData | string;
-  rating: number;
+  rating: number; // 1-5 with 0.5 increments
   review: string | string[];
 }
 
@@ -19,13 +19,34 @@ const BookReviewModal: React.FC<BookReviewModalProps> = ({ isOpen, onClose, titl
   const renderStars = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <Star
-          key={i}
-          size={20}
-          className={`${i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground/50'}`}
-        />
-      );
+      if (i <= Math.floor(rating)) {
+        // Full star
+        stars.push(
+          <Star
+            key={i}
+            size={20}
+            className="text-yellow-400 fill-yellow-400"
+          />
+        );
+      } else if (i - 0.5 === rating) {
+        // Half star
+        stars.push(
+          <StarHalf
+            key={i}
+            size={20}
+            className="text-yellow-400 fill-yellow-400"
+          />
+        );
+      } else {
+        // Empty star
+        stars.push(
+          <Star
+            key={i}
+            size={20}
+            className="text-muted-foreground/50"
+          />
+        );
+      }
     }
     return stars;
   };

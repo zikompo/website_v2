@@ -26,6 +26,17 @@ const ReadingPage = () => {
                 "Has a lot of good anecdotes that make the book engaging, and it's an easy read.",
                 "In a practical sense, Morgan Housel talks about how he approaches saving/investing, but it's not a how-to-book. I saw it more as an insightful book."
             ]
+        },
+        {
+            title: "Man's Search for Meaning",
+            author: "Viktor Frankl",
+            imageUrl: "https://m.media-amazon.com/images/I/612eTMIpONS._SY522_.jpg",
+            rating: 4.5,
+            review: [
+                "Great book. It was very touching, and there were multiple moments where I had to pause and reflect to try and imagine goint through the inhumane conditions that the author and others in the concentration camps had to endure.",
+                "The book is about Viktor Frankl's experiences in the concentration camps, and how he found meaning in his life despite the horrors he endured. He also goes into detail about methods of finding meaning to one's life.",
+                "Potentially one of the best books I've read this year."
+            ]
         }
     ];
 
@@ -37,7 +48,6 @@ const ReadingPage = () => {
 
                     {/* Currently Reading Section */}
                     <div className="space-y-6">
-                        <h2 className="text-3xl font-bold font-grotesk">Currently Reading</h2>
                         <p className="text-xl">
                             I&apos;m currently reading the following books:
                         </p>
