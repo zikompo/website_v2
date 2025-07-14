@@ -33,8 +33,8 @@ const ReadingPage = () => {
             imageUrl: "https://m.media-amazon.com/images/I/612eTMIpONS._SY522_.jpg",
             rating: 4.5,
             review: [
-                "Great book. It was very touching, and there were multiple moments where I had to pause and reflect to try and imagine goint through the inhumane conditions that the author and others in the concentration camps had to endure.",
-                "The book is about Viktor Frankl's experiences in the concentration camps, and how he found meaning in his life despite the horrors he endured. He also goes into detail about methods of finding meaning to one's life.",
+                "Great book. It was very touching, and there were multiple moments where I had to pause and reflect to try and imagine going through the inhumane conditions that the author and others in the concentration camps had to endure.",
+                "The book is about Viktor Frankl's experiences in the concentration camps and how he found meaning in his life despite the horrors he endured. He also details methods for finding purpose, such as suffering with dignity.",
                 "Potentially one of the best books I've read this year."
             ]
         }
