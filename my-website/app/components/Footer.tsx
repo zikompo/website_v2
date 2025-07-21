@@ -13,12 +13,27 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
     // Fetch and increment visitor count using Abacus API
     const fetchVisitorCount = async () => {
       try {
-        // Replace 'your-domain.com' with your actual domain
-        const response = await fetch(
-          "https://abacus.jasoncameron.dev/hit/zikorachinedu.com/visitors"
-        );
-        const data = await response.json();
-        setVisitorCount(data.value);
+        // Check if user has already been counted in this session
+        const hasBeenCounted = sessionStorage.getItem('visitor-counted');
+        
+        if (!hasBeenCounted) {
+          // First visit in this session - increment counter
+          const response = await fetch(
+            "https://abacus.jasoncameron.dev/hit/zikorachinedu.com/visitors"
+          );
+          const data = await response.json();
+          setVisitorCount(data.value);
+          
+          // Mark as counted for this session
+          sessionStorage.setItem('visitor-counted', 'true');
+        } else {
+          // Already counted in this session - just get current count
+          const response = await fetch(
+            "https://abacus.jasoncameron.dev/get/zikorachinedu.com/visitors"
+          );
+          const data = await response.json();
+          setVisitorCount(data.value);
+        }
       } catch (error) {
         console.error("Failed to fetch visitor count:", error);
         // Fallback to just getting the count without incrementing
