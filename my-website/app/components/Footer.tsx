@@ -5,6 +5,9 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+// Global variable that resets on page reload but persists during client-side navigation
+let hasIncrementedInThisSession = false;
+
 const Footer = ({ wide = false }: { wide?: boolean }) => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -13,21 +16,18 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
     // Fetch and increment visitor count using Abacus API
     const fetchVisitorCount = async () => {
       try {
-        // Check if user has already been counted in this session
-        const hasBeenCounted = sessionStorage.getItem('visitor-counted');
-        
-        if (!hasBeenCounted) {
-          // First visit in this session - increment counter
+        if (!hasIncrementedInThisSession) {
+          // First time in this app session - increment counter
           const response = await fetch(
             "https://abacus.jasoncameron.dev/hit/zikorachinedu.com/visitors"
           );
           const data = await response.json();
           setVisitorCount(data.value);
           
-          // Mark as counted for this session
-          sessionStorage.setItem('visitor-counted', 'true');
+          // Mark as counted for this app session (resets on page reload)
+          hasIncrementedInThisSession = true;
         } else {
-          // Already counted in this session - just get current count
+          // Already counted in this app session - just get current count
           const response = await fetch(
             "https://abacus.jasoncameron.dev/get/zikorachinedu.com/visitors"
           );
@@ -70,7 +70,7 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
             {loading
               ? "Loading visitors..."
               : visitorCount !== null
-              ? `👁️ ${visitorCount.toLocaleString()} views`
+              ? `${visitorCount.toLocaleString()} views`
               : "Visitor count unavailable"}
           </p>
           <Link href="https://github.com/zikompo" passHref>
