@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import * as motion from "motion/react-client";
 import Layout from "../components/Layout";
 import BookReviewCard from "../components/BookReviewCard";
 
@@ -40,22 +42,141 @@ const ReadingPage = () => {
         }
     ];
 
+    const [showBooksRead, setShowBooksRead] = useState(false);
+    const [showCurrentlyReading, setShowCurrentlyReading] = useState(false);
+
+    const booksReadThisYear = [
+        "Ego is the Enemy by Ryan Holiday",
+        "Discipline is Destiny by Ryan Holiday", 
+        "Make it Stick by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel",
+        "Psychology of Money by Morgan Housel",
+        "Can't Hurt Me by David Goggins",
+        "Hidden Potential by Adam Grant",
+        "How to Become a Straight-A Student by Cal Newport",
+        "Deep Work by Cal Newport",
+        "How to Love Someone Without Losing Your Mind by Todd Baratz",
+        "The Almanack of Naval Ravikant by Eric Jorgenson",
+        "What I Talk About When I Talk About Running by Haruki Murakami",
+        "Obliquity by John Kay",
+        "Man's Search for Meaning by Viktor Frankl",
+    ];
+
+    const listVariants = {
+        hidden: { opacity: 0, height: 0 },
+        visible: {
+            opacity: 1,
+            height: "auto",
+            transition: {
+                duration: 0.4,
+                ease: "easeInOut",
+                staggerChildren: 0.1,
+                delayChildren: 0.1,
+            },
+        },
+        exit: {
+            opacity: 0,
+            height: 0,
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut",
+            },
+        },
+    };
+
+    const listItemVariants = {
+        hidden: { opacity: 0, x: -10 },
+        visible: { 
+            opacity: 1, 
+            x: 0, 
+            transition: { duration: 0.3 } 
+        },
+        hover: { 
+            x: 4, 
+            transition: { duration: 0.2 } 
+        },
+    };
+
     return (
         <div className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
             <Layout>
-                <div className="space-y-12 py-16">
+                <div className="space-y-6 py-16">
                     <h1 className="text-4xl font-bold font-grotesk text-center">Reading List</h1>
 
                     {/* Currently Reading Section */}
-                    <div className="space-y-6">
-                        <p className="text-xl">
-                            I&apos;m currently reading the following books:
-                        </p>
-                        <div className="pt-4 text-xl">
-                            <ul className="list-disc list-inside space-y-4">
-                                <li><i>The Count of Monte Cristo</i><span className="ml-1"> by Alexandre Dumas</span></li>
-                            </ul>
-                        </div>
+                    <div className="">
+                        <button
+                            onClick={() => setShowCurrentlyReading(!showCurrentlyReading)}
+                            className="flex items-center gap-2 text-xl font-semibold hover:opacity-70 transition-opacity"
+                        >
+                            <span>Currently Reading (1)</span>
+                            {showCurrentlyReading ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        </button>
+                        
+                        <motion.div
+                            initial="hidden"
+                            animate={showCurrentlyReading ? "visible" : "exit"}
+                            variants={listVariants}
+                            style={{ overflow: "hidden" }}
+                        >
+                            <div className="space-y-4">
+                                <div className="space-y-2 text-xl pl-4">
+                                    <motion.p 
+                                        variants={listItemVariants}
+                                        whileHover="hover"
+                                    >
+                                        ◆ <i>The Count of Monte Cristo</i>
+                                        <span className="ml-1"> by Alexandre Dumas</span>
+                                    </motion.p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Books Read This Year Section */}
+                    <div className="">
+                        <button
+                            onClick={() => setShowBooksRead(!showBooksRead)}
+                            className="flex items-center gap-2 text-xl font-semibold hover:opacity-70 transition-opacity"
+                        >
+                            <span>Books I&apos;ve read this year ({booksReadThisYear.length})</span>
+                            {showBooksRead ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        </button>
+                        
+                        <motion.div
+                            initial="hidden"
+                            animate={showBooksRead ? "visible" : "exit"}
+                            variants={listVariants}
+                            style={{ overflow: "hidden" }}
+                        >
+                            <div className="space-y-4">
+                                <div className="space-y-2 text-xl pl-4">
+                                    {booksReadThisYear.map((book, index) => {
+                                        const [title, author] = book.includes(' by ') 
+                                            ? book.split(' by ') 
+                                            : [book, ''];
+                                        return (
+                                            <motion.p 
+                                                key={index}
+                                                variants={listItemVariants}
+                                                whileHover="hover"
+                                            >
+                                                ◆ <i>{title}</i>
+                                                {author && <span className="ml-1"> by {author}</span>}
+                                            </motion.p>
+                                        );
+                                    })}
+                                </div>
+                                
+                                <motion.div 
+                                    className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-lg"
+                                    variants={listItemVariants}
+                                >
+                                    <p className="italic">
+                                        <strong className="text-red-600 dark:text-red-400">Note:</strong> Not all books will receive detailed reviews as I created this website recently and read some of these books a while ago. I may not be able to provide reviews that accurately reflect what I actually thought of the book at the time of reading.
+                                    </p>
+                                </motion.div>
+                            </div>
+                        </motion.div>
                     </div>
 
                     {/* Book Reviews Section */}
