@@ -58,6 +58,7 @@ const ReadingPage = () => {
         "The Almanack of Naval Ravikant by Eric Jorgenson",
         "What I Talk About When I Talk About Running by Haruki Murakami",
         "Obliquity by John Kay",
+        "Thinking in Bets by Annie Duke",
         "Man's Search for Meaning by Viktor Frankl",
     ];
 
