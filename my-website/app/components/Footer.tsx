@@ -19,17 +19,17 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
         if (!hasIncrementedInThisSession) {
           // First time in this app session - increment counter
           const response = await fetch(
-            "https://abacus.jasoncameron.dev/hit/zikorachinedu.com/visitors"
+            "https://abacus.jasoncameron.dev/hit/zikorachinedu.com/visitors",
           );
           const data = await response.json();
           setVisitorCount(data.value);
-          
+
           // Mark as counted for this app session (resets on page reload)
           hasIncrementedInThisSession = true;
         } else {
           // Already counted in this app session - just get current count
           const response = await fetch(
-            "https://abacus.jasoncameron.dev/get/zikorachinedu.com/visitors"
+            "https://abacus.jasoncameron.dev/get/zikorachinedu.com/visitors",
           );
           const data = await response.json();
           setVisitorCount(data.value);
@@ -39,7 +39,7 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
         // Fallback to just getting the count without incrementing
         try {
           const response = await fetch(
-            "https://abacus.jasoncameron.dev/get/zikorachinedu.com/visitors"
+            "https://abacus.jasoncameron.dev/get/zikorachinedu.com/visitors",
           );
           const data = await response.json();
           setVisitorCount(data.value);
@@ -56,12 +56,7 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
 
   return (
     <footer className="py-6">
-      <div
-        className={cn(
-          "mx-auto flex flex-col items-center justify-between space-y-4 px-4 sm:flex-row sm:space-y-0",
-          wide ? "max-w-7xl" : "max-w-3xl"
-        )}
-      >
+      <div className="mx-auto flex flex-col items-center justify-between space-y-4 px-4 sm:flex-row sm:space-y-0 max-w-3xl">
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} Zikora Chinedu. All rights reserved.
         </p>
@@ -70,8 +65,8 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
             {loading
               ? "Loading visitors..."
               : visitorCount !== null
-              ? `${visitorCount.toLocaleString()} views`
-              : "Visitor count unavailable"}
+                ? `${visitorCount.toLocaleString()} views`
+                : "Visitor count unavailable"}
           </p>
           <Link href="https://github.com/zikompo" passHref>
             <Github className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
