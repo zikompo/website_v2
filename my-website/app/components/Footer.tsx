@@ -3,12 +3,14 @@
 import React, { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 // Global variable that resets on page reload but persists during client-side navigation
 let hasIncrementedInThisSession = false;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Footer = ({ wide = false }: { wide?: boolean }) => {
+  // Note: wide parameter is accepted for compatibility but always ignored
+  // Footer always uses standard width (max-w-3xl) for consistency
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
