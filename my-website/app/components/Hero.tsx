@@ -92,84 +92,86 @@ const Hero = () => {
       </motion.section>
 
       <motion.section
-        className="space-y-2 leading-relaxed mt-8 text-left mx-4 md:mx-0"
+        className="space-y-2 leading-relaxed mt-8 text-left"
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
-        <motion.div variants={itemVariants} className="flex">
-          <span className="mr-2">◆</span>
-          <div className="flex-1">
-            Software Engineer Intern @{" "}
-            <span className="font-semibold text-foreground inline-flex items-baseline gap-1">
-              <Image
-                src={Ontario}
-                alt="Ontario Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
-              />
-              <Image
-                src={OntarioDark}
-                alt="Ontario Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
-              />
-              <Link href="https://www.ontario.ca/page/government-ontario">
-                Ontario Public Service
-              </Link>
-            </span>
-          </div>
-        </motion.div>
-        <motion.div variants={itemVariants} className="flex">
-          <span className="mr-2">◆</span>
-          <div className="flex-1">
-            Founding Engineer @{" "}
-            <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
-              <Image
-                src={WealthSeedLogo}
-                alt="Wealthseed Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs"
-              />
-              <Link href="https://wealthseed.ca">Wealthseed</Link>
-            </span>
-          </div>
-        </motion.div>
-        <motion.div variants={itemVariants} className="flex">
-          <span className="mr-2">◆</span>
-          <div className="flex-1">
-            cs @{" "}
-            <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
-              <Image
-                src={UofTLogo}
-                alt="UofT Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-0"
-              />
-              <Link href="https://utoronto.ca/">University of Toronto</Link>
-            </span>
-          </div>
-        </motion.div>
-        <motion.div variants={itemVariants} className="flex">
-          <span className="mr-2">◆</span>
-          <div className="flex-1">
-            Research Assistant @{" "}
-            <span className="font-semibold text-[#f4c122] inline-flex items-baseline">
-              <Image
-                src={RiskLab}
-                alt="RiskLab Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-              />
-              <Link href="https://risklab.ca/">RiskLab</Link>
-            </span>
-          </div>
-        </motion.div>
+        <div className="mx-4 md:mx-0">
+          <motion.div variants={itemVariants} className="flex">
+            <span className="mr-2">◆</span>
+            <div className="flex-1">
+              Software Engineer Intern @{" "}
+              <span className="font-semibold text-foreground inline-flex items-baseline gap-1">
+                <Image
+                  src={Ontario}
+                  alt="Ontario Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
+                />
+                <Image
+                  src={OntarioDark}
+                  alt="Ontario Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
+                />
+                <Link href="https://www.ontario.ca/page/government-ontario">
+                  Ontario Public Service
+                </Link>
+              </span>
+            </div>
+          </motion.div>
+          <motion.div variants={itemVariants} className="flex">
+            <span className="mr-2">◆</span>
+            <div className="flex-1">
+              Founding Engineer @{" "}
+              <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
+                <Image
+                  src={WealthSeedLogo}
+                  alt="Wealthseed Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs"
+                />
+                <Link href="https://wealthseed.ca">Wealthseed</Link>
+              </span>
+            </div>
+          </motion.div>
+          <motion.div variants={itemVariants} className="flex">
+            <span className="mr-2">◆</span>
+            <div className="flex-1">
+              cs @{" "}
+              <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
+                <Image
+                  src={UofTLogo}
+                  alt="UofT Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-0"
+                />
+                <Link href="https://utoronto.ca/">University of Toronto</Link>
+              </span>
+            </div>
+          </motion.div>
+          <motion.div variants={itemVariants} className="flex">
+            <span className="mr-2">◆</span>
+            <div className="flex-1">
+              Research Assistant @{" "}
+              <span className="font-semibold text-[#f4c122] inline-flex items-baseline">
+                <Image
+                  src={RiskLab}
+                  alt="RiskLab Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+                />
+                <Link href="https://risklab.ca/">RiskLab</Link>
+              </span>
+            </div>
+          </motion.div>
+        </div>
 
         <motion.p variants={itemVariants} className="italic text-[18px] pt-4">
           Currently:
