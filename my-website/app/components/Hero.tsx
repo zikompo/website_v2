@@ -10,7 +10,6 @@ import OntarioDark from "@/app/components/icons/ontario-dark.png";
 import Link from "next/link";
 import * as motion from "motion/react-client";
 const Hero = () => {
-  
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -93,70 +92,84 @@ const Hero = () => {
       </motion.section>
 
       <motion.section
-        className="space-y-2 leading-relaxed mt-8 text-center md:text-left"
+        className="space-y-2 leading-relaxed mt-8 text-left mx-4 md:mx-0"
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
       >
-        <motion.p variants={itemVariants}>
-          ◆ Software Engineer Intern @{" "}
-          <span className="font-semibold text-foreground inline-flex items-baseline gap-1">
-            <Image
-              src={Ontario}
-              alt="Ontario Logo"
-              width={20}
-              height={20}
-              className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
-            />
-            <Image
-              src={OntarioDark}
-              alt="Ontario Logo"
-              width={20}
-              height={20}
-              className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
-            />
-            <Link href="https://www.ontario.ca/page/government-ontario">Ontario Public Service</Link>
-          </span>
-        </motion.p>
-        <motion.p variants={itemVariants}>
-          ◆ Founding Engineer @{" "}
-          <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
-            <Image
-              src={WealthSeedLogo}
-              alt="Wealthseed Logo"
-              width={20}
-              height={20}
-              className="object-contain relative top-[3px] rounded-xs"
-            />
-            <Link href="https://wealthseed.ca">Wealthseed</Link>
-          </span>
-        </motion.p>
-        <motion.p variants={itemVariants}>
-          ◆ cs @
-          <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
-            <Image
-              src={UofTLogo}
-              alt="UofT Logo"
-              width={20}
-              height={20}
-              className="object-contain relative top-[3px] rounded-xs ml-0"
-            />
-            <Link href="https://utoronto.ca/">University of Toronto</Link>
-          </span>
-        </motion.p>
-        <motion.p variants={itemVariants}>
-          ◆ Research Assistant @{" "}
-          <span className="font-semibold text-[#f4c122] inline-flex items-baseline">
-            <Image
-              src={RiskLab}
-              alt="RiskLab Logo"
-              width={20}
-              height={20}
-              className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-            />
-            <Link href="https://risklab.ca/">RiskLab</Link>
-          </span>
-        </motion.p>
+        <motion.div variants={itemVariants} className="flex">
+          <span className="mr-2">◆</span>
+          <div className="flex-1">
+            Software Engineer Intern @{" "}
+            <span className="font-semibold text-foreground inline-flex items-baseline gap-1">
+              <Image
+                src={Ontario}
+                alt="Ontario Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
+              />
+              <Image
+                src={OntarioDark}
+                alt="Ontario Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
+              />
+              <Link href="https://www.ontario.ca/page/government-ontario">
+                Ontario Public Service
+              </Link>
+            </span>
+          </div>
+        </motion.div>
+        <motion.div variants={itemVariants} className="flex">
+          <span className="mr-2">◆</span>
+          <div className="flex-1">
+            Founding Engineer @{" "}
+            <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
+              <Image
+                src={WealthSeedLogo}
+                alt="Wealthseed Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs"
+              />
+              <Link href="https://wealthseed.ca">Wealthseed</Link>
+            </span>
+          </div>
+        </motion.div>
+        <motion.div variants={itemVariants} className="flex">
+          <span className="mr-2">◆</span>
+          <div className="flex-1">
+            cs @{" "}
+            <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
+              <Image
+                src={UofTLogo}
+                alt="UofT Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-0"
+              />
+              <Link href="https://utoronto.ca/">University of Toronto</Link>
+            </span>
+          </div>
+        </motion.div>
+        <motion.div variants={itemVariants} className="flex">
+          <span className="mr-2">◆</span>
+          <div className="flex-1">
+            Research Assistant @{" "}
+            <span className="font-semibold text-[#f4c122] inline-flex items-baseline">
+              <Image
+                src={RiskLab}
+                alt="RiskLab Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+              />
+              <Link href="https://risklab.ca/">RiskLab</Link>
+            </span>
+          </div>
+        </motion.div>
 
         <motion.p variants={itemVariants} className="italic text-[18px] pt-4">
           Currently:
@@ -175,14 +188,20 @@ const Hero = () => {
                 height={20}
                 className="object-contain relative top-[3px] rounded-xs ml-0"
               />
-              <Link href="https://www.linkedin.com/company/black-in-stem-utm/">BlackInStem.</Link>
+              <Link href="https://www.linkedin.com/company/black-in-stem-utm/">
+                BlackInStem.
+              </Link>
             </span>
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             Finished 2nd year of CS at UofT.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            Writing blogs on various topics i&apos;m interested in. Check it out <Link href="/writing" className="underline">here</Link> (work in progress).
+            Writing blogs on various topics i&apos;m interested in. Check it out{" "}
+            <Link href="/writing" className="underline">
+              here
+            </Link>{" "}
+            (work in progress).
           </motion.li>
         </motion.ul>
 
@@ -194,31 +213,45 @@ const Hero = () => {
           variants={listVariants}
         >
           <motion.li variants={listItemVariants} whileHover="hover">
-            I&apos;m interested in machine learning and software engineering, and in
-            particular its intersection with the financial space.{" "}
+            I&apos;m interested in machine learning and software engineering,
+            and in particular its intersection with the financial space.{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            I am an avid reader. You can check out my reading list/reviews <Link href="/reading" className="underline">here</Link>.{" "}
+            I am an avid reader. You can check out my reading list/reviews{" "}
+            <Link href="/reading" className="underline">
+              here
+            </Link>
+            .{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             I love getting active. I play soccer (Arsenal fan), basketball, and
             I hit the gym.{" "}
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            I enjoy playing the piano, playing chess, doing <Link href="https://monkeytype.com/profile/zikompo" className="underline">typing tests</Link> and
-            watching YouTube mini-documentaries. I recently got into poker as well. 
+            I enjoy playing the piano, playing chess, doing{" "}
+            <Link
+              href="https://monkeytype.com/profile/zikompo"
+              className="underline"
+            >
+              typing tests
+            </Link>{" "}
+            and watching YouTube mini-documentaries. I recently got into poker
+            as well.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             I love talking about economics, current affairs, and philosophical
-            questions. You can get in <Link href="mailto:zikora.chinedu@yahoo.com" className="underline">contact</Link> with me if you want to have a
-            discussion!
+            questions. You can get in{" "}
+            <Link href="mailto:zikora.chinedu@yahoo.com" className="underline">
+              contact
+            </Link>{" "}
+            with me if you want to have a discussion!
           </motion.li>
         </motion.ul>
 
         <motion.p variants={itemVariants} className="pt-2 text-[18px]">
-          I&apos;m looking for Software Engineering roles, internships, and freelance
-          opportunities. If you have a project in mind or want to collaborate,
-          feel free to reach out!
+          I&apos;m looking for Software Engineering roles, internships, and
+          freelance opportunities. If you have a project in mind or want to
+          collaborate, feel free to reach out!
         </motion.p>
       </motion.section>
     </div>
