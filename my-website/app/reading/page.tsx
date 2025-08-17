@@ -142,8 +142,8 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <motion.p variants={listItemVariants} whileHover="hover">
-                    ◆ <i>Flowers for Algernon</i>
-                    <span className="ml-1"> by Daniel Keyes</span>
+                    ◆ <i>Educated</i>
+                    <span className="ml-1"> by Tara Westover</span>
                   </motion.p>
                 </div>
               </div>
