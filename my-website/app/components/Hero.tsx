@@ -7,6 +7,7 @@ import Zikora from "@/app/components/icons/zikora.jpg";
 import RiskLab from "@/app/components/icons/RiskLab.png";
 import Ontario from "@/app/components/icons/ontario.png";
 import OntarioDark from "@/app/components/icons/ontario-dark.png";
+import Sharpe from "@/app/components/icons/sharpe.webp";
 import Link from "next/link";
 import * as motion from "motion/react-client";
 const Hero = () => {
@@ -101,31 +102,6 @@ const Hero = () => {
           <motion.div variants={itemVariants} className="flex">
             <span className="mr-2">◆</span>
             <div className="flex-1">
-              Software Engineer Intern @{" "}
-              <span className="font-semibold text-foreground inline-flex items-baseline gap-1">
-                <Image
-                  src={Ontario}
-                  alt="Ontario Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
-                />
-                <Image
-                  src={OntarioDark}
-                  alt="Ontario Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
-                />
-                <Link href="https://www.ontario.ca/page/government-ontario">
-                  Ontario Public Service
-                </Link>
-              </span>
-            </div>
-          </motion.div>
-          <motion.div variants={itemVariants} className="flex">
-            <span className="mr-2">◆</span>
-            <div className="flex-1">
               Founding Engineer @{" "}
               <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
                 <Image
@@ -196,7 +172,8 @@ const Hero = () => {
             </span>
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
-            Finished 2nd year of CS at UofT.
+            In my 3rd year at UofT, studying a Computer Science Major, with
+            minors in Mathematics and Statistics.
           </motion.li>
           <motion.li variants={listItemVariants} whileHover="hover">
             Writing blogs on various topics i&apos;m interested in. Check it out{" "}
@@ -204,6 +181,51 @@ const Hero = () => {
               here
             </Link>{" "}
             (work in progress).
+          </motion.li>
+        </motion.ul>
+        <motion.p variants={itemVariants} className="italic text-[18px] pt-4">
+          Previously:
+        </motion.p>
+        <motion.ul
+          className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
+          variants={listVariants}
+        >
+          <motion.li variants={listItemVariants} whileHover="hover">
+            Software Engineer Intern @ {""}
+            <span className="inline-flex items-baseline gap-1">
+              <Image
+                src={Ontario}
+                alt="Ontario Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
+              />
+              <Image
+                src={OntarioDark}
+                alt="Ontario Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
+              />
+              <Link href="https://www.ontario.ca/page/government-ontario">
+                Ontario Public Service.
+              </Link>
+            </span>
+          </motion.li>
+          <motion.li variants={listItemVariants} whileHover="hover">
+            Quantitative Finance Analyst @ {""}
+            <span className="inline-flex items-baseline gap-1">
+              <Image
+                src={Sharpe}
+                alt="Sharpe Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:bg-neutral-50"
+              />
+              <Link href="https://www.sharpe-research.com/">
+                Sharpe Financial Research Group.
+              </Link>
+            </span>
           </motion.li>
         </motion.ul>
 
