@@ -37,8 +37,8 @@ const ParallaxBackground = () => {
     };
   }, []);
 
-  const parallaxX = (mousePosition.x - 50) * 0.1;
-  const parallaxY = (mousePosition.y - 50) * 0.1;
+  const parallaxX = (mousePosition.x - 50) * 0.3;
+  const parallaxY = (mousePosition.y - 50) * 0.3;
 
   return (
     <>
