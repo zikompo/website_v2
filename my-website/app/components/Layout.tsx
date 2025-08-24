@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import ParallaxBackground from "./ParallaxBackground";
 import { cn } from "@/lib/utils";
 
 const Layout = ({
@@ -10,10 +11,7 @@ const Layout = ({
   wide?: boolean;
 }) => (
   <>
-    {/* Light mode background */}
-    <div className="fixed inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:hidden" />
-    {/* Dark mode background */}
-    <div className="fixed inset-0 -z-10 h-full w-full bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#000000_1px)] bg-[size:20px_20px] hidden dark:block" />
+    <ParallaxBackground />
     <div className="flex flex-col min-h-screen text-foreground">
       <Header />
       <main
