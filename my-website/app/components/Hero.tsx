@@ -42,7 +42,7 @@ const Hero = () => {
   const listItemVariants = {
     hidden: { opacity: 0, x: -10 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-    hover: { x: -4, transition: { duration: 0.2 } },
+    hover: { x: 4, transition: { duration: 0.2 } },
   };
 
   const AnimatedBulletPoint = ({ children }: { children: React.ReactNode }) => {
