@@ -22,7 +22,7 @@ const experiences: Experience[] = [
     company: "Ontario Public Service",
     title: "Software Engineer Intern",
     logo: Ontario,
-    date: "May 2025 - Present",
+    date: "May 2025 - Aug 2025",
     description: [],
   },
   {
@@ -92,7 +92,9 @@ const ExperiencePage = () => {
       <Layout>
         <section className="w-full py-16">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-12">My Experience</h1>
+            <h1 className="text-4xl font-bold text-center mb-12">
+              My Experience
+            </h1>
             <motion.div
               className="space-y-12"
               variants={containerVariants}
@@ -132,9 +134,13 @@ const ExperiencePage = () => {
                     </div>
                     <div className="flex-1">
                       <h2 className="text-2xl font-semibold">{exp.company}</h2>
-                      <h3 className="text-xl font-medium text-muted-foreground">{exp.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{exp.date}</p>
-                      <ul className="list-disc list-inside space-y-2">
+                      <h3 className="text-xl font-medium text-muted-foreground">
+                        {exp.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {exp.date}
+                      </p>
+                      <ul className="list-disc list-outside pl-5 space-y-2">
                         {exp.description.map((point, i) => (
                           <li key={i} className="text-foreground/80">
                             {point}
@@ -153,4 +159,4 @@ const ExperiencePage = () => {
   );
 };
 
-export default ExperiencePage; 
+export default ExperiencePage;
