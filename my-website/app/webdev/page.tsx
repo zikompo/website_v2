@@ -45,7 +45,7 @@ const WebDevPage = () => {
                 <a href="mailto:zikora.chinedu@yahoo.com" className="underline">
                   Reach out to me via email
                 </a>{" "}
-                and let's discuss your project.
+                and let&apos;s discuss your project.
               </p>
             </div>
           </div>
