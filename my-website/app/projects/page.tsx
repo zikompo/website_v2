@@ -306,12 +306,12 @@ export default function ProjectsPage() {
                               alt={project.title}
                             />
                             <ProjectCardContent>
-                              <div className="flex items-center justify-between flex-wrap gap-2">
-                                <ProjectCardTitle>
+                              <div className="flex items-start justify-between gap-2">
+                                <ProjectCardTitle className="flex-1 min-w-0">
                                   {project.title}
                                 </ProjectCardTitle>
                                 {project.isHackathonWinner && (
-                                  <ProjectCardHackathonBadge />
+                                  <ProjectCardHackathonBadge className="flex-shrink-0" />
                                 )}
                               </div>
                               <ProjectCardDescription>
@@ -346,10 +346,12 @@ export default function ProjectsPage() {
                           alt={project.title}
                         />
                         <ProjectCardContent>
-                          <div className="flex items-center justify-between flex-wrap gap-2">
-                            <ProjectCardTitle>{project.title}</ProjectCardTitle>
+                          <div className="flex items-start justify-between gap-2">
+                            <ProjectCardTitle className="flex-1 min-w-0">
+                              {project.title}
+                            </ProjectCardTitle>
                             {project.isHackathonWinner && (
-                              <ProjectCardHackathonBadge />
+                              <ProjectCardHackathonBadge className="flex-shrink-0" />
                             )}
                           </div>
                           <ProjectCardDescription>
