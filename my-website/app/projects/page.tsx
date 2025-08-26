@@ -334,33 +334,35 @@ export default function ProjectsPage() {
                 </Carousel>
               </TabsContent>
               <TabsContent value="grid">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {sampleProjectsData.map((project) => (
-                    <ProjectCardRoot
-                      key={project.id}
-                      href={project.links[0]?.href}
-                    >
-                      <ProjectCardImage
-                        src={project.imageUrl}
-                        alt={project.title}
-                      />
-                      <ProjectCardContent>
-                        <div className="flex items-center justify-between flex-wrap gap-2">
-                          <ProjectCardTitle>{project.title}</ProjectCardTitle>
-                          {project.isHackathonWinner && (
-                            <ProjectCardHackathonBadge />
-                          )}
-                        </div>
-                        <ProjectCardDescription>
-                          {project.description}
-                        </ProjectCardDescription>
-                        <ProjectCardTechnologies
-                          technologies={project.technologies}
+                <div className="max-w-3xl mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {sampleProjectsData.map((project) => (
+                      <ProjectCardRoot
+                        key={project.id}
+                        href={project.links[0]?.href}
+                      >
+                        <ProjectCardImage
+                          src={project.imageUrl}
+                          alt={project.title}
                         />
-                      </ProjectCardContent>
-                      <ProjectCardLinks links={project.links} />
-                    </ProjectCardRoot>
-                  ))}
+                        <ProjectCardContent>
+                          <div className="flex items-center justify-between flex-wrap gap-2">
+                            <ProjectCardTitle>{project.title}</ProjectCardTitle>
+                            {project.isHackathonWinner && (
+                              <ProjectCardHackathonBadge />
+                            )}
+                          </div>
+                          <ProjectCardDescription>
+                            {project.description}
+                          </ProjectCardDescription>
+                          <ProjectCardTechnologies
+                            technologies={project.technologies}
+                          />
+                        </ProjectCardContent>
+                        <ProjectCardLinks links={project.links} />
+                      </ProjectCardRoot>
+                    ))}
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
