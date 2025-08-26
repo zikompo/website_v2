@@ -4,7 +4,7 @@
 import * as React from "react";
 import Image, { StaticImageData } from "next/image"; // Using next/image for optimized images
 import { cn } from "@/lib/utils";
-import { ExternalLink as LinkIcon } from "lucide-react"; // Example icons for links
+import { ExternalLink as LinkIcon, Star } from "lucide-react"; // Example icons for links
 
 // --- Main Project Card Container ---
 // This is the main wrapper for your project card
@@ -23,7 +23,7 @@ function ProjectCardRoot({
       data-slot="project-card"
       className={cn(
         "group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm", // Added h-full
-        className
+        className,
       )}
       {...props}
     >
@@ -49,15 +49,26 @@ interface ProjectCardImageProps {
 }
 function ProjectCardImage({ src, alt, className }: ProjectCardImageProps) {
   return (
-    <div className={cn("relative aspect-video w-full overflow-hidden", className)}>
-      <Image src={src} alt={alt} fill className="object-fill transition-transform duration-300" /> {/* Changed to object-fill to stretch the image */}
+    <div
+      className={cn("relative aspect-video w-full overflow-hidden", className)}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-fill transition-transform duration-300"
+      />{" "}
+      {/* Changed to object-fill to stretch the image */}
     </div>
   );
 }
 
 // --- Project Content Area ---
 // This will hold the textual content like title, description, and technologies
-function ProjectCardContent({ className, ...props }: React.ComponentProps<"div">) {
+function ProjectCardContent({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="project-card-content"
@@ -72,14 +83,36 @@ function ProjectCardTitle({ className, ...props }: React.ComponentProps<"h3">) {
   return (
     <h3
       data-slot="project-card-title"
-      className={cn("text-xl font-semibold leading-tight text-card-foreground", className)}
+      className={cn(
+        "text-xl font-semibold leading-tight text-card-foreground",
+        className,
+      )}
       {...props}
     />
   );
 }
 
+// --- Hackathon Winner Badge ---
+function ProjectCardHackathonBadge({ className }: { className?: string }) {
+  return (
+    <div
+      data-slot="project-card-hackathon-badge"
+      className={cn(
+        "inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-amber-800 bg-amber-100 border border-amber-200 rounded-full dark:text-amber-200 dark:bg-amber-800 dark:border-amber-700",
+        className,
+      )}
+    >
+      <Star className="h-3 w-3 fill-current" />
+      hackathon winner
+    </div>
+  );
+}
+
 // --- Project Description ---
-function ProjectCardDescription({ className, ...props }: React.ComponentProps<"p">) {
+function ProjectCardDescription({
+  className,
+  ...props
+}: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="project-card-description"
@@ -95,10 +128,16 @@ interface ProjectCardTechnologiesProps {
   technologies: string[];
   className?: string;
 }
-function ProjectCardTechnologies({ technologies, className }: ProjectCardTechnologiesProps) {
+function ProjectCardTechnologies({
+  technologies,
+  className,
+}: ProjectCardTechnologiesProps) {
   if (!technologies?.length) return null;
   return (
-    <div data-slot="project-card-technologies" className={cn("mt-4 flex flex-wrap gap-2", className)}>
+    <div
+      data-slot="project-card-technologies"
+      className={cn("mt-4 flex flex-wrap gap-2", className)}
+    >
       {technologies.map((tech) => (
         <span
           key={tech}
@@ -113,7 +152,8 @@ function ProjectCardTechnologies({ technologies, className }: ProjectCardTechnol
 
 // --- Project Links (Footer) ---
 // For GitHub, live demo links, etc.
-export interface ProjectLinkItem { // Exporting for use in page data
+export interface ProjectLinkItem {
+  // Exporting for use in page data
   href: string;
   label: string;
   icon?: React.ReactNode;
@@ -125,7 +165,12 @@ interface ProjectCardLinksProps {
 function ProjectCardLinks({ links, className }: ProjectCardLinksProps) {
   if (!links?.length) return null;
   return (
-    <div data-slot="project-card-links" className={cn("relative z-10 mt-auto border-t px-6 py-4", className)}> {/* mt-auto pushes this to the bottom of ProjectCardContent if it's a flex child */}
+    <div
+      data-slot="project-card-links"
+      className={cn("relative z-10 mt-auto border-t px-6 py-4", className)}
+    >
+      {" "}
+      {/* mt-auto pushes this to the bottom of ProjectCardContent if it's a flex child */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         {links.map((link) => (
           <a
@@ -149,6 +194,7 @@ export {
   ProjectCardImage,
   ProjectCardContent,
   ProjectCardTitle,
+  ProjectCardHackathonBadge,
   ProjectCardDescription,
   ProjectCardTechnologies,
   ProjectCardLinks,

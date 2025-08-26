@@ -7,6 +7,8 @@ import Paint from "@/app/components/icons/paint.png";
 import Loan from "@/app/components/icons/loan.png";
 import LocateAble from "@/app/components/icons/locateable.jpg";
 import Pothole from "@/app/components/icons/pothole.jpg";
+import Lumen from "@/app/components/icons/lumen.png";
+import Trading from "@/app/components/icons/trading.jpeg";
 
 import React, { useState } from "react";
 
@@ -29,6 +31,7 @@ import {
   ProjectCardImage,
   ProjectCardContent,
   ProjectCardTitle,
+  ProjectCardHackathonBadge,
   ProjectCardDescription,
   ProjectCardTechnologies,
   ProjectCardLinks,
@@ -39,6 +42,52 @@ import DevpostIcon from "@/app/components/DevpostIcon";
 
 // Sample Project Data (using the Project interface)
 const sampleProjectsData: Project[] = [
+  {
+    id: "proj8",
+    title: "Lumen",
+    description:
+      "Lumen is a mental wellness companion app that analyzes user emotions and provides therapeutic mini-games for personalized emotional support and trend tracking.",
+    imageUrl: Lumen,
+    technologies: [
+      "React",
+      "Vite",
+      "Gemini API",
+      "Typescript",
+      "MongoDB",
+      "Unity",
+      "Framer Motion",
+    ],
+    isHackathonWinner: true,
+    links: [
+      {
+        href: "https://devpost.com/software/lumen-qsgcn4",
+        label: "Devpost",
+        icon: <DevpostIcon className="h-4 w-4" />,
+      },
+    ],
+  },
+  {
+    id: "proj7",
+    title: "Pot-Hole Risk Assessor",
+    description:
+      "Hardware creation that is meant to be placed underground beneath important roads, and assesses the \
+            likelihood of a pothole forming by using sensors to gather data.",
+    imageUrl: Pothole, // Replace
+    technologies: ["Arduino"],
+    isHackathonWinner: true,
+    links: [
+      {
+        href: "https://youtu.be/Lw7XOLuH0Jc",
+        label: "Demo",
+        icon: <FaYoutube className="h-4 w-4" />,
+      },
+      {
+        href: "https://devpost.com/software/pot-hole-risk-assessor",
+        label: "Devpost",
+        icon: <DevpostIcon className="h-4 w-4" />,
+      },
+    ],
+  },
   {
     id: "proj1",
     title: "Heritrace",
@@ -171,23 +220,26 @@ const sampleProjectsData: Project[] = [
     ],
   },
   {
-    id: "proj7",
-    title: "Pot-Hole Risk Assessor (Hackathon Winnner)",
+    id: "proj9",
+    title: "Trading Simulator",
     description:
-      "Hardware creation that is meant to be placed underground beneath important roads, and assesses the \
-            likelihood of a pothole forming by using sensors to gather data.",
-    imageUrl: Pothole, // Replace
-    technologies: ["Arduino"],
+      "A stock trading simulator with ML prediction engine enabling users to test custom models against real-time market data.",
+    imageUrl: Trading,
+    technologies: [
+      "Python",
+      "Pandas",
+      "Matplotlib",
+      "Scikit-learn",
+      "NumPy",
+      "React",
+      "Node.js",
+      "MongoDB",
+    ],
     links: [
       {
-        href: "https://youtu.be/Lw7XOLuH0Jc",
-        label: "Demo",
-        icon: <FaYoutube className="h-4 w-4" />,
-      },
-      {
-        href: "https://devpost.com/software/pot-hole-risk-assessor",
-        label: "Devpost",
-        icon: <DevpostIcon className="h-4 w-4" />,
+        href: "https://github.com/zikompo/Trading_Simulator",
+        label: "Source Code",
+        icon: <FaGithub className="h-4 w-4" />,
       },
     ],
   },
@@ -202,6 +254,7 @@ export interface Project {
   imageUrl: string | StaticImageData; // Supports both external URLs and static imports
   technologies: string[];
   links: ProjectLinkItem[];
+  isHackathonWinner?: boolean;
 }
 
 export default function ProjectsPage() {
@@ -253,9 +306,14 @@ export default function ProjectsPage() {
                               alt={project.title}
                             />
                             <ProjectCardContent>
-                              <ProjectCardTitle>
-                                {project.title}
-                              </ProjectCardTitle>
+                              <div className="flex items-center justify-between flex-wrap gap-2">
+                                <ProjectCardTitle>
+                                  {project.title}
+                                </ProjectCardTitle>
+                                {project.isHackathonWinner && (
+                                  <ProjectCardHackathonBadge />
+                                )}
+                              </div>
                               <ProjectCardDescription>
                                 {project.description}
                               </ProjectCardDescription>
@@ -287,7 +345,12 @@ export default function ProjectsPage() {
                         alt={project.title}
                       />
                       <ProjectCardContent>
-                        <ProjectCardTitle>{project.title}</ProjectCardTitle>
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                          <ProjectCardTitle>{project.title}</ProjectCardTitle>
+                          {project.isHackathonWinner && (
+                            <ProjectCardHackathonBadge />
+                          )}
+                        </div>
                         <ProjectCardDescription>
                           {project.description}
                         </ProjectCardDescription>
