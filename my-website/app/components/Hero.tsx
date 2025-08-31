@@ -188,7 +188,6 @@ const Hero = () => {
               <Link href="/writing" className="underline">
                 here
               </Link>{" "}
-              (work in progress).
             </motion.li>
           </motion.ul>
         </div>
