@@ -67,6 +67,19 @@ const ReadingPage = () => {
         "It was inspiring overall, seeing someone overcome such adversity to attain such a high level of education. Overall a good read.",
       ],
     },
+    {
+      title: "Flowers for Algernon",
+      author: "Daniel Keyes",
+      imageUrl: "https://m.media-amazon.com/images/I/81HntONlwgL._SY522_.jpg",
+      rating: 4.5,
+      review: [
+        "This book was very touching. It follows the story of Charlie, a man who initially suffers from severe mental disabilities, but undergoes a brain surgery that gives him intelligence.",
+        "It reminded me of the importance of showing compassion and empathy towards people different from us. It was kind of sad at times to see how Charlie slowly realized that everyone around him didn't actually care about him, and made fun of him just because he was different.",
+        "It was also interesting to see how Charlie's intelligence grew over time, and made him less and less relatable, and even at times arrogant.",
+        "Seeing his eventual mental decline was very saddening, and it left me in a sort of somber mood for a while after reading it.",
+        "I'd recommend this book. It was the first time I've read a fiction book that was written in the form of journal entries, and it surely surpassed my expectations.",
+      ],
+    },
   ];
 
   const [showBooksRead, setShowBooksRead] = useState(false);
@@ -89,6 +102,7 @@ const ReadingPage = () => {
     "Man's Search for Meaning by Viktor Frankl",
     "The Count of Monte Cristo by Alexandre Dumas",
     "Educated by Tara Westover",
+    "Flowers for Algernon by Daniel Keyes",
   ];
 
   const listVariants = {
@@ -157,8 +171,8 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>Flowers for Algernon</i>
-                    <span className="ml-1"> by Daniel Keyes</span>
+                    <i>Stolen Focus: Why You Can&apos;t Pay Attention</i>
+                    <span className="ml-1"> by Johann Hari</span>
                   </AnimatedBulletPoint>
                 </div>
               </div>
