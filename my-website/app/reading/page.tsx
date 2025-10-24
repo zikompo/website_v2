@@ -80,6 +80,19 @@ const ReadingPage = () => {
         "I'd recommend this book. It was the first time I've read a fiction book that was written in the form of journal entries, and it surely surpassed my expectations.",
       ],
     },
+    {
+      title: "A Spy Among Friends",
+      author: "Ben Macintyre",
+      imageUrl:
+        "https://books.google.ca/books/publisher/content?id=VRU4AwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1LSx5x2pC_CLirOH1cEx7RYOIUhw&w=1280",
+      rating: 4.5,
+      review: [
+        "This book is a non-fiction that tells the story of famed British spy Kim Philby, who was actually a double agent for the Soviet Union. It details his life, his relationships with other spies, and the eventual uncoverning of his betrayal.",
+        "It kind of surprised me how Philby was able to maintain his cover for so long, and how his closest friends backed him vehemently despite the mounting evidence against him. It was also kind of crazy how Philby basically undermined Western intelligence operations against the Soviets for two decades.",
+        "It gave me new perspective on betrayal, and how people can let their personal relationships get in the way of their professional responsibilities.",
+        "It was a good read, and it gave me a new perspective on the Cold War and the role of intelligence agencies in the push to change the ideological landscape of the world.",
+      ],
+    },
   ];
 
   const [showBooksRead, setShowBooksRead] = useState(false);
@@ -103,6 +116,7 @@ const ReadingPage = () => {
     "The Count of Monte Cristo by Alexandre Dumas",
     "Educated by Tara Westover",
     "Flowers for Algernon by Daniel Keyes",
+    "A Spy Among Friends by Ben Macintyre",
   ];
 
   const listVariants = {
@@ -171,8 +185,8 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>Stolen Focus: Why You Can&apos;t Pay Attention</i>
-                    <span className="ml-1"> by Johann Hari</span>
+                    <i>East of Eden</i>
+                    <span className="ml-1"> by John Steinbeck</span>
                   </AnimatedBulletPoint>
                 </div>
               </div>
