@@ -83,8 +83,7 @@ const ReadingPage = () => {
     {
       title: "A Spy Among Friends",
       author: "Ben Macintyre",
-      imageUrl:
-        "https://books.google.ca/books/publisher/content?id=VRU4AwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1LSx5x2pC_CLirOH1cEx7RYOIUhw&w=1280",
+      imageUrl: "https://m.media-amazon.com/images/I/81grRR9GmML._SY522_.jpg",
       rating: 4,
       review: [
         "This book is a non-fiction that tells the story of famed British spy Kim Philby, who was actually a double agent for the Soviet Union. It details his life, his relationships with other spies, and the eventual uncoverning of his betrayal.",
