@@ -1,9 +1,27 @@
 import createMDX from '@next/mdx'
+import { execSync } from 'child_process'
+
+const getLastCommitDate = () => {
+  try {
+    return execSync('git log -1 --format=%cI', {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+      .trim()
+      .replace(/\s+/g, ' ')
+  } catch (error) {
+    console.warn('Unable to determine last commit date. Using build time.', error)
+    return new Date().toISOString()
+  }
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  env: {
+    NEXT_PUBLIC_LAST_COMMIT_DATE: getLastCommitDate(),
+  },
   images: {
     remotePatterns: [
       {

@@ -23,7 +23,11 @@ const experiences: Experience[] = [
     title: "Software Engineer Intern",
     logo: Ontario,
     date: "May 2025 - Aug 2025",
-    description: [],
+    description: [
+      "Developed a collaboration platform for OPS employees with anonymous posting, AI-enhanced content improvement, and integrated project management tools.",
+      "Architected responsive React TypeScript components with Tailwind CSS, improving platform usability through intuitive dashboard design and real-time notifications that enhanced user task completion efficiency.",
+      "Streamlined administrative operations by creating a comprehensive super admin interface using Express.js REST APIs with PostgreSQL and Drizzle ORM, reducing manual oversight time by 50%.",
+    ],
   },
   {
     company: "RiskLab",
@@ -36,11 +40,11 @@ const experiences: Experience[] = [
     company: "Wealthseed",
     title: "Founding Engineer",
     logo: WealthSeedLogo,
-    date: "Jan 2025 - Present",
+    date: "Jan 2025 - Sep 2025",
     description: [
-      "Collaborating with a team to build a financial literacy platform that educates users on investing, budgeting, and saving.",
-      "Implementing secure API endpoints using Next.js, PostgreSQL, and TypeScript to manage student-teacher access control.",
-      "Optimizing database queries and authentication flows to enhance platform performance and security.",
+      "Led frontend development of a financial e-learning platform, delivering a comprehensive notification system, multi-role authentication, and a responsive course management interface serving both students and teachers.",
+      "Engineered authentication using NextAuth.js with JWT sessions and bcrypt encryption, supporting role-based access control for students, teachers, and administrators across multiple schools.",
+      "Built a real-time notification system with conditional rendering and state management, reducing page load times by 25% and improving user engagement.",
     ],
   },
   {
