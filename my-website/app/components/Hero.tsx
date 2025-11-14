@@ -289,7 +289,7 @@ const Hero = () => {
         </div>
 
         <motion.p variants={itemVariants} className="pt-2 text-[18px]">
-          I&apos;m looking for Software Engineering roles, internships, and
+          I&apos;m looking for software engineering/development internships, and
           freelance opportunities. If you have a project in mind or want to
           collaborate, feel free to reach out!
         </motion.p>
