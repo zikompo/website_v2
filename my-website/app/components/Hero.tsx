@@ -115,19 +115,6 @@ const Hero = () => {
       >
         <div className="mx-4 md:mx-0">
           <AnimatedBulletPoint>
-            Founding Engineer @{" "}
-            <span className="font-semibold text-[#44b600] inline-flex items-baseline gap-1">
-              <Image
-                src={WealthSeedLogo}
-                alt="Wealthseed Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs"
-              />
-              <Link href="https://wealthseed.ca">Wealthseed</Link>
-            </span>
-          </AnimatedBulletPoint>
-          <AnimatedBulletPoint>
             cs @{" "}
             <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
               <Image
@@ -200,6 +187,19 @@ const Hero = () => {
             className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
             variants={listVariants}
           >
+            <motion.li variants={listItemVariants} whileHover="hover">
+              Founding Engineer @ {""}
+              <span className="inline-flex items-baseline gap-1">
+                <Image
+                  src={WealthSeedLogo}
+                  alt="Wealthseed Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1"
+                />
+                <Link href="https://wealthseed.ca">Wealthseed.</Link>
+              </span>
+            </motion.li>
             <motion.li variants={listItemVariants} whileHover="hover">
               Software Engineer Intern @ {""}
               <span className="inline-flex items-baseline gap-1">
