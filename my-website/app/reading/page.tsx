@@ -131,6 +131,7 @@ const ReadingPage = () => {
     "Educated by Tara Westover",
     "Flowers for Algernon by Daniel Keyes",
     "A Spy Among Friends by Ben Macintyre",
+    "East of Eden by John Steinbeck",
   ];
 
   const listVariants = {
