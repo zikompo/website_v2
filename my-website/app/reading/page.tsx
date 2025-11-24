@@ -95,8 +95,7 @@ const ReadingPage = () => {
     {
       title: "East of Eden",
       author: "John Steinbeck",
-      imageUrl:
-        "https://books.google.ca/books/content?id=OPy6E5ZhXs0C&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71k0nh84AhFIuUDSAb0PScx2MwEVUjQ0NAQ4p3t3hVfmTRMO0sKgOrl0OK_fhZ8llmrH-r_5HMh6DF5C3A-SdriKcyCpRpdzpyEDOJ0aPm6hSUgi0S50Hs-k7EfKG6mx7MnDTvl",
+      imageUrl: "https://m.media-amazon.com/images/I/71NAX4mpJHL._SY522_.jpg",
       rating: 5,
       review: [
         "Possibly the best book I've ever read.",
