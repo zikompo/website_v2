@@ -104,7 +104,7 @@ const ReadingPage = () => {
         'A key word in this whole thing is Timshel, which was interpreted in East of Eden as "Thou mayest" (I understand that this is not the literal translation). In the context of the book, I think Steinbeck was trying to convey the message that humans have free will to choose whether to be good or evil, independent of what their nature may be.',
         "The book was so wonderfully written. John Steinbeck's prose is rather straightforward, but very beautifully written. His characterization was also top notch, and I sort of grew attached to the characters in the book. Lee and Cal are my favourite characters in the book. Lee for his wisdom and charisma. Cal, because he was a flawed person, but he was a joy to follow, and his battles with identity and morality are things I can somewhat relate to.",
         "I also loved following Cathy. She seemed to be evil for the sake of it, but that made her more interesting. I never figured out what her endgame was. Samuel Hamilton is probably my favourite character after Lee and Cal. He was the poster boy for someone following his dreams and passions.",
-        "All in all, this book was very enjoyable with a lot of wisdom scattered throughout the book, if you choose to look for it. Easy 5 star, and an easy recommendation for me.",
+        "All in all, this book was very enjoyable with a lot of wisdom scattered throughout the book, if you choose to look for it. Easy 5 star, and an easy recommendation from me.",
       ],
     },
   ];
