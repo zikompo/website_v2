@@ -92,6 +92,22 @@ const ReadingPage = () => {
         "It was a good read, and it gave me a new perspective on the Cold War and the role of intelligence agencies in the push to change the ideological landscape of the world.",
       ],
     },
+    {
+      title: "East of Eden",
+      author: "John Steinbeck",
+      imageUrl:
+        "https://books.google.ca/books/content?id=OPy6E5ZhXs0C&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71k0nh84AhFIuUDSAb0PScx2MwEVUjQ0NAQ4p3t3hVfmTRMO0sKgOrl0OK_fhZ8llmrH-r_5HMh6DF5C3A-SdriKcyCpRpdzpyEDOJ0aPm6hSUgi0S50Hs-k7EfKG6mx7MnDTvl",
+      rating: 5,
+      review: [
+        "Possibly the best book I've ever read.",
+        "This book goes into the lives of two families, the Trasks and the Hamiltons, who lived in California. This book spans a couple of generations, from around the mid-19th century to the early 20th century.",
+        "It is essentially a modern American retelling of the biblical story of Cain and Abel, and the themes are rather prevalent throughout the book. Across each generation, you can draw parallels between the events in the story and the story from the Book of Genesis. It also touches on the themes of good and evil, examining whether humans can be inherently good or evil. It asks whether we are doomed to repeat the transgressions of our ancestors, or we can form our own moral paths.",
+        'A key word in this whole thing is Timshel, which was interpreted in East of Eden as "Thou mayest" (I understand that this is not the literal translation). In the context of the book, I think Steinbeck was trying to convey the message that humans have free will to choose whether to be good or evil, independent of what their nature may be.',
+        "The book was so wonderfully written. John Steinbeck's prose is rather straightforward, but very beautifully written. His characterization was also top notch, and I sort of grew attached to the characters in the book. Lee and Cal are my favourite characters in the book. Lee for his wisdom and charisma. Cal, because he was a flawed person, but he was a joy to follow, and his battles with identity and morality are things I can somewhat relate to.",
+        "I also loved following Cathy. She seemed to be evil for the sake of it, but that made her more interesting. I never figured out what her endgame was. Samuel Hamilton is probably my favourite character after Lee and Cal. He was the poster boy for someone following his dreams and passions.",
+        "All in all, this book was very enjoyable with a lot of wisdom scattered throughout the book, if you choose to look for it. Easy 5 star, and an easy recommendation for me.",
+      ],
+    },
   ];
 
   const [showBooksRead, setShowBooksRead] = useState(false);
@@ -184,8 +200,8 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>East of Eden</i>
-                    <span className="ml-1"> by John Steinbeck</span>
+                    <i>Crime and Punishment</i>
+                    <span className="ml-1"> by Fyodor Dostoevsky</span>
                   </AnimatedBulletPoint>
                 </div>
               </div>
