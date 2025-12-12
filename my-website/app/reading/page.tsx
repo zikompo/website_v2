@@ -107,6 +107,21 @@ const ReadingPage = () => {
         "All in all, this book was very enjoyable with a lot of wisdom scattered throughout the book, if you choose to look for it. Easy 5 star, and an easy recommendation from me.",
       ],
     },
+    {
+      title: "1984",
+      author: "George Orwell",
+      imageUrl:
+        "https://m.media-amazon.com/images/I/51yNeZ+SDOL._SY445_SX342_ControlCacheEqualizer_.jpg",
+      rating: 4,
+      review: [
+        "(Shorter Review because of exams)",
+        "It's a good book.",
+        "1984 is set in a dystopian, totalitarian province within the superstate of Oceania. Specifically, it's set in London, where its protagonist Winston lives and works under the watchful eye of The Party and its leader, Big Brother.",
+        "I found it a bit of a drag at first, but it picked up and got more interesting as the book went on.",
+        "I'd say it's pretty relevant today given current events in the world today, and it serves as a cautionary tale of some sorts. It does a good job of portraying a surveillance state, where the past is altered, and even the language is narrowed down to keep people as obedient as possible.",
+        "The book is worth reading, IMO.",
+      ],
+    },
   ];
 
   const [showBooksRead, setShowBooksRead] = useState(false);
@@ -132,6 +147,7 @@ const ReadingPage = () => {
     "Flowers for Algernon by Daniel Keyes",
     "A Spy Among Friends by Ben Macintyre",
     "East of Eden by John Steinbeck",
+    "1984 by George Orwell",
   ];
 
   const listVariants = {
@@ -200,8 +216,8 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>Crime and Punishment</i>
-                    <span className="ml-1"> by Fyodor Dostoevsky</span>
+                    <i>The Handmaid's Tale</i>
+                    <span className="ml-1"> by Margaret Atwood</span>
                   </AnimatedBulletPoint>
                 </div>
               </div>
