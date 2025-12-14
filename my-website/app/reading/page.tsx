@@ -216,7 +216,7 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>The Handmaid's Tale</i>
+                    <i>The Handmaid&apos;s Tale</i>
                     <span className="ml-1"> by Margaret Atwood</span>
                   </AnimatedBulletPoint>
                 </div>
