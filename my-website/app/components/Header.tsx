@@ -1,18 +1,59 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  // Build breadcrumb segments from pathname
+  const buildBreadcrumb = () => {
+    if (!pathname || pathname === "/") {
+      return (
+        <Link
+          href="/"
+          className="hover:text-muted-foreground transition-colors"
+        >
+          ~
+        </Link>
+      );
+    }
+
+    const segments = pathname.split("/").filter(Boolean);
+    const breadcrumbItems: React.ReactNode[] = [
+      <Link
+        key="home"
+        href="/"
+        className="hover:text-muted-foreground transition-colors"
+      >
+        ~
+      </Link>,
+    ];
+
+    segments.forEach((segment, index) => {
+      const path = "/" + segments.slice(0, index + 1).join("/");
+      breadcrumbItems.push(
+        <span key={`sep-${index}`}>/</span>,
+        <Link
+          key={path}
+          href={path}
+          className="hover:text-muted-foreground transition-colors"
+        >
+          {segment}
+        </Link>
+      );
+    });
+
+    return <>{breadcrumbItems}</>;
+  };
 
   return (
     <nav className="w-full text-base relative font-['--font-crimson-pro']">
       <div className="max-w-3xl mx-auto px-4 flex justify-between items-center py-4">
-        <div className="font-medium">
-          <Link href="/">Zikora Chinedu</Link>
-        </div>
+        <div className="font-medium">{buildBreadcrumb()}</div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-4">
