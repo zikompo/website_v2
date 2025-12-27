@@ -23,8 +23,8 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
         stars.push(
           <Star
             key={i}
-            size={20}
-            className="text-yellow-400 fill-yellow-400 transition-colors"
+            size={18}
+            className="text-yellow-400 fill-yellow-400"
           />
         );
       } else if (i - 0.5 === rating) {
@@ -32,8 +32,8 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
         stars.push(
           <StarHalf
             key={i}
-            size={20}
-            className="text-yellow-400 fill-yellow-400 transition-colors"
+            size={18}
+            className="text-yellow-400 fill-yellow-400"
           />
         );
       } else {
@@ -41,8 +41,8 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
         stars.push(
           <Star
             key={i}
-            size={20}
-            className="text-muted-foreground/50 transition-colors"
+            size={18}
+            className="text-white/50"
           />
         );
       }
@@ -53,26 +53,37 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
   return (
     <>
       <div
-        className="bg-card rounded-lg shadow-md p-4 cursor-pointer transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+        className="group cursor-pointer"
         onClick={() => setIsModalOpen(true)}
       >
-        <div className="flex items-start space-x-4">
-          <div className="flex-shrink-0">
-            <Image
-              src={imageUrl}
-              alt={`Cover of ${title}`}
-              width={100}
-              height={150}
-              className="object-cover rounded-md w-24 h-36"
-            />
-          </div>
-          <div className="flex-grow">
-            <h3 className="text-xl font-bold">{title}</h3>
-            <p className="text-sm text-muted-foreground mb-2 italic">{author}</p>
-            <div className="flex items-center">{renderStars()}</div>
+        {/* Image container with hover overlay */}
+        <div className="relative overflow-hidden rounded-lg shadow-md transition-transform duration-300 ease-in-out group-hover:scale-[1.02]">
+          <Image
+            src={imageUrl}
+            alt={`Cover of ${title}`}
+            width={300}
+            height={450}
+            className="w-full aspect-[2/3] object-cover"
+          />
+          
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col items-center justify-center gap-3">
+            <div className="flex items-center gap-0.5">
+              {renderStars()}
+            </div>
+            <span className="text-white/90 text-sm font-medium tracking-wide">
+              Click to read review
+            </span>
           </div>
         </div>
+
+        {/* Title and author below image */}
+        <div className="mt-3 text-center">
+          <h3 className="text-lg font-bold leading-tight">{title}</h3>
+          <p className="text-sm text-muted-foreground italic mt-1">{author}</p>
+        </div>
       </div>
+
       <BookReviewModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -86,4 +97,4 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({ title, author, imageUrl
   );
 };
 
-export default BookReviewCard; 
+export default BookReviewCard;
