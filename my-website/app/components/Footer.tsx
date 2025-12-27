@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 // Global variable that resets on page reload but persists during client-side navigation
@@ -91,9 +92,11 @@ const Footer = ({ wide = false }: { wide?: boolean }) => {
               ←
             </Link>
             <Link href="https://uoftwebring.com" target="_blank">
-              <img
+              <Image
                 src="https://uoftwebring.com/ring_logo.svg"
                 alt="UofT Webring"
+                width={24}
+                height={24}
                 className="h-6 w-6"
               />
             </Link>
