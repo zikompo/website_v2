@@ -125,9 +125,11 @@ const ReadingPage = () => {
   ];
 
   const [showBooksRead, setShowBooksRead] = useState(false);
+  const [showBooks2025, setShowBooks2025] = useState(false);
+  const [showBooks2026, setShowBooks2026] = useState(false);
   const [showCurrentlyReading, setShowCurrentlyReading] = useState(false);
 
-  const booksReadThisYear = [
+  const booksRead2025 = [
     "Ego is the Enemy by Ryan Holiday",
     "Discipline is Destiny by Ryan Holiday",
     "Make it Stick by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel",
@@ -149,6 +151,8 @@ const ReadingPage = () => {
     "East of Eden by John Steinbeck",
     "1984 by George Orwell",
   ];
+
+  const booksRead2026: string[] = [];
 
   const listVariants = {
     hidden: { opacity: 0, height: 0 },
@@ -216,22 +220,23 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>The Handmaid&apos;s Tale</i>
-                    <span className="ml-1"> by Margaret Atwood</span>
+                    <i>Crime and Punishment</i>
+                    <span className="ml-1"> by Fyodor Dostoevsky</span>
                   </AnimatedBulletPoint>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Books Read This Year Section */}
+          {/* Books I've Read Section */}
           <div className="">
             <button
               onClick={() => setShowBooksRead(!showBooksRead)}
               className="flex items-center gap-2 text-xl font-semibold hover:opacity-70 transition-opacity"
             >
               <span>
-                Books I&apos;ve read this year ({booksReadThisYear.length})
+                Books I&apos;ve Read (
+                {booksRead2025.length + booksRead2026.length})
               </span>
               {showBooksRead ? (
                 <ChevronUp size={20} />
@@ -246,36 +251,98 @@ const ReadingPage = () => {
               variants={listVariants}
               style={{ overflow: "hidden" }}
             >
-              <div className="space-y-4">
-                <div className="space-y-2 text-xl pl-4">
-                  {booksReadThisYear.map((book, index) => {
-                    const [title, author] = book.includes(" by ")
-                      ? book.split(" by ")
-                      : [book, ""];
-                    return (
-                      <AnimatedBulletPoint key={index}>
-                        <i>{title}</i>
-                        {author && <span className="ml-1"> by {author}</span>}
-                      </AnimatedBulletPoint>
-                    );
-                  })}
+              <div className="space-y-4 pl-4">
+                {/* 2026 Sub-dropdown */}
+                <div>
+                  <button
+                    onClick={() => setShowBooks2026(!showBooks2026)}
+                    className="flex items-center gap-2 text-lg font-medium hover:opacity-70 transition-opacity"
+                  >
+                    <span>2026 ({booksRead2026.length})</span>
+                    {showBooks2026 ? (
+                      <ChevronUp size={18} />
+                    ) : (
+                      <ChevronDown size={18} />
+                    )}
+                  </button>
+
+                  <motion.div
+                    initial="hidden"
+                    animate={showBooks2026 ? "visible" : "exit"}
+                    variants={listVariants}
+                    style={{ overflow: "hidden" }}
+                  >
+                    <div className="space-y-2 text-xl pl-4">
+                      {booksRead2026.map((book, index) => {
+                        const [title, author] = book.includes(" by ")
+                          ? book.split(" by ")
+                          : [book, ""];
+                        return (
+                          <AnimatedBulletPoint key={index}>
+                            <i>{title}</i>
+                            {author && (
+                              <span className="ml-1"> by {author}</span>
+                            )}
+                          </AnimatedBulletPoint>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
                 </div>
 
-                <motion.div
-                  className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-lg"
-                  variants={listItemVariants}
-                >
-                  <p className="italic">
-                    <strong className="text-red-600 dark:text-red-400">
-                      Note:
-                    </strong>{" "}
-                    Not all books will receive detailed reviews as I created
-                    this website recently and read some of these books a while
-                    ago. I may not be able to provide reviews that accurately
-                    reflect what I actually thought of the book at the time of
-                    reading.
-                  </p>
-                </motion.div>
+                {/* 2025 Sub-dropdown */}
+                <div>
+                  <button
+                    onClick={() => setShowBooks2025(!showBooks2025)}
+                    className="flex items-center gap-2 text-lg font-medium hover:opacity-70 transition-opacity"
+                  >
+                    <span>2025 ({booksRead2025.length})</span>
+                    {showBooks2025 ? (
+                      <ChevronUp size={18} />
+                    ) : (
+                      <ChevronDown size={18} />
+                    )}
+                  </button>
+
+                  <motion.div
+                    initial="hidden"
+                    animate={showBooks2025 ? "visible" : "exit"}
+                    variants={listVariants}
+                    style={{ overflow: "hidden" }}
+                  >
+                    <div className="space-y-2 text-xl pl-4">
+                      {booksRead2025.map((book, index) => {
+                        const [title, author] = book.includes(" by ")
+                          ? book.split(" by ")
+                          : [book, ""];
+                        return (
+                          <AnimatedBulletPoint key={index}>
+                            <i>{title}</i>
+                            {author && (
+                              <span className="ml-1"> by {author}</span>
+                            )}
+                          </AnimatedBulletPoint>
+                        );
+                      })}
+                    </div>
+
+                    <motion.div
+                      className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-lg"
+                      variants={listItemVariants}
+                    >
+                      <p className="italic">
+                        <strong className="text-red-600 dark:text-red-400">
+                          Note:
+                        </strong>{" "}
+                        Not all books will receive detailed reviews as I created
+                        this website recently and read some of these books a
+                        while ago. I may not be able to provide reviews that
+                        accurately reflect what I actually thought of the book
+                        at the time of reading.
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>

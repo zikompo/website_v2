@@ -8,6 +8,7 @@ import RiskLab from "@/app/components/icons/RiskLab.png";
 import Ontario from "@/app/components/icons/ontario.png";
 import OntarioDark from "@/app/components/icons/ontario-dark.png";
 import Sharpe from "@/app/components/icons/sharpe.webp";
+import UofTAILogo from "@/app/components/icons/UofTAI_Logo.png";
 import Link from "next/link";
 import * as motion from "motion/react-client";
 import AnimatedBulletPoint from "./AnimatedBulletPoint";
@@ -125,6 +126,19 @@ const Hero = () => {
                 className="object-contain relative top-[3px] rounded-xs ml-0"
               />
               <Link href="https://utoronto.ca/">University of Toronto</Link>
+            </span>
+          </AnimatedBulletPoint>
+          <AnimatedBulletPoint>
+            Web Developer @{" "}
+            <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
+              <Image
+                src={UofTAILogo}
+                alt="UofTAI Logo"
+                width={20}
+                height={20}
+                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+              />
+              <Link href="https://utoronto.ca/">UofT AI</Link>
             </span>
           </AnimatedBulletPoint>
           <AnimatedBulletPoint>
