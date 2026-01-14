@@ -19,6 +19,13 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    company: "RiskLab",
+    title: "Research Assistant",
+    logo: RiskLab,
+    date: "May 2025 - Present",
+    description: [],
+  },
+  {
     company: "Ontario Public Service",
     title: "Software Engineer Intern",
     logo: Ontario,
@@ -28,13 +35,6 @@ const experiences: Experience[] = [
       "Built 15+ responsive React/TypeScript components with Tailwind CSS, optimizing performance through lazy loading and memoization to achieve 93% Lighthouse score and sub-2-second load times.",
       "Streamlined administrative operations by creating a comprehensive super admin interface using Express.js REST APIs with PostgreSQL/Drizzle ORM, reducing manual oversight time by 50%.",
     ],
-  },
-  {
-    company: "RiskLab",
-    title: "Research Assistant",
-    logo: RiskLab,
-    date: "May 2025 - Present",
-    description: [],
   },
   {
     company: "Wealthseed",
