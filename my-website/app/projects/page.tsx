@@ -11,6 +11,7 @@ import Lumen from "@/app/components/icons/lumen.png";
 import Trading from "@/app/components/icons/trading.jpeg";
 
 import React, { useState } from "react";
+import * as motion from "motion/react-client";
 
 import {
   Carousel,
@@ -23,9 +24,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { StaticImageData } from "next/image";
-import { ProjectLinkItem } from "@/components/ui/project-card"; // Import from your new component
+import { ProjectLinkItem } from "@/components/ui/project-card";
 
-// Import your new ProjectCard components
 import {
   ProjectCardRoot,
   ProjectCardImage,
@@ -35,12 +35,11 @@ import {
   ProjectCardDescription,
   ProjectCardTechnologies,
   ProjectCardLinks,
-} from "@/components/ui/project-card"; // Adjust path if needed
+} from "@/components/ui/project-card";
 
 import { FaGithub, FaYoutube } from "react-icons/fa";
 import DevpostIcon from "@/app/components/DevpostIcon";
 
-// Sample Project Data (using the Project interface)
 const sampleProjectsData: Project[] = [
   {
     id: "proj8",
@@ -70,9 +69,8 @@ const sampleProjectsData: Project[] = [
     id: "proj7",
     title: "Pot-Hole Risk Assessor",
     description:
-      "Hardware creation that is meant to be placed underground beneath important roads, and assesses the \
-            likelihood of a pothole forming by using sensors to gather data.",
-    imageUrl: Pothole, // Replace
+      "Hardware creation that is meant to be placed underground beneath important roads, and assesses the likelihood of a pothole forming by using sensors to gather data.",
+    imageUrl: Pothole,
     technologies: ["Arduino"],
     isHackathonWinner: true,
     links: [
@@ -93,8 +91,7 @@ const sampleProjectsData: Project[] = [
     title: "Heritrace",
     description:
       "A web application to figure out where you're from based on your name.",
-    imageUrl: Heritrace, // Replace with your image URL or static import
-    // imageUrl: myProjectImage1, // Example with static import
+    imageUrl: Heritrace,
     technologies: [
       "Next.js",
       "React",
@@ -125,9 +122,8 @@ const sampleProjectsData: Project[] = [
     id: "proj2",
     title: "Salary Prediction Model",
     description:
-      "A model for predicting salaries. It takes the highest level of educational attainment, \
-            the person's gender, their current job and their years of experience and predicts their salary given their information.",
-    imageUrl: Salary, // Replace
+      "A model for predicting salaries. It takes the highest level of educational attainment, the person's gender, their current job and their years of experience and predicts their salary given their information.",
+    imageUrl: Salary,
     technologies: [
       "Python",
       "Pandas",
@@ -148,9 +144,8 @@ const sampleProjectsData: Project[] = [
     id: "proj3",
     title: "Loan Prediction Model",
     description:
-      "A model created to predict the likelihood that an individual would default\
-             on their loans using various numerical and categorical factors. ",
-    imageUrl: Loan, // Replace
+      "A model created to predict the likelihood that an individual would default on their loans using various numerical and categorical factors.",
+    imageUrl: Loan,
     technologies: [
       "Python",
       "Pandas",
@@ -171,9 +166,8 @@ const sampleProjectsData: Project[] = [
     id: "proj4",
     title: "LocateAble",
     description:
-      "LocateAble is a website that fosters inclusivity by allowing users to post reviews, rate, \
-            and search for locations on Google Maps based on accessibility, covering a wide range of perspectives.",
-    imageUrl: LocateAble, // Replace
+      "LocateAble is a website that fosters inclusivity by allowing users to post reviews, rate, and search for locations on Google Maps based on accessibility, covering a wide range of perspectives.",
+    imageUrl: LocateAble,
     technologies: [
       "React",
       "PostgreSQL",
@@ -195,7 +189,7 @@ const sampleProjectsData: Project[] = [
     id: "proj5",
     title: "Sokoban",
     description: "Sokoban, built in Assembly.",
-    imageUrl: Sokoban, // Replace
+    imageUrl: Sokoban,
     technologies: ["Assembly", "RISC-V 32"],
     links: [
       {
@@ -209,7 +203,7 @@ const sampleProjectsData: Project[] = [
     id: "proj6",
     title: "Paint Application",
     description: "A paint application, built using Java and JavaFX.",
-    imageUrl: Paint, // Replace
+    imageUrl: Paint,
     technologies: ["Java", "JavaFX"],
     links: [
       {
@@ -243,15 +237,13 @@ const sampleProjectsData: Project[] = [
       },
     ],
   },
-
-  // Add more projects...
 ];
 
 export interface Project {
   id: string;
   title: string;
   description: string;
-  imageUrl: string | StaticImageData; // Supports both external URLs and static imports
+  imageUrl: string | StaticImageData;
   technologies: string[];
   links: ProjectLinkItem[];
   isHackathonWinner?: boolean;
@@ -261,23 +253,47 @@ export default function ProjectsPage() {
   const [, setView] = useState("carousel");
 
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro">
+    <div className="flex flex-col min-h-screen font-outfit">
       <Layout wide={true}>
-        <section className="w-full py-16">
+        <section className="w-full py-12">
           <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              My Projects
-            </h2>
+            {/* Editorial header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-12"
+            >
+              <p className="font-outfit text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Portfolio
+              </p>
+              <h1 className="font-cormorant text-4xl sm:text-5xl font-light tracking-tight text-foreground mb-4">
+                My Projects
+              </h1>
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "4rem" }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="h-[2px] bg-copper mx-auto"
+              />
+            </motion.div>
+
             <Tabs
               defaultValue="carousel"
               className="w-full"
               onValueChange={(value) => setView(value)}
             >
-              <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto mb-8">
-                <TabsTrigger value="carousel" className="hover:cursor-pointer">
+              <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto mb-8 bg-muted/50">
+                <TabsTrigger
+                  value="carousel"
+                  className="hover:cursor-pointer font-outfit text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
+                >
                   Carousel
                 </TabsTrigger>
-                <TabsTrigger value="grid" className="hover:cursor-pointer">
+                <TabsTrigger
+                  value="grid"
+                  className="hover:cursor-pointer font-outfit text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
+                >
                   Grid
                 </TabsTrigger>
               </TabsList>
@@ -285,21 +301,22 @@ export default function ProjectsPage() {
                 <Carousel
                   opts={{
                     align: "start",
-                    loop: sampleProjectsData.length > 2, // Loop if enough items
+                    loop: sampleProjectsData.length > 2,
                   }}
-                  className="w-full lg:w-[50%] sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto" // Responsive max width
+                  className="w-full lg:w-[50%] sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto"
                 >
                   <CarouselContent className="-ml-4">
-                    {sampleProjectsData.map((project) => (
+                    {sampleProjectsData.map((project, index) => (
                       <CarouselItem
                         key={project.id}
                         className="pl-4 basis-full"
                       >
-                        {" "}
-                        {/* Added group for hover effects */}
-                        <div className="h-full">
-                          {" "}
-                          {/* Ensure padding doesn't break card layout */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          className="h-full"
+                        >
                           <ProjectCardRoot href={project.links[0]?.href}>
                             <ProjectCardImage
                               src={project.imageUrl}
@@ -307,62 +324,64 @@ export default function ProjectsPage() {
                             />
                             <ProjectCardContent>
                               <div className="flex items-start justify-between gap-2">
-                                <ProjectCardTitle className="flex-1 min-w-0">
+                                <ProjectCardTitle className="flex-1 min-w-0 font-cormorant">
                                   {project.title}
                                 </ProjectCardTitle>
                                 {project.isHackathonWinner && (
                                   <ProjectCardHackathonBadge className="flex-shrink-0" />
                                 )}
                               </div>
-                              <ProjectCardDescription>
+                              <ProjectCardDescription className="font-outfit">
                                 {project.description}
                               </ProjectCardDescription>
                               <ProjectCardTechnologies
                                 technologies={project.technologies}
                               />
                             </ProjectCardContent>
-                            {/* Links are part of the main card flow, pushed down by content or mt-auto */}
                             <ProjectCardLinks links={project.links} />
                           </ProjectCardRoot>
-                        </div>
+                        </motion.div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="hidden sm:flex hover:cursor-pointer" />{" "}
-                  {/* Hide on small screens if crowded */}
+                  <CarouselPrevious className="hidden sm:flex hover:cursor-pointer" />
                   <CarouselNext className="hidden sm:flex hover:cursor-pointer" />
                 </Carousel>
               </TabsContent>
               <TabsContent value="grid">
-                <div className="max-w-3xl mx-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {sampleProjectsData.map((project) => (
-                      <ProjectCardRoot
+                <div className="max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {sampleProjectsData.map((project, index) => (
+                      <motion.div
                         key={project.id}
-                        href={project.links[0]?.href}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
                       >
-                        <ProjectCardImage
-                          src={project.imageUrl}
-                          alt={project.title}
-                        />
-                        <ProjectCardContent>
-                          <div className="flex items-start justify-between gap-2">
-                            <ProjectCardTitle className="flex-1 min-w-0">
-                              {project.title}
-                            </ProjectCardTitle>
-                            {project.isHackathonWinner && (
-                              <ProjectCardHackathonBadge className="flex-shrink-0" />
-                            )}
-                          </div>
-                          <ProjectCardDescription>
-                            {project.description}
-                          </ProjectCardDescription>
-                          <ProjectCardTechnologies
-                            technologies={project.technologies}
+                        <ProjectCardRoot href={project.links[0]?.href}>
+                          <ProjectCardImage
+                            src={project.imageUrl}
+                            alt={project.title}
                           />
-                        </ProjectCardContent>
-                        <ProjectCardLinks links={project.links} />
-                      </ProjectCardRoot>
+                          <ProjectCardContent>
+                            <div className="flex items-start justify-between gap-2">
+                              <ProjectCardTitle className="flex-1 min-w-0 font-cormorant">
+                                {project.title}
+                              </ProjectCardTitle>
+                              {project.isHackathonWinner && (
+                                <ProjectCardHackathonBadge className="flex-shrink-0" />
+                              )}
+                            </div>
+                            <ProjectCardDescription className="font-outfit">
+                              {project.description}
+                            </ProjectCardDescription>
+                            <ProjectCardTechnologies
+                              technologies={project.technologies}
+                            />
+                          </ProjectCardContent>
+                          <ProjectCardLinks links={project.links} />
+                        </ProjectCardRoot>
+                      </motion.div>
                     ))}
                   </div>
                 </div>

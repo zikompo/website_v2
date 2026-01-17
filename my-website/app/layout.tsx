@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto_Mono, Crimson_Pro } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Roboto_Mono,
+  Crimson_Pro,
+  Cormorant_Garamond,
+  Outfit,
+} from "next/font/google";
 import "./globals.css";
 import ThemeScript from "@/app/components/ThemeScript";
 
@@ -23,6 +30,18 @@ const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
 });
 
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Zikora Chinedu",
   description: "Check out my projects, writing, and more.",
@@ -42,7 +61,7 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${robotoMono.variable} ${crimsonPro.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${robotoMono.variable} ${crimsonPro.variable} ${cormorantGaramond.variable} ${outfit.variable} antialiased`}
       >
         {children}
       </body>

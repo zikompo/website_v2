@@ -7,8 +7,8 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div className="text-zinc-800 font-crimson-pro text-[23px]">
-      <Layout>
+    <div className="font-outfit">
+      <Layout wide>
         <Hero />
       </Layout>
     </div>

@@ -13,11 +13,11 @@ const Layout = ({
   <>
     <ParallaxBackground />
     <div className="flex flex-col min-h-screen text-foreground">
-      <Header />
+      <Header wide={wide} />
       <main
         className={cn(
-          "w-full mx-auto p-4 flex-grow",
-          wide ? "max-w-7xl" : "max-w-3xl",
+          "w-full mx-auto px-6 md:px-8 flex-grow",
+          wide ? "max-w-6xl" : "max-w-3xl",
         )}
       >
         {children}

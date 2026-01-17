@@ -18,13 +18,13 @@ export default async function ArticlePage({ params }: Props) {
   const { default: MDXContent } = article;
 
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro">
+    <div className="flex flex-col min-h-screen font-outfit">
       <Layout>
-        <div className="max-w-4xl mx-auto pt-4 pb-8">
+        <div className="max-w-2xl mx-auto pt-8 pb-12">
           <FontSizeControl>
-            <div className="prose dark:prose-invert max-w-none">
+            <article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-cormorant prose-headings:font-medium prose-p:font-outfit prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-copper prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-li:font-outfit prose-li:text-muted-foreground">
               <MDXContent />
-            </div>
+            </article>
           </FontSizeControl>
         </div>
       </Layout>
