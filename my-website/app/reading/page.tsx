@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import * as motion from "motion/react-client";
 import Layout from "../components/Layout";
 import BookReviewCard from "../components/BookReviewCard";
+import AnimatedBulletPoint from "../components/AnimatedBulletPoint";
 
 const ReadingPage = () => {
   const bookReviews = [
@@ -59,8 +60,10 @@ const ReadingPage = () => {
       imageUrl: "https://m.media-amazon.com/images/I/418dkB1gnxL.jpg",
       rating: 4,
       review: [
-        "Was a very interesting read, and rather empowering. This book follows the life of Tara, a woman who grew up in an extremely fundamentalist Mormon household, where she was denied access to education. It details how she gradually educates herself and eventually goes on to earn a PhD from Cambridge University.",
-        "The book is well-written and engaging. I got rather angry at some parts, especially when she detailed the abuse she and her siblings endured at the hands of their father/brother, and how her family refused to acknowledge it. I even got more frustrated when she kept going back to her family despite the abuse, but I guess that's the power of family.",
+        "Was a very interesting read, and rather empowering. This book follows the life of Tara, a woman who grew up in an extremely fundamentalist Mormon household, where she was denied access to education. It details how she gradually educates herself\
+                and eventually goes on to earn a PhD from Cambridge University.",
+        "The book is well-written and engaging. I got rather angry at some parts, especially when she detailed the abuse she and her siblings endured at the hands of their father/brother, and how her family refused to acknowledge it.\
+                I even got more frustrated when she kept going back to her family despite the abuse, but I guess that's the power of family.",
         "It was inspiring overall, seeing someone overcome such adversity to attain such a high level of education. Overall a good read.",
       ],
     },
@@ -159,7 +162,7 @@ const ReadingPage = () => {
       transition: {
         duration: 0.4,
         ease: "easeInOut",
-        staggerChildren: 0.05,
+        staggerChildren: 0.1,
         delayChildren: 0.1,
       },
     },
@@ -180,49 +183,31 @@ const ReadingPage = () => {
       x: 0,
       transition: { duration: 0.3 },
     },
+    hover: {
+      x: 4,
+      transition: { duration: 0.2 },
+    },
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-outfit">
-      <Layout wide>
-        <div className="space-y-12 py-12">
-          {/* Editorial header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <p className="font-outfit text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-              Library
-            </p>
-            <h1 className="font-cormorant text-4xl sm:text-5xl font-light tracking-tight text-foreground mb-4">
-              Reading List
-            </h1>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "4rem" }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="h-[2px] bg-copper mx-auto"
-            />
-          </motion.div>
+    <div className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
+      <Layout>
+        <div className="space-y-6 py-16">
+          <h1 className="text-4xl font-bold font-grotesk text-center">
+            Reading List
+          </h1>
 
           {/* Currently Reading Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-2xl mx-auto"
-          >
+          <div className="">
             <button
               onClick={() => setShowCurrentlyReading(!showCurrentlyReading)}
-              className="flex items-center gap-2 font-cormorant text-xl font-medium hover:text-copper transition-colors"
+              className="flex items-center gap-2 text-xl font-semibold hover:opacity-70 transition-opacity"
             >
               <span>Currently Reading (1)</span>
               {showCurrentlyReading ? (
-                <ChevronUp size={18} />
+                <ChevronUp size={20} />
               ) : (
-                <ChevronDown size={18} />
+                <ChevronDown size={20} />
               )}
             </button>
 
@@ -232,36 +217,31 @@ const ReadingPage = () => {
               variants={listVariants}
               style={{ overflow: "hidden" }}
             >
-              <div className="mt-4 pl-4 border-l-2 border-copper/30">
-                <p className="font-outfit text-sm text-muted-foreground">
-                  <span className="italic font-cormorant text-base text-foreground">
-                    Crime and Punishment
-                  </span>{" "}
-                  by Fyodor Dostoevsky
-                </p>
+              <div className="space-y-4">
+                <div className="space-y-2 text-xl pl-4">
+                  <AnimatedBulletPoint>
+                    <i>Crime and Punishment</i>
+                    <span className="ml-1"> by Fyodor Dostoevsky</span>
+                  </AnimatedBulletPoint>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Books I've Read Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-2xl mx-auto"
-          >
+          <div className="">
             <button
               onClick={() => setShowBooksRead(!showBooksRead)}
-              className="flex items-center gap-2 font-cormorant text-xl font-medium hover:text-copper transition-colors"
+              className="flex items-center gap-2 text-xl font-semibold hover:opacity-70 transition-opacity"
             >
               <span>
                 Books I&apos;ve Read (
                 {booksRead2025.length + booksRead2026.length})
               </span>
               {showBooksRead ? (
-                <ChevronUp size={18} />
+                <ChevronUp size={20} />
               ) : (
-                <ChevronDown size={18} />
+                <ChevronDown size={20} />
               )}
             </button>
 
@@ -271,18 +251,18 @@ const ReadingPage = () => {
               variants={listVariants}
               style={{ overflow: "hidden" }}
             >
-              <div className="space-y-6 mt-4 pl-4 border-l-2 border-border/30">
+              <div className="space-y-4 pl-4">
                 {/* 2026 Sub-dropdown */}
                 <div>
                   <button
                     onClick={() => setShowBooks2026(!showBooks2026)}
-                    className="flex items-center gap-2 font-outfit text-sm uppercase tracking-[0.1em] text-muted-foreground hover:text-copper transition-colors"
+                    className="flex items-center gap-2 text-lg font-medium hover:opacity-70 transition-opacity"
                   >
                     <span>2026 ({booksRead2026.length})</span>
                     {showBooks2026 ? (
-                      <ChevronUp size={14} />
+                      <ChevronUp size={18} />
                     ) : (
-                      <ChevronDown size={14} />
+                      <ChevronDown size={18} />
                     )}
                   </button>
 
@@ -292,31 +272,20 @@ const ReadingPage = () => {
                     variants={listVariants}
                     style={{ overflow: "hidden" }}
                   >
-                    <div className="mt-3 space-y-2 pl-4">
-                      {booksRead2026.length === 0 ? (
-                        <p className="font-outfit text-sm text-muted-foreground/60 italic">
-                          No books yet
-                        </p>
-                      ) : (
-                        booksRead2026.map((book, index) => {
-                          const [title, author] = book.includes(" by ")
-                            ? book.split(" by ")
-                            : [book, ""];
-                          return (
-                            <motion.div
-                              key={index}
-                              variants={listItemVariants}
-                              className="font-outfit text-sm text-muted-foreground"
-                            >
-                              <span className="text-copper mr-2">&#9670;</span>
-                              <span className="italic font-cormorant text-base text-foreground">
-                                {title}
-                              </span>
-                              {author && <span> by {author}</span>}
-                            </motion.div>
-                          );
-                        })
-                      )}
+                    <div className="space-y-2 text-xl pl-4">
+                      {booksRead2026.map((book, index) => {
+                        const [title, author] = book.includes(" by ")
+                          ? book.split(" by ")
+                          : [book, ""];
+                        return (
+                          <AnimatedBulletPoint key={index}>
+                            <i>{title}</i>
+                            {author && (
+                              <span className="ml-1"> by {author}</span>
+                            )}
+                          </AnimatedBulletPoint>
+                        );
+                      })}
                     </div>
                   </motion.div>
                 </div>
@@ -325,13 +294,13 @@ const ReadingPage = () => {
                 <div>
                   <button
                     onClick={() => setShowBooks2025(!showBooks2025)}
-                    className="flex items-center gap-2 font-outfit text-sm uppercase tracking-[0.1em] text-muted-foreground hover:text-copper transition-colors"
+                    className="flex items-center gap-2 text-lg font-medium hover:opacity-70 transition-opacity"
                   >
                     <span>2025 ({booksRead2025.length})</span>
                     {showBooks2025 ? (
-                      <ChevronUp size={14} />
+                      <ChevronUp size={18} />
                     ) : (
-                      <ChevronDown size={14} />
+                      <ChevronDown size={18} />
                     )}
                   </button>
 
@@ -341,35 +310,30 @@ const ReadingPage = () => {
                     variants={listVariants}
                     style={{ overflow: "hidden" }}
                   >
-                    <div className="mt-3 space-y-2 pl-4">
+                    <div className="space-y-2 text-xl pl-4">
                       {booksRead2025.map((book, index) => {
                         const [title, author] = book.includes(" by ")
                           ? book.split(" by ")
                           : [book, ""];
                         return (
-                          <motion.div
-                            key={index}
-                            variants={listItemVariants}
-                            className="font-outfit text-sm text-muted-foreground"
-                          >
-                            <span className="text-copper mr-2">&#9670;</span>
-                            <span className="italic font-cormorant text-base text-foreground">
-                              {title}
-                            </span>
-                            {author && <span> by {author}</span>}
-                          </motion.div>
+                          <AnimatedBulletPoint key={index}>
+                            <i>{title}</i>
+                            {author && (
+                              <span className="ml-1"> by {author}</span>
+                            )}
+                          </AnimatedBulletPoint>
                         );
                       })}
                     </div>
 
                     <motion.div
-                      className="mt-6 p-4 bg-muted/30 border border-border/30 rounded-sm"
+                      className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-lg"
                       variants={listItemVariants}
                     >
-                      <p className="font-outfit text-xs text-muted-foreground italic">
-                        <span className="text-copper font-medium not-italic">
+                      <p className="italic">
+                        <strong className="text-red-600 dark:text-red-400">
                           Note:
-                        </span>{" "}
+                        </strong>{" "}
                         Not all books will receive detailed reviews as I created
                         this website recently and read some of these books a
                         while ago. I may not be able to provide reviews that
@@ -381,45 +345,27 @@ const ReadingPage = () => {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Book Reviews Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-8"
-          >
-            <div className="text-center">
-              <p className="font-outfit text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Reviews
-              </p>
-              <h2 className="font-cormorant text-3xl font-light">
-                Book Reviews
-              </h2>
-              <p className="font-outfit text-xs text-muted-foreground mt-4 md:hidden">
-                Tap on a book to see the review
-              </p>
-            </div>
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold font-grotesk">Book Reviews</h2>
+            <p className="text-center text-muted-foreground text-sm mb-4 md:hidden">
+              Tap on a book to see the review
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {bookReviews.map((book, index) => (
-                <motion.div
+                <BookReviewCard
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-                >
-                  <BookReviewCard
-                    title={book.title}
-                    author={book.author}
-                    imageUrl={book.imageUrl}
-                    rating={book.rating}
-                    review={book.review}
-                  />
-                </motion.div>
+                  title={book.title}
+                  author={book.author}
+                  imageUrl={book.imageUrl}
+                  rating={book.rating}
+                  review={book.review}
+                />
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </Layout>
     </div>

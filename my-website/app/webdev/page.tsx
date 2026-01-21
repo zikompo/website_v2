@@ -3,7 +3,6 @@ import React from "react";
 import Layout from "../components/Layout";
 import TMG from "@/app/components/icons/tmg.png";
 import { StaticImageData } from "next/image";
-import * as motion from "motion/react-client";
 import {
   ProjectCardRoot,
   ProjectCardImage,
@@ -30,91 +29,50 @@ const websites: Website[] = [
 
 const WebDevPage = () => {
   return (
-    <div className="flex flex-col min-h-screen font-outfit">
+    <div className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
       <Layout>
-        <div className="space-y-12 py-12">
-          {/* Editorial header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center space-y-6"
-          >
-            <div>
-              <p className="font-outfit text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Services
-              </p>
-              <h1 className="font-cormorant text-4xl sm:text-5xl font-light tracking-tight text-foreground mb-4">
-                Web Development
-              </h1>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "4rem" }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="h-[2px] bg-copper mx-auto"
-              />
-            </div>
-
-            <div className="max-w-xl mx-auto space-y-4">
-              <p className="font-outfit text-base text-muted-foreground leading-relaxed">
+        <div className="space-y-12 py-16">
+          <div className="text-center space-y-6">
+            <h1 className="text-4xl font-bold font-grotesk">Web Development</h1>
+            <div className="max-w-2xl mx-auto space-y-4">
+              <p className="text-lg leading-relaxed">
                 I offer freelance web development services, creating modern,
                 responsive, and user-friendly websites and applications. From
                 concept to deployment, I help bring your digital vision to life.
               </p>
-              <p className="font-outfit text-sm text-muted-foreground/70">
+              <p className="text-base text-muted-foreground">
                 Interested in working together?{" "}
-                <a
-                  href="mailto:zikora.chinedu@yahoo.com"
-                  className="text-copper hover:underline transition-colors"
-                >
+                <a href="mailto:zikora.chinedu@yahoo.com" className="underline">
                   Reach out to me via email
                 </a>{" "}
                 and let&apos;s discuss your project.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Recent Projects */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-8"
-          >
-            <div className="text-center">
-              <p className="font-outfit text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Portfolio
-              </p>
-              <h2 className="font-cormorant text-2xl font-light">
-                Recent Projects
-              </h2>
-            </div>
+          <div className="space-y-8">
+            <h2 className="text-2xl font-semibold text-center">
+              Recent Projects
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {websites.map((website, index) => (
-                <motion.div
-                  key={website.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                >
-                  <ProjectCardRoot href={website.url}>
-                    <div className="aspect-[4/3] p-8 flex items-center justify-center bg-card">
-                      <ProjectCardImage
-                        src={website.logo}
-                        alt={`${website.name} logo`}
-                        className="aspect-auto h-full w-full object-contain"
-                      />
-                    </div>
-                    <ProjectCardContent className="p-4 flex-none">
-                      <ProjectCardTitle className="text-center text-base font-cormorant">
-                        {website.name}
-                      </ProjectCardTitle>
-                    </ProjectCardContent>
-                  </ProjectCardRoot>
-                </motion.div>
+              {websites.map((website) => (
+                <ProjectCardRoot key={website.id} href={website.url}>
+                  <div className="aspect-[4/3] p-8 flex items-center justify-center bg-card">
+                    <ProjectCardImage
+                      src={website.logo}
+                      alt={`${website.name} logo`}
+                      className="aspect-auto h-full w-full object-contain"
+                    />
+                  </div>
+                  <ProjectCardContent className="p-4 flex-none">
+                    <ProjectCardTitle className="text-center text-base">
+                      {website.name}
+                    </ProjectCardTitle>
+                  </ProjectCardContent>
+                </ProjectCardRoot>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </Layout>
     </div>

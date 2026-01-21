@@ -4,9 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import { cn } from "@/lib/utils";
 
-const Header = ({ wide = false }: { wide?: boolean }) => {
+const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
 
@@ -44,7 +43,7 @@ const Header = ({ wide = false }: { wide?: boolean }) => {
           className="hover:text-muted-foreground transition-colors"
         >
           {segment}
-        </Link>,
+        </Link>
       );
     });
 
@@ -52,44 +51,18 @@ const Header = ({ wide = false }: { wide?: boolean }) => {
   };
 
   return (
-    <nav className="w-full text-base relative font-outfit">
-      <div
-        className={cn(
-          "mx-auto px-6 md:px-8 flex justify-between items-center py-6",
-          wide ? "max-w-6xl" : "max-w-3xl",
-        )}
-      >
+    <nav className="w-full text-base relative font-['--font-crimson-pro']">
+      <div className="max-w-3xl mx-auto px-4 flex justify-between items-center py-4">
         <div className="font-medium">{buildBreadcrumb()}</div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6 text-sm tracking-wide">
-          <Link
-            href="/projects"
-            className="hover:text-copper transition-colors"
-          >
-            projects
-          </Link>
-          <Link href="/writing" className="hover:text-copper transition-colors">
-            writing
-          </Link>
-          <Link
-            href="/experiences"
-            className="hover:text-copper transition-colors"
-          >
-            experience
-          </Link>
-          <Link
-            href="/Zikora_Chinedu_resume.pdf"
-            className="hover:text-copper transition-colors"
-          >
-            resume
-          </Link>
-          <Link href="/reading" className="hover:text-copper transition-colors">
-            reading
-          </Link>
-          <Link href="/webdev" className="hover:text-copper transition-colors">
-            web dev
-          </Link>
+        <div className="hidden md:flex items-center space-x-4">
+          <Link href="/projects">projects</Link>
+          <Link href="/writing">writing</Link>
+          <Link href="/experiences">experience</Link>
+          <Link href="/Zikora_Chinedu_resume.pdf">resume</Link>
+          <Link href="/reading">reading</Link>
+          <Link href="/webdev">web dev</Link>
           <ThemeToggle />
         </div>
 
@@ -108,46 +81,46 @@ const Header = ({ wide = false }: { wide?: boolean }) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm shadow-lg md:hidden z-50 border-b border-border/50">
-          <div className="flex flex-col p-6 space-y-4 text-sm tracking-wide">
+        <div className="absolute top-full left-0 right-0 bg-background shadow-lg md:hidden z-50 border border-border">
+          <div className="flex flex-col p-4 space-y-4">
             <Link
               href="/projects"
-              className="hover:text-copper transition-colors py-1"
+              className="hover:text-muted-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               projects
             </Link>
             <Link
               href="/writing"
-              className="hover:text-copper transition-colors py-1"
+              className="hover:text-muted-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               writing
             </Link>
             <Link
               href="/experiences"
-              className="hover:text-copper transition-colors py-1"
+              className="hover:text-muted-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               experience
             </Link>
             <Link
               href="/Zikora_Chinedu_resume.pdf"
-              className="hover:text-copper transition-colors py-1"
+              className="hover:text-muted-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               resume
             </Link>
             <Link
               href="/reading"
-              className="hover:text-copper transition-colors py-1"
+              className="hover:text-muted-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               reading
             </Link>
             <Link
               href="/webdev"
-              className="hover:text-copper transition-colors py-1"
+              className="hover:text-muted-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               web dev

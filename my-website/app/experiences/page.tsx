@@ -1,6 +1,6 @@
 "use client";
 import Layout from "../components/Layout";
-import * as motion from "motion/react-client";
+import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import SharpeLogo from "@/app/components/icons/SharpeLogo.png";
@@ -13,7 +13,6 @@ interface Experience {
   company: string;
   title: string;
   logo: StaticImageData;
-  logoDark?: StaticImageData;
   date: string;
   description: string[];
 }
@@ -30,7 +29,6 @@ const experiences: Experience[] = [
     company: "Ontario Public Service",
     title: "Software Engineer Intern",
     logo: Ontario,
-    logoDark: OntarioDark,
     date: "May 2025 - Aug 2025",
     description: [
       "Developed a collaboration platform serving 400+ OPS employees, implementing anonymous posting and AI-powered content enhancement that increased post engagement by 40% in user testing.",
@@ -71,140 +69,93 @@ const experiences: Experience[] = [
   },
 ];
 
-const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="group relative"
-  >
-    <div className="flex gap-6">
-      {/* Timeline line */}
-      <div className="hidden sm:flex flex-col items-center">
-        <div className="w-14 h-14 relative flex-shrink-0 rounded-sm overflow-hidden border border-border/50 bg-card p-2">
-          {exp.logoDark ? (
-            <>
-              <Image
-                src={exp.logo}
-                alt={`${exp.company} logo`}
-                fill
-                className="object-contain p-1 dark:hidden"
-              />
-              <Image
-                src={exp.logoDark}
-                alt={`${exp.company} logo`}
-                fill
-                className="object-contain p-1 hidden dark:block"
-              />
-            </>
-          ) : (
-            <Image
-              src={exp.logo}
-              alt={`${exp.company} logo`}
-              fill
-              className="object-contain p-1"
-            />
-          )}
-        </div>
-        {index < experiences.length - 1 && (
-          <div className="w-[1px] flex-1 bg-border/50 mt-4" />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex-1 pb-12">
-        {/* Mobile logo */}
-        <div className="sm:hidden w-12 h-12 relative flex-shrink-0 rounded-sm overflow-hidden border border-border/50 bg-card p-2 mb-4">
-          {exp.logoDark ? (
-            <>
-              <Image
-                src={exp.logo}
-                alt={`${exp.company} logo`}
-                fill
-                className="object-contain p-1 dark:hidden"
-              />
-              <Image
-                src={exp.logoDark}
-                alt={`${exp.company} logo`}
-                fill
-                className="object-contain p-1 hidden dark:block"
-              />
-            </>
-          ) : (
-            <Image
-              src={exp.logo}
-              alt={`${exp.company} logo`}
-              fill
-              className="object-contain p-1"
-            />
-          )}
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-            <h2 className="font-cormorant text-2xl font-medium group-hover:text-copper transition-colors">
-              {exp.company}
-            </h2>
-            <span className="font-outfit text-xs uppercase tracking-[0.15em] text-muted-foreground">
-              {exp.date}
-            </span>
-          </div>
-          <p className="font-outfit text-sm text-copper">{exp.title}</p>
-
-          {exp.description.length > 0 && (
-            <ul className="mt-4 space-y-3">
-              {exp.description.map((point, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 font-outfit text-sm text-muted-foreground leading-relaxed"
-                >
-                  <span className="text-copper mt-1 flex-shrink-0">
-                    &#9670;
-                  </span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </div>
-  </motion.div>
-);
-
 const ExperiencePage = () => {
-  return (
-    <div className="font-outfit">
-      <Layout>
-        <section className="w-full py-12">
-          <div className="container mx-auto">
-            {/* Editorial header */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
-            >
-              <p className="font-outfit text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Career
-              </p>
-              <h1 className="font-cormorant text-4xl sm:text-5xl font-light tracking-tight text-foreground mb-4">
-                My Experience
-              </h1>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "4rem" }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="h-[2px] bg-copper mx-auto"
-              />
-            </motion.div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
 
-            {/* Timeline */}
-            <div className="max-w-2xl mx-auto">
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  return (
+    <div className="font-crimson-pro">
+      <Layout>
+        <section className="w-full py-16">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl font-bold text-center mb-12">
+              My Experience
+            </h1>
+            <motion.div
+              className="space-y-12"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               {experiences.map((exp, index) => (
-                <ExperienceCard key={index} exp={exp} index={index} />
+                <motion.div key={index} variants={itemVariants}>
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 relative">
+                      {exp.company === "Ontario Public Service" ? (
+                        <>
+                          <Image
+                            src={Ontario}
+                            alt={`${exp.company} logo`}
+                            layout="fill"
+                            object-fit="contain"
+                            className="rounded-lg dark:hidden"
+                          />
+                          <Image
+                            src={OntarioDark}
+                            alt={`${exp.company} logo`}
+                            layout="fill"
+                            object-fit="contain"
+                            className="rounded-lg hidden dark:block"
+                          />
+                        </>
+                      ) : (
+                        <Image
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          layout="fill"
+                          object-fit="contain"
+                          className="rounded-lg"
+                        />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="text-2xl font-semibold">{exp.company}</h2>
+                      <h3 className="text-xl font-medium text-muted-foreground">
+                        {exp.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {exp.date}
+                      </p>
+                      <ul className="list-disc list-outside pl-5 space-y-2">
+                        {exp.description.map((point, i) => (
+                          <li key={i} className="text-foreground/80">
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
       </Layout>

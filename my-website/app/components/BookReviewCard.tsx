@@ -27,11 +27,7 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({
       if (i <= Math.floor(rating)) {
         // Full star
         stars.push(
-          <Star
-            key={i}
-            size={18}
-            className="text-yellow-400 fill-yellow-400"
-          />,
+          <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />
         );
       } else if (i - 0.5 === rating) {
         // Half star
@@ -40,7 +36,7 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({
             key={i}
             size={18}
             className="text-yellow-400 fill-yellow-400"
-          />,
+          />
         );
       } else {
         // Empty star
@@ -57,32 +53,28 @@ const BookReviewCard: React.FC<BookReviewCardProps> = ({
         onClick={() => setIsModalOpen(true)}
       >
         {/* Image container with hover overlay */}
-        <div className="relative overflow-hidden rounded-sm transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-copper/10 max-w-[200px] mx-auto md:max-w-none border border-border/30 group-hover:border-copper/30">
+        <div className="relative overflow-hidden rounded-sm shadow-md transition-transform duration-300 ease-in-out group-hover:scale-[1.02] max-w-[200px] mx-auto md:max-w-none">
           <Image
             src={imageUrl}
             alt={`Cover of ${title}`}
             width={300}
             height={450}
-            className="w-full aspect-[2/3] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            className="w-full aspect-[2/3] object-cover"
           />
 
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-foreground/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col items-center justify-center gap-3">
+          <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col items-center justify-center gap-3">
             <div className="flex items-center gap-0.5">{renderStars()}</div>
-            <span className="text-background text-xs font-outfit uppercase tracking-[0.15em]">
-              Read review
+            <span className="text-white/90 text-sm font-medium tracking-wide">
+              Click to read review
             </span>
           </div>
         </div>
 
         {/* Title and author below image */}
-        <div className="mt-4 text-center">
-          <h3 className="font-cormorant text-lg font-medium leading-tight group-hover:text-copper transition-colors">
-            {title}
-          </h3>
-          <p className="font-outfit text-xs text-muted-foreground mt-1">
-            {author}
-          </p>
+        <div className="mt-3 text-center">
+          <h3 className="text-lg font-bold leading-tight">{title}</h3>
+          <p className="text-sm text-muted-foreground italic mt-1">{author}</p>
         </div>
       </div>
 
