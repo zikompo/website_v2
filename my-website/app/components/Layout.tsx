@@ -12,7 +12,7 @@ const Layout = ({
 }) => (
   <>
     <ParallaxBackground />
-    <div className="flex flex-col min-h-screen text-foreground">
+    <div className="flex flex-col min-h-screen text-foreground pt-16 md:pt-20">
       <Header />
       <main
         className={cn(
