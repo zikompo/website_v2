@@ -285,8 +285,7 @@ const Hero = () => {
               >
                 typing tests
               </Link>{" "}
-              and watching YouTube mini-documentaries. I recently got into poker
-              as well.
+              and watching YouTube mini-documentaries.
             </motion.li>
             <motion.li variants={listItemVariants} whileHover="hover">
               I love talking about economics, current affairs, and philosophical
@@ -304,8 +303,9 @@ const Hero = () => {
 
         <motion.p variants={itemVariants} className="pt-2 text-[18px]">
           I&apos;m looking for software engineering/development internships, and
-          freelance opportunities. If you have a project in mind or want to
-          collaborate, feel free to reach out!
+          freelance opportunities. If you want to hire me, or if you have a
+          project in mind or want to collaborate, feel free to reach out via
+          email!
         </motion.p>
       </motion.section>
     </div>
