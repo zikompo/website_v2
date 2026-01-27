@@ -89,7 +89,7 @@ const Hero = () => {
             },
           }}
         >
-          <div className="font-grotesk text-4xl sm:text-5xl md:text-8xl text-center md:text-left w-full">
+          <div className="font-sans text-4xl sm:text-5xl md:text-8xl text-center md:text-left w-full">
             <motion.span
               className="inline-block mr-4"
               variants={listItemVariants}

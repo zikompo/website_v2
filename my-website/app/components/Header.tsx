@@ -51,7 +51,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full text-base font-['--font-crimson-pro']">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full text-base">
       <div className="md:mt-4 md:mx-4 lg:mx-auto max-w-3xl md:rounded-full bg-background/40 backdrop-blur-md md:border md:border-border/50 md:shadow-lg">
         <div className="px-4 flex justify-between items-center py-3 md:py-2 md:px-6">
           <div className="font-medium">{buildBreadcrumb()}</div>

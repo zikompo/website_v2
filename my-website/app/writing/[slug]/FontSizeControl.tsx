@@ -37,9 +37,7 @@ export function FontSizeControl({ children }: FontSizeControlProps) {
   return (
     <div>
       <div className="flex items-center gap-4 mb-6 pb-4 border-b border-muted">
-        <span className="text-sm text-muted-foreground font-crimson-pro">
-          A
-        </span>
+        <span className="text-sm text-muted-foreground">A</span>
         <Slider
           value={[fontSize]}
           onValueChange={handleChange}
@@ -48,9 +46,7 @@ export function FontSizeControl({ children }: FontSizeControlProps) {
           step={STEP}
           className="w-32"
         />
-        <span className="text-xl text-muted-foreground font-crimson-pro">
-          A
-        </span>
+        <span className="text-xl text-muted-foreground">A</span>
         {mounted && (
           <span
             className="text-muted-foreground ml-2"

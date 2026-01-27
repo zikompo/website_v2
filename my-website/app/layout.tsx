@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto_Mono, Crimson_Pro } from "next/font/google";
+import { Outfit, Geist_Mono, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeScript from "@/app/components/ThemeScript";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -15,11 +15,6 @@ const geistMono = Geist_Mono({
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
-  subsets: ["latin"],
-});
-
-const crimsonPro = Crimson_Pro({
-  variable: "--font-crimson-pro",
   subsets: ["latin"],
 });
 
@@ -42,7 +37,7 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${robotoMono.variable} ${crimsonPro.variable} antialiased`}
+        className={`${outfit.variable} ${geistMono.variable} ${robotoMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

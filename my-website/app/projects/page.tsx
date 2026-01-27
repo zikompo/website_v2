@@ -261,7 +261,7 @@ export default function ProjectsPage() {
   const [, setView] = useState("carousel");
 
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro">
+    <div className="flex flex-col min-h-screen">
       <Layout wide={true}>
         <section className="w-full py-16">
           <div className="container mx-auto px-4">

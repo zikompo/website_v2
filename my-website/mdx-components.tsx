@@ -1,27 +1,25 @@
-import type { MDXComponents } from 'mdx/types'
+import type { MDXComponents } from "mdx/types";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Apply Crimson Pro font and styling to all MDX content
+    // Apply styling to all MDX content
     h1: ({ children }) => (
-      <h1 className="text-4xl font-light text-foreground mb-4 mt-8 font-crimson-pro">
+      <h1 className="text-4xl font-light text-foreground mb-4 mt-8">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-light text-foreground mb-3 mt-6 font-crimson-pro">
+      <h2 className="text-3xl font-light text-foreground mb-3 mt-6">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-light text-foreground mb-2 mt-5 font-crimson-pro">
+      <h3 className="text-2xl font-light text-foreground mb-2 mt-5">
         {children}
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-foreground leading-relaxed mb-4 font-crimson-pro">
-        {children}
-      </p>
+      <p className="text-foreground leading-relaxed mb-4">{children}</p>
     ),
     strong: ({ children }) => (
       <strong className="text-foreground font-semibold">{children}</strong>
@@ -30,26 +28,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <em className="text-foreground italic">{children}</em>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-border pl-4 text-muted-foreground italic my-6 font-crimson-pro">
+      <blockquote className="border-l-4 border-border pl-4 text-muted-foreground italic my-6">
         {children}
       </blockquote>
     ),
     ul: ({ children }) => (
-      <ul className="text-foreground mb-4 pl-6 font-crimson-pro list-disc">
-        {children}
-      </ul>
+      <ul className="text-foreground mb-4 pl-6 list-disc">{children}</ul>
     ),
     ol: ({ children }) => (
-      <ol className="text-foreground mb-4 pl-6 font-crimson-pro list-decimal">
-        {children}
-      </ol>
+      <ol className="text-foreground mb-4 pl-6 list-decimal">{children}</ol>
     ),
-    li: ({ children }) => (
-      <li className="mb-2">{children}</li>
-    ),
+    li: ({ children }) => <li className="mb-2">{children}</li>,
     a: ({ children, href }) => (
-      <a 
-        href={href} 
+      <a
+        href={href}
         className="text-primary underline hover:text-primary/80 transition-colors"
       >
         {children}
@@ -66,5 +58,5 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </pre>
     ),
     ...components,
-  }
-} 
+  };
+}

@@ -7,7 +7,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div className="text-zinc-800 font-crimson-pro text-[23px]">
+    <div className="text-zinc-800 text-[23px]">
       <Layout>
         <Hero />
       </Layout>

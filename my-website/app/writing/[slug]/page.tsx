@@ -18,7 +18,7 @@ export default async function ArticlePage({ params }: Props) {
   const { default: MDXContent } = article;
 
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro">
+    <div className="flex flex-col min-h-screen">
       <Layout>
         <div className="max-w-4xl mx-auto pt-4 pb-8">
           <FontSizeControl>

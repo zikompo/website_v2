@@ -190,10 +190,10 @@ const ReadingPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
+    <div className="flex flex-col min-h-screen text-[23px]">
       <Layout>
         <div className="space-y-6 py-16">
-          <h1 className="text-4xl font-bold font-grotesk text-center">
+          <h1 className="text-4xl font-bold font-sans text-center">
             Reading List
           </h1>
 
@@ -349,7 +349,7 @@ const ReadingPage = () => {
 
           {/* Book Reviews Section */}
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold font-grotesk">Book Reviews</h2>
+            <h2 className="text-3xl font-bold font-sans">Book Reviews</h2>
             <p className="text-center text-muted-foreground text-sm mb-4 md:hidden">
               Tap on a book to see the review
             </p>

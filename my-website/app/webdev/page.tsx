@@ -29,11 +29,11 @@ const websites: Website[] = [
 
 const WebDevPage = () => {
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro text-[23px]">
+    <div className="flex flex-col min-h-screen text-[23px]">
       <Layout>
         <div className="space-y-12 py-16">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl font-bold font-grotesk">Web Development</h1>
+            <h1 className="text-4xl font-bold font-sans">Web Development</h1>
             <div className="max-w-2xl mx-auto space-y-4">
               <p className="text-lg leading-relaxed">
                 I offer freelance web development services, creating modern,

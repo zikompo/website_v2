@@ -11,9 +11,7 @@ const ArticleCard = ({ article }: { article: ArticleMetadata }) => {
           {article.title}
         </h2>
       </Link>
-      <p className="text-muted-foreground text-base mb-2">
-        {article.date}
-      </p>
+      <p className="text-muted-foreground text-base mb-2">{article.date}</p>
       <p className="text-foreground text-base leading-relaxed">
         {article.description}
       </p>
@@ -23,18 +21,20 @@ const ArticleCard = ({ article }: { article: ArticleMetadata }) => {
 
 export default async function Writing() {
   const articles = await getAllArticles();
-  
+
   return (
-    <div className="flex flex-col min-h-screen font-crimson-pro">
+    <div className="flex flex-col min-h-screen">
       <Layout>
         <div className="max-w-4xl mx-auto py-16">
           <div className="mb-8">
-            <h1 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Writing</h1>
+            <h1 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Writing
+            </h1>
             <p className="text-muted-foreground text-base">
               Thoughts, stories, and reflections on various topics.
             </p>
           </div>
-          
+
           <div className="space-y-0">
             {articles.map((article) => (
               <ArticleCard key={article.slug} article={article} />
