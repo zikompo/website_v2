@@ -198,12 +198,10 @@ const Hero = () => {
               minors in Mathematics and Statistics.
             </motion.li>
             <motion.li variants={listItemVariants} whileHover="hover">
-              Writing blogs on various topics i&apos;m interested in. Check it
-              out{" "}
+              Writing on occasion. Check my blogs out{" "}
               <Link href="/writing" className="underline">
-                here
-              </Link>{" "}
-              .
+                here.
+              </Link>
             </motion.li>
           </motion.ul>
         </div>
