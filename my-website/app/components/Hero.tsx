@@ -9,6 +9,7 @@ import Ontario from "@/app/components/icons/ontario.png";
 import OntarioDark from "@/app/components/icons/ontario-dark.png";
 import Sharpe from "@/app/components/icons/sharpe.webp";
 import UofTAILogo from "@/app/components/icons/UofTAI_Logo.png";
+import BorderPassLogo from "@/app/components/icons/BorderPass.jpeg";
 import Link from "next/link";
 import * as motion from "motion/react-client";
 import AnimatedBulletPoint from "./AnimatedBulletPoint";
@@ -116,6 +117,19 @@ const Hero = () => {
       >
         <div className="mx-4 md:mx-0">
           <AnimatedBulletPoint>
+            Incoming SWE @{" "}
+            <span className="font-semibold text-[#5ac3aa] dark:text-[#e5ef6f] inline-flex items-baseline">
+              <Image
+                src={BorderPassLogo}
+                alt="BorderPass Logo"
+                width={23}
+                height={23}
+                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+              />
+              <Link href="https://borderpass.ai">BorderPass</Link>
+            </span>
+          </AnimatedBulletPoint>
+          <AnimatedBulletPoint>
             cs @{" "}
             <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
               <Image
@@ -128,32 +142,6 @@ const Hero = () => {
               <Link href="https://utoronto.ca/">University of Toronto</Link>
             </span>
           </AnimatedBulletPoint>
-          <AnimatedBulletPoint>
-            Web Developer @{" "}
-            <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
-              <Image
-                src={UofTAILogo}
-                alt="UofTAI Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-              />
-              <Link href="https://utoronto.ca/">UofT AI</Link>
-            </span>
-          </AnimatedBulletPoint>
-          <AnimatedBulletPoint>
-            Research Assistant @{" "}
-            <span className="font-semibold text-[#ad1d36] dark:text-[#f4c122] inline-flex items-baseline">
-              <Image
-                src={RiskLab}
-                alt="RiskLab Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-              />
-              <Link href="https://risklab.ca/">RiskLab</Link>
-            </span>
-          </AnimatedBulletPoint>
         </div>
 
         <div className="group hover:translate-x-1 transition-transform duration-200">
@@ -164,6 +152,32 @@ const Hero = () => {
             className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
             variants={listVariants}
           >
+            <motion.li variants={listItemVariants} whileHover="hover">
+              Web Developer @{" "}
+              <span className="font-semibold text-[#6275dd] dark:text-[#c171e9] inline-flex items-baseline">
+                <Image
+                  src={UofTAILogo}
+                  alt="UofTAI Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+                />
+                <Link href="https://utoronto.ca/">UofT AI</Link>
+              </span>
+            </motion.li>
+            <motion.li variants={listItemVariants} whileHover="hover">
+              Research Assistant @{" "}
+              <span className="font-semibold text-[#ad1d36] dark:text-[#f4c122] inline-flex items-baseline">
+                <Image
+                  src={RiskLab}
+                  alt="RiskLab Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+                />
+                <Link href="https://risklab.ca/">RiskLab</Link>
+              </span>
+            </motion.li>
             <motion.li variants={listItemVariants} whileHover="hover">
               VP Computer Science @ {""}
               <span className="inline-flex items-baseline gap-1">

@@ -122,6 +122,22 @@ const ReadingPage = () => {
         "The book is worth reading, IMO.",
       ],
     },
+    {
+      title: "The Art of Spending Money",
+      author: "Morgan Housel",
+      imageUrl: "https://m.media-amazon.com/images/I/71Pusl9N1AL._SL1500_.jpg",
+      rating: 4.5,
+      review: [
+        "This book talks a lot about the different social and psychological factors that go into our spending habits, and how we can understand their effects on our financial well-being.",
+        "I resonated with a lot of the book, and I will definitely be using a lot of the advice in this book when I start my co-op job, as it will be the first time I have a good amount of disposable income.",
+        "The number one thing I took away from the book is that anyone's behavior makes sense with enough information. The person who lost all their money in the 2008/2009 financial crisis may be very conservative with their investments, but the young person who has never had to worry about money may be a lot less risk averse, or even reckless.",
+        "The author also had a very interesting way of looking at saving money. He viewed saving money as a payment, the same way you'd pay for clothes, or food. But when you save money, you are paying towards your future independence. So saving $100 dollars today could be seen as giving yourself $100 dollars of freedom tomorrow.",
+        "It is also important to not have FOMO, and walk your journey. Easier said than done, but you should have a view of what you want your life to look like, and stay true to it.",
+        "I believe this book is a great, practical book for people looking into helping people reshape their relationship with money. The book is also incredibly dense with great quotes and anecdotes, probably the most I've seen in a non-fiction/self-help book. I'll definitely be rereading this book in the future.",
+        "The only reason this book didn't get a 5 star rating is because there were quite a few parts of the book that seemed to be from the Psychology of Money, which is a similar book by the same author. I did enjoy it better than the former book though.",
+        "If you've read Psychology of Money by the same author, you'll like this book as well. If you haven't, just read this book instead.",
+      ],
+    },
   ];
 
   const [showBooksRead, setShowBooksRead] = useState(false);
@@ -152,7 +168,7 @@ const ReadingPage = () => {
     "1984 by George Orwell",
   ];
 
-  const booksRead2026: string[] = [];
+  const booksRead2026 = ["The Art of Spending Money by Morgan Housel"];
 
   const listVariants = {
     hidden: { opacity: 0, height: 0 },
