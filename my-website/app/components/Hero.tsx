@@ -314,13 +314,6 @@ const Hero = () => {
             </motion.li>
           </motion.ul>
         </div>
-
-        <motion.p variants={itemVariants} className="pt-2 text-[18px]">
-          I&apos;m looking for software engineering/development internships, and
-          freelance opportunities. If you want to hire me, or if you have a
-          project in mind or want to collaborate, feel free to reach out via
-          email!
-        </motion.p>
       </motion.section>
     </div>
   );
