@@ -236,8 +236,8 @@ const ReadingPage = () => {
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
                   <AnimatedBulletPoint>
-                    <i>Crime and Punishment</i>
-                    <span className="ml-1"> by Fyodor Dostoevsky</span>
+                    <i>A Peace to End All Peace</i>
+                    <span className="ml-1"> by David Fromkin</span>
                   </AnimatedBulletPoint>
                 </div>
               </div>

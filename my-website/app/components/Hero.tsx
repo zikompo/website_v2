@@ -153,32 +153,6 @@ const Hero = () => {
             variants={listVariants}
           >
             <motion.li variants={listItemVariants} whileHover="hover">
-              Web Developer @{" "}
-              <span className="font-semibold text-[#6275dd] dark:text-[#c171e9] inline-flex items-baseline">
-                <Image
-                  src={UofTAILogo}
-                  alt="UofTAI Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-                />
-                <Link href="https://utoronto.ca/">UofT AI</Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Research Assistant @{" "}
-              <span className="font-semibold text-[#ad1d36] dark:text-[#f4c122] inline-flex items-baseline">
-                <Image
-                  src={RiskLab}
-                  alt="RiskLab Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-                />
-                <Link href="https://risklab.ca/">RiskLab</Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
               VP Computer Science @ {""}
               <span className="inline-flex items-baseline gap-1">
                 <Image
@@ -213,6 +187,32 @@ const Hero = () => {
             className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
             variants={listVariants}
           >
+            <motion.li variants={listItemVariants} whileHover="hover">
+              Web Developer @{" "}
+              <span className="font-semibold text-[#6275dd] dark:text-[#c171e9] inline-flex items-baseline">
+                <Image
+                  src={UofTAILogo}
+                  alt="UofTAI Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+                />
+                <Link href="https://utoronto.ca/">UofT AI</Link>
+              </span>
+            </motion.li>
+            <motion.li variants={listItemVariants} whileHover="hover">
+              Research Assistant @{" "}
+              <span className="font-semibold text-[#ad1d36] dark:text-[#f4c122] inline-flex items-baseline">
+                <Image
+                  src={RiskLab}
+                  alt="RiskLab Logo"
+                  width={20}
+                  height={20}
+                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
+                />
+                <Link href="https://risklab.ca/">RiskLab</Link>
+              </span>
+            </motion.li>
             <motion.li variants={listItemVariants} whileHover="hover">
               Founding Engineer @ {""}
               <span className="inline-flex items-baseline gap-1">

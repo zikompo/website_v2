@@ -6,6 +6,7 @@ import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import SharpeLogo from "@/app/components/icons/SharpeLogo.png";
 import EcobankLogo from "@/app/components/icons/EcobankLogo.png";
 import RiskLab from "@/app/components/icons/RiskLab.png";
+import UofTAILogo from "@/app/components/icons/UofTAI_Logo.png";
 import Ontario from "@/app/components/icons/ontario.png";
 import OntarioDark from "@/app/components/icons/ontario-dark.png";
 
@@ -19,10 +20,17 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    company: "UofT AI",
+    title: "Web Developer",
+    logo: UofTAILogo,
+    date: "Jan 2026 - Mar 2026",
+    description: [],
+  },
+  {
     company: "RiskLab",
     title: "Research Assistant",
     logo: RiskLab,
-    date: "May 2025 - Present",
+    date: "May 2025 - Jan 2026",
     description: [],
   },
   {
