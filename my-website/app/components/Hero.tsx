@@ -32,7 +32,7 @@ const experiences: Experience[] = [
     title: "Incoming SWE",
     company: "BorderPass",
     logo: BorderPassLogo,
-    date: "May – Aug 2026",
+    date: "Apr 2026 – Present",
     tagline: "AI-powered immigration platform",
     href: "https://borderpass.ai",
   },
