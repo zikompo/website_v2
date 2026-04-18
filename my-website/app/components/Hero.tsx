@@ -274,7 +274,7 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
             <Link href="https://borderpass.ai" className={underlineLink}>
               BorderPass
             </Link>
-            , where I'll spend the next year working on legaltech for
+            , where I&apos;ll spend the next year working on legaltech for
             immigration.
           </p>
           <p>
