@@ -1,319 +1,399 @@
-import React from "react";
-import Image from "next/image";
-import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
-import UofTLogo from "@/app/components/icons/UofTLogo.jpg";
-import BlackInStemLogo from "@/app/components/icons/blackinstem.jpg";
+"use client";
+
+import React, { useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import Zikora from "@/app/components/icons/zikora.jpg";
+import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import RiskLab from "@/app/components/icons/RiskLab.png";
 import Ontario from "@/app/components/icons/ontario.png";
 import OntarioDark from "@/app/components/icons/ontario-dark.png";
 import Sharpe from "@/app/components/icons/sharpe.webp";
 import UofTAILogo from "@/app/components/icons/UofTAI_Logo.png";
 import BorderPassLogo from "@/app/components/icons/BorderPass.jpeg";
-import Link from "next/link";
-import * as motion from "motion/react-client";
-import AnimatedBulletPoint from "./AnimatedBulletPoint";
+import GlitchText from "./GlitchText";
+import { currentlyReading } from "../reading/data";
+import type { ArticleMetadata } from "@/lib/mdx";
 
-const Hero = () => {
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1,
-      },
-    },
-  };
+interface Experience {
+  title: string;
+  company: string;
+  logo: StaticImageData;
+  logoDark?: StaticImageData;
+  date: string;
+  tagline?: string;
+  description?: string[];
+  href?: string;
+}
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  };
+const experiences: Experience[] = [
+  {
+    title: "Incoming SWE",
+    company: "BorderPass",
+    logo: BorderPassLogo,
+    date: "May – Aug 2026",
+    tagline: "AI-powered immigration platform",
+    href: "https://borderpass.ai",
+  },
+  {
+    title: "Web Developer",
+    company: "UofT AI",
+    logo: UofTAILogo,
+    date: "Jan – Mar 2026",
+    href: "https://uoft.ai",
+  },
+  {
+    title: "Research Assistant",
+    company: "RiskLab",
+    logo: RiskLab,
+    date: "May 2025 – Jan 2026",
+    href: "https://risklab.ca",
+  },
+  {
+    title: "Software Engineer Intern",
+    company: "Ontario Public Service",
+    logo: Ontario,
+    logoDark: OntarioDark,
+    date: "May – Aug 2025",
+    tagline: "Internal collaboration platform",
+    description: [
+      "Built a collaboration platform serving 400+ OPS employees, with anonymous posting and AI-powered content enhancement that increased post engagement by 40% in user testing.",
+      "Shipped 15+ responsive React/TypeScript components with Tailwind, optimized via lazy loading and memoization to hit a 93 Lighthouse score and sub-2s loads.",
+      "Built a super admin interface on Express.js with PostgreSQL/Drizzle, cutting manual oversight time by 50%.",
+    ],
+    href: "https://www.ontario.ca/page/government-ontario",
+  },
+  {
+    title: "Founding Engineer",
+    company: "Wealthseed",
+    logo: WealthSeedLogo,
+    date: "Jan – Sep 2025",
+    tagline: "Financial e-learning platform",
+    description: [
+      "Built the frontend of a financial e-learning platform: notification system, multi-role auth, and a responsive course management UI for students and teachers.",
+      "Implemented auth with NextAuth.js (JWT + bcrypt) supporting role-based access for students, teachers, and admins across multiple schools.",
+      "Built a real-time notification system with conditional rendering and state management, cutting page loads by 25%.",
+    ],
+    href: "https://wealthseed.ca",
+  },
+  {
+    title: "Quantitative Finance Analyst",
+    company: "Sharpe Financial Research Group",
+    logo: Sharpe,
+    date: "Jul 2024 – Apr 2025",
+    tagline: "Algorithmic trading research",
+    description: [
+      "Developed and backtested algorithmic trading strategies using statistical and ML techniques.",
+      "Built advanced financial models and conducted quantitative research.",
+    ],
+    href: "https://www.sharpe-research.com",
+  },
+];
 
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
+const INITIAL_VISIBLE = 2;
 
-  const listItemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-    hover: { x: 4, transition: { duration: 0.2 } },
-  };
+interface HeroProps {
+  articles: ArticleMetadata[];
+}
+
+const formatDate = (date: string) => {
+  if (date === "Living Document") return date;
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return date;
+  return parsed.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
+
+const SectionLabel: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => <h2 className="text-xl font-bold mb-4">{children}</h2>;
+
+const ExperienceRow: React.FC<{
+  exp: Experience;
+  isOpen: boolean;
+  onToggle: () => void;
+}> = ({ exp, isOpen, onToggle }) => {
+  const hasDetail = !!exp.description?.length;
+
+  const row = (
+    <div className="flex items-center gap-4 py-4">
+      <div className="w-10 h-10 relative flex-shrink-0">
+        {exp.logoDark ? (
+          <>
+            <Image
+              src={exp.logo}
+              alt={exp.company}
+              fill
+              className="object-contain rounded-md dark:hidden"
+            />
+            <Image
+              src={exp.logoDark}
+              alt={exp.company}
+              fill
+              className="object-contain rounded-md hidden dark:block"
+            />
+          </>
+        ) : (
+          <Image
+            src={exp.logo}
+            alt={exp.company}
+            fill
+            className="object-contain rounded-md"
+          />
+        )}
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="flex flex-wrap items-baseline gap-x-2">
+          <span className="text-foreground font-medium">{exp.title}</span>
+          <span className="text-muted-foreground">{exp.company}</span>
+        </div>
+        {exp.tagline && (
+          <p className="text-sm text-muted-foreground mt-0.5 truncate">
+            {exp.tagline}
+          </p>
+        )}
+      </div>
+      <span className="text-sm text-muted-foreground whitespace-nowrap hidden sm:block">
+        {exp.date}
+      </span>
+      <svg
+        className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-200 ${
+          isOpen ? "rotate-180" : ""
+        } ${hasDetail ? "" : "opacity-30"}`}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </div>
+  );
+
+  return (
+    <li>
+      {hasDetail ? (
+        <button
+          onClick={onToggle}
+          className="w-full text-left cursor-pointer hover:bg-muted/30 transition-colors rounded-sm"
+          aria-expanded={isOpen}
+        >
+          {row}
+        </button>
+      ) : (
+        <div>{row}</div>
+      )}
+      <AnimatePresence initial={false}>
+        {isOpen && hasDetail && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="pl-14 pr-4 pb-5 space-y-3">
+              <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed list-disc pl-4">
+                {exp.description!.map((point, pi) => (
+                  <li key={pi}>{point}</li>
+                ))}
+              </ul>
+              {exp.href && (
+                <Link
+                  href={exp.href}
+                  target="_blank"
+                  className="inline-block text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                >
+                  visit →
+                </Link>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+};
+
+const Hero: React.FC<HeroProps> = ({ articles }) => {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [showAllExperience, setShowAllExperience] = useState(false);
+
+  const visibleExperiences = showAllExperience
+    ? experiences
+    : experiences.slice(0, INITIAL_VISIBLE);
+
+  const recentArticles = articles.slice(0, 3);
+
+  const underlineLink =
+    "underline underline-offset-4 decoration-muted-foreground/40 hover:decoration-foreground";
 
   return (
     <div>
       <motion.section
-        className="flex flex-col md:flex-row items-center"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-        }}
+        className="pt-8 pb-12 flex items-start justify-between gap-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <motion.div
-          className="w-full md:w-[40%] p-5 md:pl-0 flex justify-center"
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.5 },
-            },
-          }}
-        >
+        <h1 className="text-5xl md:text-7xl font-sans leading-none">
+          <GlitchText text="Zikora Chinedu" />
+        </h1>
+        <div className="w-12 h-12 md:w-14 md:h-14 relative flex-shrink-0 mt-2">
           <Image
             src={Zikora}
-            alt="Picture of Zikora"
-            width={300}
-            height={300}
-            className="object-contain rounded-lg"
+            alt="Zikora"
+            fill
+            className="object-cover rounded-full"
           />
-        </motion.div>
-        <motion.div
-          className="w-full md:w-[60%] flex items-center justify-start md:pl-5 mt-4 md:mt-0"
-          variants={{
-            hidden: { opacity: 0, x: 50 },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.5 },
-            },
-          }}
-        >
-          <div className="font-sans text-4xl sm:text-5xl md:text-8xl text-center md:text-left w-full">
-            <motion.span
-              className="inline-block mr-4"
-              variants={listItemVariants}
-              whileHover="hover"
-            >
-              Zikora
-            </motion.span>
-            <motion.span
-              className="inline-block"
-              variants={listItemVariants}
-              whileHover="hover"
-            >
-              Chinedu
-            </motion.span>
-          </div>
-        </motion.div>
+        </div>
       </motion.section>
 
       <motion.section
-        className="space-y-2 leading-relaxed mt-8 text-left"
-        initial="hidden"
-        animate="visible"
-        variants={sectionVariants}
+        className="pb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.12 }}
       >
-        <div className="mx-4 md:mx-0">
-          <AnimatedBulletPoint>
-            Incoming SWE @{" "}
-            <span className="font-semibold text-[#5ac3aa] dark:text-[#e5ef6f] inline-flex items-baseline">
-              <Image
-                src={BorderPassLogo}
-                alt="BorderPass Logo"
-                width={23}
-                height={23}
-                className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-              />
-              <Link href="https://borderpass.ai">BorderPass</Link>
-            </span>
-          </AnimatedBulletPoint>
-          <AnimatedBulletPoint>
-            cs @{" "}
-            <span className="font-semibold text-[#002b65] dark:text-white inline-flex items-baseline">
-              <Image
-                src={UofTLogo}
-                alt="UofT Logo"
-                width={20}
-                height={20}
-                className="object-contain relative top-[3px] rounded-xs ml-0"
-              />
-              <Link href="https://utoronto.ca/">University of Toronto</Link>
-            </span>
-          </AnimatedBulletPoint>
-        </div>
-
-        <div className="group hover:translate-x-1 transition-transform duration-200">
-          <motion.p variants={itemVariants} className="italic text-[18px] pt-4">
-            Currently:
-          </motion.p>
-          <motion.ul
-            className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
-            variants={listVariants}
-          >
-            <motion.li variants={listItemVariants} whileHover="hover">
-              VP Computer Science @ {""}
-              <span className="inline-flex items-baseline gap-1">
-                <Image
-                  src={BlackInStemLogo}
-                  alt="BlackInStem Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-0"
-                />
-                <Link href="https://www.linkedin.com/company/black-in-stem-utm/">
-                  BlackInStem.
-                </Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              In my 3rd year at UofT, studying a Computer Science Major, with
-              minors in Mathematics and Statistics.
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Writing on occasion. Check my blogs out{" "}
-              <Link href="/writing" className="underline">
-                here.
-              </Link>
-            </motion.li>
-          </motion.ul>
-        </div>
-        <div className="group hover:translate-x-1 transition-transform duration-200">
-          <motion.p variants={itemVariants} className="italic text-[18px] pt-4">
-            Previously:
-          </motion.p>
-          <motion.ul
-            className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
-            variants={listVariants}
-          >
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Web Developer @{" "}
-              <span className="font-semibold text-[#6275dd] dark:text-[#c171e9] inline-flex items-baseline">
-                <Image
-                  src={UofTAILogo}
-                  alt="UofTAI Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-                />
-                <Link href="https://utoronto.ca/">UofT AI</Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Research Assistant @{" "}
-              <span className="font-semibold text-[#ad1d36] dark:text-[#f4c122] inline-flex items-baseline">
-                <Image
-                  src={RiskLab}
-                  alt="RiskLab Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-0 mr-2"
-                />
-                <Link href="https://risklab.ca/">RiskLab</Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Founding Engineer @ {""}
-              <span className="inline-flex items-baseline gap-1">
-                <Image
-                  src={WealthSeedLogo}
-                  alt="Wealthseed Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1"
-                />
-                <Link href="https://wealthseed.ca">Wealthseed.</Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Software Engineer Intern @ {""}
-              <span className="inline-flex items-baseline gap-1">
-                <Image
-                  src={Ontario}
-                  alt="Ontario Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:hidden"
-                />
-                <Image
-                  src={OntarioDark}
-                  alt="Ontario Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 hidden dark:block"
-                />
-                <Link href="https://www.ontario.ca/page/government-ontario">
-                  Ontario Public Service.
-                </Link>
-              </span>
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              Quantitative Finance Analyst @ {""}
-              <span className="inline-flex items-baseline gap-1">
-                <Image
-                  src={Sharpe}
-                  alt="Sharpe Logo"
-                  width={20}
-                  height={20}
-                  className="object-contain relative top-[3px] rounded-xs ml-1 mr-1 dark:bg-neutral-50"
-                />
-                <Link href="https://www.sharpe-research.com/">
-                  Sharpe Financial Research Group.
-                </Link>
-              </span>
-            </motion.li>
-          </motion.ul>
-        </div>
-
-        <div className="group hover:translate-x-1 transition-transform duration-200">
-          <motion.p variants={itemVariants} className="italic text-[18px] pt-4">
-            Some things about me:
-          </motion.p>
-          <motion.ul
-            className="list-disc pl-5 md:pl-8 space-y-1 text-[18px] text-left"
-            variants={listVariants}
-          >
-            <motion.li variants={listItemVariants} whileHover="hover">
-              I&apos;m interested in machine learning and software engineering,
-              and in particular its intersection with the financial space.{" "}
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              I am an avid reader. You can check out my reading list/reviews{" "}
-              <Link href="/reading" className="underline">
-                here
-              </Link>
-              .{" "}
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              I love getting active. I play soccer (Arsenal fan), basketball,
-              and I hit the gym.{" "}
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              I enjoy playing the piano, playing chess, doing{" "}
-              <Link
-                href="https://monkeytype.com/profile/zikompo"
-                className="underline"
-              >
-                typing tests
-              </Link>{" "}
-              and watching YouTube mini-documentaries.
-            </motion.li>
-            <motion.li variants={listItemVariants} whileHover="hover">
-              I love talking about economics, current affairs, and philosophical
-              questions. You can get in{" "}
-              <Link
-                href="mailto:zikora.chinedu@yahoo.com"
-                className="underline"
-              >
-                contact
-              </Link>{" "}
-              with me if you want to have a discussion!
-            </motion.li>
-          </motion.ul>
+        <SectionLabel>About</SectionLabel>
+        <div className="space-y-4 text-[18px] leading-relaxed">
+          <p>
+            Third year CS student at{" "}
+            <Link href="https://utoronto.ca" className={underlineLink}>
+              University of Toronto
+            </Link>
+            , incoming SWE at{" "}
+            <Link href="https://borderpass.ai" className={underlineLink}>
+              BorderPass
+            </Link>{" "}
+            for the summer.
+          </p>
+          <p>
+            Interested in machine learning and software engineering, especially
+            at the intersection with finance.
+          </p>
         </div>
       </motion.section>
+
+      <motion.section
+        className="pb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <SectionLabel>Reading</SectionLabel>
+        <div className="space-y-2 text-[18px] leading-relaxed">
+          <p>
+            Currently reading{" "}
+            <Link
+              href={currentlyReading.url}
+              target="_blank"
+              className={underlineLink}
+            >
+              <i>{currentlyReading.title}</i>
+            </Link>{" "}
+            by {currentlyReading.author}.
+          </p>
+          <p>
+            Check out the rest of my reading{" "}
+            <Link href="/reading" className={underlineLink}>
+              here
+            </Link>
+            .
+          </p>
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="pb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.28 }}
+      >
+        <SectionLabel>Experience</SectionLabel>
+        <ul className="divide-y divide-border">
+          {visibleExperiences.map((exp, i) => (
+            <ExperienceRow
+              key={exp.company}
+              exp={exp}
+              isOpen={openIdx === i}
+              onToggle={() => setOpenIdx(openIdx === i ? null : i)}
+            />
+          ))}
+        </ul>
+        {experiences.length > INITIAL_VISIBLE && (
+          <button
+            onClick={() => {
+              if (showAllExperience) setOpenIdx(null);
+              setShowAllExperience(!showAllExperience);
+            }}
+            className="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+          >
+            {showAllExperience
+              ? "Show less"
+              : `Show all (${experiences.length})`}
+            <svg
+              className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                showAllExperience ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        )}
+      </motion.section>
+
+      {recentArticles.length > 0 && (
+        <motion.section
+          className="pb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.36 }}
+        >
+          <SectionLabel>Writing</SectionLabel>
+          <ul className="divide-y divide-border">
+            {recentArticles.map((article) => (
+              <li key={article.slug}>
+                <Link
+                  href={`/writing/${article.slug}`}
+                  className="flex items-baseline justify-between gap-4 py-3 hover:bg-muted/30 transition-colors rounded-sm px-1 -mx-1"
+                >
+                  <span className="text-foreground">{article.title}</span>
+                  <span className="text-sm text-muted-foreground whitespace-nowrap">
+                    {formatDate(article.date)}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {articles.length > 3 && (
+            <Link
+              href="/writing"
+              className="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors inline-block"
+            >
+              All writing →
+            </Link>
+          )}
+        </motion.section>
+      )}
     </div>
   );
 };
+
 export default Hero;
