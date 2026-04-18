@@ -266,19 +266,26 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
         <SectionLabel>About</SectionLabel>
         <div className="space-y-4 text-[18px] leading-relaxed">
           <p>
-            Third year CS student at{" "}
+            Third-year CS student at{" "}
             <Link href="https://utoronto.ca" className={underlineLink}>
-              University of Toronto
-            </Link>
-            , incoming SWE at{" "}
+              University of Toronto.
+            </Link>{" "}
+            Incoming SWE at{" "}
             <Link href="https://borderpass.ai" className={underlineLink}>
               BorderPass
-            </Link>{" "}
-            for the summer.
+            </Link>
+            , where I'll spend the next year working on legaltech for
+            immigration.
           </p>
           <p>
-            Interested in machine learning and software engineering, especially
-            at the intersection with finance.
+            Outside school and work: reading, writing, gym, soccer. Feel free to{" "}
+            <Link
+              href="mailto:zikora.chinedu@mail.utoronto.ca"
+              className={underlineLink}
+            >
+              get in touch
+            </Link>{" "}
+            if you want to chat.
           </p>
         </div>
       </motion.section>
