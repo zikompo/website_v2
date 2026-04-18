@@ -60,7 +60,6 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/projects">projects</Link>
             <Link href="/writing">writing</Link>
-            <Link href="/experiences">experience</Link>
             <Link href="/Zikora_Chinedu_resume.pdf">resume</Link>
             <Link href="/reading">reading</Link>
             <ThemeToggle />
@@ -97,13 +96,6 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               writing
-            </Link>
-            <Link
-              href="/experiences"
-              className="hover:text-muted-foreground transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              experience
             </Link>
             <Link
               href="/Zikora_Chinedu_resume.pdf"

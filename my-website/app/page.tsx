@@ -1,15 +1,14 @@
-// app/page.tsx
-"use client";
 import Hero from "@/app/components/Hero";
 import Layout from "./components/Layout";
+import { getAllArticles } from "@/lib/mdx";
 
-import React from "react";
+export default async function Home() {
+  const articles = await getAllArticles();
 
-export default function Home() {
   return (
     <div className="text-zinc-800 text-[23px]">
       <Layout>
-        <Hero />
+        <Hero articles={articles} />
       </Layout>
     </div>
   );
