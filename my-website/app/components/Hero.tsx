@@ -29,10 +29,10 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: "Incoming SWE",
+    title: "Software Developer",
     company: "BorderPass",
     logo: BorderPassLogo,
-    date: "Apr 2026 – Present",
+    date: "May 2026 – Present",
     tagline: "AI-powered immigration platform",
     href: "https://borderpass.ai",
   },
@@ -266,15 +266,15 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
         <SectionLabel>About</SectionLabel>
         <div className="space-y-4 text-[18px] leading-relaxed">
           <p>
-            Third-year CS student at{" "}
+            Recently finished my third year at the{" "}
             <Link href="https://utoronto.ca" className={underlineLink}>
               University of Toronto.
             </Link>{" "}
-            Incoming SWE at{" "}
+            Currently working as a Software Developer at{" "}
             <Link href="https://borderpass.ai" className={underlineLink}>
               BorderPass
             </Link>
-            , where I'll spend the next year working on legaltech for
+            , where I&apos;ll be spending the next year working on legaltech for
             immigration.
           </p>
           <p>
