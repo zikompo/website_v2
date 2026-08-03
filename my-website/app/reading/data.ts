@@ -7,9 +7,9 @@ export interface BookReview {
 }
 
 export const currentlyReading = {
-  title: "A Peace to End All Peace",
-  author: "David Fromkin",
-  url: "https://www.amazon.ca/Peace-End-All-Ottoman-Creation/dp/0805088091",
+  title: "The Republic",
+  author: "Plato",
+  url: "https://a.co/d/01B2Mdoh",
 };
 
 export const bookReviews: BookReview[] = [
