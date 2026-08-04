@@ -278,12 +278,13 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
             immigration.
           </p>
           <p>
-            Outside school and work: reading, writing, gym, soccer. Feel free to{" "}
+            Outside school and work: reading, writing, gym, soccer. Feel free to
+            email me at{" "}
             <Link
-              href="mailto:zikora.chinedu@mail.utoronto.ca"
+              href="mailto:zikora.chinedu@yahoo.com"
               className={underlineLink}
             >
-              get in touch
+              zikora.chinedu@yahoo.com
             </Link>{" "}
             if you want to chat.
           </p>
