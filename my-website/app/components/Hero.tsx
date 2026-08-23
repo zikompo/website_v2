@@ -299,11 +299,7 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
           </p>
           <p>
             You can check out the rest of my projects{" "}
-            <Link
-              href="https://github.com/zikorachinedu"
-              target="_blank"
-              className={underlineLink}
-            >
+            <Link href="/projects" className={underlineLink}>
               here
             </Link>
             .
