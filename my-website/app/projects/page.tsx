@@ -9,18 +9,9 @@ import LocateAble from "@/app/components/icons/locateable.jpg";
 import Pothole from "@/app/components/icons/pothole.jpg";
 import Lumen from "@/app/components/icons/lumen.png";
 import Trading from "@/app/components/icons/trading.jpeg";
-
-import React, { useState } from "react";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SheetToNotes from "@/app/components/icons/sheettonotes.png";
+import Wordle from "@/app/components/icons/wordle.png";
+import Quest from "@/app/components/icons/quest.png";
 
 import { StaticImageData } from "next/image";
 import { ProjectLinkItem } from "@/components/ui/project-card"; // Import from your new component
@@ -42,6 +33,84 @@ import DevpostIcon from "@/app/components/DevpostIcon";
 
 // Sample Project Data (using the Project interface)
 const sampleProjectsData: Project[] = [
+  {
+    id: "proj10",
+    title: "Sheet to Notes",
+    description:
+      "A falling-notes piano visualizer for MusicXML scores, built for practicing on an iPad. Load a MuseScore export and watch the notes fall onto an on-screen keyboard with hand colours, fingering numbers, and sampled piano playback.",
+    imageUrl: SheetToNotes,
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase"],
+    links: [
+      {
+        href: "https://sheettonotes.zikorachinedu.com",
+        label: "Website",
+      },
+      {
+        href: "https://github.com/zikompo/sheet_to_notes",
+        label: "Source Code",
+        icon: <FaGithub size="1rem" />,
+      },
+    ],
+  },
+  {
+    id: "proj11",
+    title: "Multiplayer Wordle Clone",
+    description:
+      "Multiplayer Wordle clone where up to seven players share a lobby code and race through the same puzzle. Live opponent grids show greens and yellows as they land, with optional timed rounds and a session leaderboard scored on guesses used.",
+    imageUrl: Wordle,
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Express"],
+    links: [
+      {
+        href: "https://wordle.zikorachinedu.com",
+        label: "Website",
+      },
+      {
+        href: "https://github.com/zikompo/wordle-clone",
+        label: "Source Code",
+        icon: <FaGithub size="1rem" />,
+      },
+    ],
+  },
+  {
+    id: "proj12",
+    title: "Quest",
+    description:
+      "An RPG that gamifies personal development by turning life goals into quests. Pick one of six classes, earn XP across six core stats, and get guidance from an AI party of five specialized agents that surface opportunities, financial advice, and tool recommendations.",
+    imageUrl: Quest,
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "FastAPI",
+      "Python",
+      "MongoDB",
+      "LangChain",
+      "LangGraph",
+      "NextAuth.js",
+      "Framer Motion",
+    ],
+    links: [
+      {
+        href: "https://www.sololeveling.tech",
+        label: "Website",
+      },
+      {
+        href: "https://youtu.be/M5LP0WvI9iQ",
+        label: "Demo",
+        icon: <FaYoutube className="h-4 w-4" />,
+      },
+      {
+        href: "https://devpost.com/software/quest-jrow9d",
+        label: "Devpost",
+        icon: <DevpostIcon className="h-4 w-4" />,
+      },
+      {
+        href: "https://github.com/nathancmaniego/UofTHacks13",
+        label: "Source Code",
+        icon: <FaGithub size="1rem" />,
+      },
+    ],
+  },
   {
     id: "proj8",
     title: "Lumen",
@@ -258,8 +327,6 @@ export interface Project {
 }
 
 export default function ProjectsPage() {
-  const [, setView] = useState("carousel");
-
   return (
     <div className="flex flex-col min-h-screen">
       <Layout wide={true}>
@@ -268,106 +335,38 @@ export default function ProjectsPage() {
             <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               My Projects
             </h2>
-            <Tabs
-              defaultValue="carousel"
-              className="w-full"
-              onValueChange={(value) => setView(value)}
-            >
-              <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto mb-8">
-                <TabsTrigger value="carousel" className="hover:cursor-pointer">
-                  Carousel
-                </TabsTrigger>
-                <TabsTrigger value="grid" className="hover:cursor-pointer">
-                  Grid
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="carousel">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: sampleProjectsData.length > 2, // Loop if enough items
-                  }}
-                  className="w-full lg:w-[50%] sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto" // Responsive max width
-                >
-                  <CarouselContent className="-ml-4">
-                    {sampleProjectsData.map((project) => (
-                      <CarouselItem
-                        key={project.id}
-                        className="pl-4 basis-full"
-                      >
-                        {" "}
-                        {/* Added group for hover effects */}
-                        <div className="h-full">
-                          {" "}
-                          {/* Ensure padding doesn't break card layout */}
-                          <ProjectCardRoot href={project.links[0]?.href}>
-                            <ProjectCardImage
-                              src={project.imageUrl}
-                              alt={project.title}
-                            />
-                            <ProjectCardContent>
-                              <div className="flex items-start justify-between gap-2">
-                                <ProjectCardTitle className="flex-1 min-w-0">
-                                  {project.title}
-                                </ProjectCardTitle>
-                                {project.isHackathonWinner && (
-                                  <ProjectCardHackathonBadge className="flex-shrink-0" />
-                                )}
-                              </div>
-                              <ProjectCardDescription>
-                                {project.description}
-                              </ProjectCardDescription>
-                              <ProjectCardTechnologies
-                                technologies={project.technologies}
-                              />
-                            </ProjectCardContent>
-                            {/* Links are part of the main card flow, pushed down by content or mt-auto */}
-                            <ProjectCardLinks links={project.links} />
-                          </ProjectCardRoot>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="hidden sm:flex hover:cursor-pointer" />{" "}
-                  {/* Hide on small screens if crowded */}
-                  <CarouselNext className="hidden sm:flex hover:cursor-pointer" />
-                </Carousel>
-              </TabsContent>
-              <TabsContent value="grid">
-                <div className="max-w-3xl mx-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {sampleProjectsData.map((project) => (
-                      <ProjectCardRoot
-                        key={project.id}
-                        href={project.links[0]?.href}
-                      >
-                        <ProjectCardImage
-                          src={project.imageUrl}
-                          alt={project.title}
-                        />
-                        <ProjectCardContent>
-                          <div className="flex items-start justify-between gap-2">
-                            <ProjectCardTitle className="flex-1 min-w-0">
-                              {project.title}
-                            </ProjectCardTitle>
-                            {project.isHackathonWinner && (
-                              <ProjectCardHackathonBadge className="flex-shrink-0" />
-                            )}
-                          </div>
-                          <ProjectCardDescription>
-                            {project.description}
-                          </ProjectCardDescription>
-                          <ProjectCardTechnologies
-                            technologies={project.technologies}
-                          />
-                        </ProjectCardContent>
-                        <ProjectCardLinks links={project.links} />
-                      </ProjectCardRoot>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent>
-            </Tabs>
+            <div className="max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {sampleProjectsData.map((project) => (
+                  <ProjectCardRoot
+                    key={project.id}
+                    href={project.links[0]?.href}
+                  >
+                    <ProjectCardImage
+                      src={project.imageUrl}
+                      alt={project.title}
+                    />
+                    <ProjectCardContent>
+                      <div className="flex items-start justify-between gap-2">
+                        <ProjectCardTitle className="flex-1 min-w-0">
+                          {project.title}
+                        </ProjectCardTitle>
+                        {project.isHackathonWinner && (
+                          <ProjectCardHackathonBadge className="flex-shrink-0" />
+                        )}
+                      </div>
+                      <ProjectCardDescription>
+                        {project.description}
+                      </ProjectCardDescription>
+                      <ProjectCardTechnologies
+                        technologies={project.technologies}
+                      />
+                    </ProjectCardContent>
+                    <ProjectCardLinks links={project.links} />
+                  </ProjectCardRoot>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </Layout>

@@ -278,13 +278,54 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
             immigration.
           </p>
           <p>
-            Outside school and work: reading, writing, gym, soccer. Feel free to
-            email me at{" "}
+            Recently, I got back into playing piano this year and I&apos;m bad
+            at reading sheet music, so I built{" "}
             <Link
-              href="mailto:zikora.chinedu@yahoo.com"
+              href="https://sheettonotes.zikorachinedu.com"
+              target="_blank"
               className={underlineLink}
             >
-              zikora.chinedu@yahoo.com
+              sheettonotes
+            </Link>
+            , which turns MusicXML exports into falling notes on an on-screen
+            keyboard. It runs in the browser and works on an iPad, which is
+            where I actually practice.
+          </p>
+          <p>
+            I also built a{" "}
+            <Link
+              href="https://wordle.zikorachinedu.com"
+              target="_blank"
+              className={underlineLink}
+            >
+              multiplayer wordle clone
+            </Link>{" "}
+            so I could play against my friends &mdash; we&apos;d been playing a
+            lot of GeoGuessr together and wanted the same head-to-head format
+            for Wordle. Everyone in a lobby gets the same word, you see each
+            other&apos;s greens and yellows live, and you can compete on time or
+            on who needed the fewest guesses.
+          </p>
+          <p>
+            You can check out the rest of my projects{" "}
+            <Link
+              href="https://github.com/zikorachinedu"
+              target="_blank"
+              className={underlineLink}
+            >
+              here
+            </Link>
+            .
+          </p>
+          <p>
+            Outside school and work: reading, writing, gym, soccer. Feel free to
+            reach out on{" "}
+            <Link
+              href="https://linkedin.com/in/zikorachinedu"
+              target="_blank"
+              className={underlineLink}
+            >
+              LinkedIn
             </Link>{" "}
             if you want to chat.
           </p>
