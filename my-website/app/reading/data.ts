@@ -6,11 +6,24 @@ export interface BookReview {
   review: string[];
 }
 
-export const currentlyReading = {
-  title: "The Republic",
-  author: "Plato",
-  url: "https://a.co/d/01B2Mdoh",
-};
+export interface CurrentBook {
+  title: string;
+  author: string;
+  url: string;
+}
+
+export const currentlyReading: CurrentBook[] = [
+  {
+    title: "AI Engineering",
+    author: "Chip Huyen",
+    url: "https://www.amazon.com/dp/1098166302",
+  },
+  {
+    title: "Crime and Punishment",
+    author: "Fyodor Dostoevsky",
+    url: "https://www.amazon.com/dp/0679734503",
+  },
+];
 
 export const bookReviews: BookReview[] = [
   {
@@ -141,6 +154,19 @@ export const bookReviews: BookReview[] = [
       "If you've read Psychology of Money by the same author, you'll like this book as well. If you haven't, just read this book instead.",
     ],
   },
+  {
+    title: "Cobalt Red",
+    author: "Siddharth Kara",
+    imageUrl: "https://m.media-amazon.com/images/I/91SmfS1EMDL._SY522_.jpg",
+    rating: 5,
+    review: [
+      "Cobalt is an essential raw material used in many lithium-ion batteries today, providing the thermal stability and energy density required for devices like smartphones, laptops and electric vehicles. We can assume because of increased technology adoption and increased demand for EVs (with some countries moving towards having mostly electric cars on the road), the demand for cobalt is probably very high right now, and will increase in the future.",
+      "DR Congo holds around 50% of the world's cobalt and accounts for over 70% of global production. While industrial operations extract majority of the volume, between 15% to 30% is extracted through artisanal mining, which relies on rudimentary hand tools and employs hundreds of thousands of people.",
+      "In this book, author Siddharth Kara investigates the severe human cost in the Copper Belt region. The book details how systemic poverty forces many local residents into artisanal mining, working in very dangerous conditions for minimal pay (as little as $1 a day). Kara documents widespread child labor, frequent tunnel collapses, and hazardous working environments, alongside interviews with miners and local communities. He also contextualizes this within the DRC's longer history of foreign resource extraction, from rubber and ivory under King Leopold II to mineral extraction today.",
+      "A major takeaway from the book for me is the opacity of modern supply chains. While major technology and automotive manufacturers frequently claim to source cobalt ethically, Kara illustrates how artisanal and industrial cobalt ore is mixed at trading depots before being processed and exported. This makes it very hard to verify the origin of cobalt in consumer hardware. Reading the book, I'm not sure there is much ethical cobalt being exported from the DRC.",
+      "Great and eye-opening read.",
+    ],
+  },
 ];
 
 export const booksRead2025: string[] = [
@@ -167,5 +193,6 @@ export const booksRead2025: string[] = [
 ];
 
 export const booksRead2026: string[] = [
+  "Cobalt Red by Siddharth Kara",
   "The Art of Spending Money by Morgan Housel",
 ];

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import Zikora from "@/app/components/icons/zikora.jpg";
 import WealthSeedLogo from "@/app/components/icons/WealthseedLogo.jpg";
 import RiskLab from "@/app/components/icons/RiskLab.png";
 import Ontario from "@/app/components/icons/ontario.png";
@@ -239,7 +238,7 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
   return (
     <div>
       <motion.section
-        className="pt-8 pb-12 flex items-start justify-between gap-4"
+        className="pt-8 pb-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -247,14 +246,6 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
         <h1 className="text-5xl md:text-7xl font-sans leading-none">
           <GlitchText text="Zikora Chinedu" />
         </h1>
-        <div className="w-12 h-12 md:w-14 md:h-14 relative flex-shrink-0 mt-2">
-          <Image
-            src={Zikora}
-            alt="Zikora"
-            fill
-            className="object-cover rounded-full"
-          />
-        </div>
       </motion.section>
 
       <motion.section
@@ -340,17 +331,30 @@ const Hero: React.FC<HeroProps> = ({ articles }) => {
       >
         <SectionLabel>Reading</SectionLabel>
         <div className="space-y-2 text-[18px] leading-relaxed">
-          <p>
-            Currently reading{" "}
-            <Link
-              href={currentlyReading.url}
-              target="_blank"
-              className={underlineLink}
-            >
-              <i>{currentlyReading.title}</i>
-            </Link>{" "}
-            by {currentlyReading.author}.
-          </p>
+          {currentlyReading.length > 0 && (
+            <p>
+              Currently reading{" "}
+              {currentlyReading.map((book, i) => (
+                <React.Fragment key={book.url}>
+                  {i > 0 &&
+                    (i === currentlyReading.length - 1
+                      ? currentlyReading.length > 2
+                        ? ", and "
+                        : " and "
+                      : ", ")}
+                  <Link
+                    href={book.url}
+                    target="_blank"
+                    className={underlineLink}
+                  >
+                    <i>{book.title}</i>
+                  </Link>{" "}
+                  by {book.author}
+                </React.Fragment>
+              ))}
+              .
+            </p>
+          )}
           <p>
             Check out the rest of my reading{" "}
             <Link href="/reading" className={underlineLink}>

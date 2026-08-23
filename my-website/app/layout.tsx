@@ -21,9 +21,6 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "Zikora Chinedu",
   description: "Check out my projects, writing, and more.",
-  icons: {
-    icon: "/zikora.jpg",
-  },
 };
 
 export default function RootLayout({

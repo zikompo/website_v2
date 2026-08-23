@@ -40,19 +40,6 @@ const ReadingPage = () => {
     },
   };
 
-  const listItemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3 },
-    },
-    hover: {
-      x: 4,
-      transition: { duration: 0.2 },
-    },
-  };
-
   return (
     <div className="flex flex-col min-h-screen text-[23px]">
       <Layout>
@@ -67,7 +54,7 @@ const ReadingPage = () => {
               onClick={() => setShowCurrentlyReading(!showCurrentlyReading)}
               className="flex items-center gap-2 text-xl font-semibold hover:opacity-70 transition-opacity"
             >
-              <span>Currently Reading (1)</span>
+              <span>Currently Reading ({currentlyReading.length})</span>
               {showCurrentlyReading ? (
                 <ChevronUp size={20} />
               ) : (
@@ -83,10 +70,12 @@ const ReadingPage = () => {
             >
               <div className="space-y-4">
                 <div className="space-y-2 text-xl pl-4">
-                  <AnimatedBulletPoint>
-                    <i>{currentlyReading.title}</i>
-                    <span className="ml-1"> by {currentlyReading.author}</span>
-                  </AnimatedBulletPoint>
+                  {currentlyReading.map((book) => (
+                    <AnimatedBulletPoint key={book.url}>
+                      <i>{book.title}</i>
+                      <span className="ml-1"> by {book.author}</span>
+                    </AnimatedBulletPoint>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -189,22 +178,6 @@ const ReadingPage = () => {
                         );
                       })}
                     </div>
-
-                    <motion.div
-                      className="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-lg"
-                      variants={listItemVariants}
-                    >
-                      <p className="italic">
-                        <strong className="text-red-600 dark:text-red-400">
-                          Note:
-                        </strong>{" "}
-                        Not all books will receive detailed reviews as I created
-                        this website recently and read some of these books a
-                        while ago. I may not be able to provide reviews that
-                        accurately reflect what I actually thought of the book
-                        at the time of reading.
-                      </p>
-                    </motion.div>
                   </motion.div>
                 </div>
               </div>
